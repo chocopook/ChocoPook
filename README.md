@@ -49,12 +49,14 @@ Las fotos de la galería están en `assets/img/galeria/`. Hoy son ilustraciones 
 ```
 index.html            Página principal con las 4 secciones
 pedido.html           Armá tu pedido (estantería, canasta y ticket)
-css/                  Estilos, un archivo por módulo (base, nav, portada, menu, local, receta, pie, pedido)
+css/                  Estilos, un archivo por módulo (base, nav, portada, menu, local, receta, pie, pedido, cursor)
 js/config.js          Datos editables (redes, video, productos)
 js/main.js            Comportamiento común: menú móvil, links, video, visor de fotos
 js/pedido.js          Armá tu pedido: arrastrar, canasta, ticket y mensaje de WhatsApp
+js/cursor.js          Cursor estrella: animación al pasar por links y botones, y estela
 assets/svg/           Ilustraciones propias (oso, libro, canasta, toldo, plantas, garabatos, etc.)
 assets/svg/productos/ Un dibujo por producto del pedido
+assets/cursor/        Estrella pixel art del cursor
 assets/img/galeria/   Fotos de la vitrina
 herramientas/         Script de capturas para desarrollo (no forma parte del sitio)
 docs/                 Diseño de referencia

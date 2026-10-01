@@ -1,0 +1,144 @@
+/* =========================================================
+   Chocopook · Cursor estrella
+   - Con js/cursor.js activo, la estrella la dibuja la página TODO el tiempo
+     (html.cursor-propio): en el hover solo empieza a girar y palpitar. Como no hay
+     cambio de cursor al entrar a un link, no puede parpadear.
+   - El cursor nativo (PNG) queda de base: sin JavaScript, con "reducir movimiento",
+     dentro del visor de fotos y antes del primer movimiento del mouse.
+   - Se mantienen la barrita para escribir y el "?" de los links pendientes.
+   Solo con mouse: en pantallas táctiles no se aplica nada.
+   Va después del resto de las hojas de estilo, para pisar sus cursores.
+   ========================================================= */
+
+@media (hover: hover) and (pointer: fine) {
+  /* base: la estrella nativa en toda la página (pisa las manitos de las demás hojas) */
+  html,
+  html * {
+    cursor: url("../assets/cursor/estrella.png") 16 16, auto !important;
+    cursor: -webkit-image-set(url("../assets/cursor/estrella.png") 1x, url("../assets/cursor/estrella@2x.png") 2x) 16 16, auto !important;
+    cursor: image-set(url("../assets/cursor/estrella.png") 1x, url("../assets/cursor/estrella@2x.png") 2x) 16 16, auto !important;
+  }
+
+  /* también mientras se arrastra un producto (pedido.css pone la manito con !important) */
+  html .arrastrando,
+  html .arrastrando * {
+    cursor: url("../assets/cursor/estrella.png") 16 16, auto !important;
+    cursor: -webkit-image-set(url("../assets/cursor/estrella.png") 1x, url("../assets/cursor/estrella@2x.png") 2x) 16 16, auto !important;
+    cursor: image-set(url("../assets/cursor/estrella.png") 1x, url("../assets/cursor/estrella@2x.png") 2x) 16 16, auto !important;
+  }
+
+  /* para escribir, la barrita de siempre */
+  html textarea,
+  html input:not([type="radio"]):not([type="checkbox"]):not([type="button"]):not([type="submit"]) {
+    cursor: text !important;
+  }
+
+  /* links que todavía no tienen destino en js/config.js */
+  html [data-pendiente],
+  html [data-pendiente] * {
+    cursor: help !important;
+  }
+
+  /* cursor propio: el nativo se oculta y se ve la estrella de la página */
+  html.cursor-propio,
+  html.cursor-propio * {
+    cursor: none !important;
+  }
+
+  /* excepciones del cursor propio (js/cursor.js oculta su estrella en estos lugares) */
+  html.cursor-propio textarea,
+  html.cursor-propio input:not([type="radio"]):not([type="checkbox"]):not([type="button"]):not([type="submit"]) {
+    cursor: text !important;
+  }
+
+  html.cursor-propio [data-pendiente],
+  html.cursor-propio [data-pendiente] * {
+    cursor: help !important;
+  }
+
+  /* el visor de fotos se abre en la capa superior, por encima de la estrella de la página */
+  html.cursor-propio dialog[open],
+  html.cursor-propio dialog[open] * {
+    cursor: url("../assets/cursor/estrella.png") 16 16, auto !important;
+    cursor: -webkit-image-set(url("../assets/cursor/estrella.png") 1x, url("../assets/cursor/estrella@2x.png") 2x) 16 16, auto !important;
+    cursor: image-set(url("../assets/cursor/estrella.png") 1x, url("../assets/cursor/estrella@2x.png") 2x) 16 16, auto !important;
+  }
+}
+
+/* ---------- Estrella de la página ---------- */
+
+.cursor-estrella {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483646;
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px; /* el centro de la estrella queda en la punta del mouse */
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+html.cursor-propio .cursor-estrella {
+  opacity: 1;
+}
+
+/* donde se usa el cursor nativo (escribir, links pendientes, visor, video) o fuera de la ventana */
+html.cursor-propio .cursor-estrella--oculta {
+  opacity: 0;
+}
+
+.cursor-estrella__giro,
+.cursor-estrella__latido,
+.cursor-estrella img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+/* hover: gira y palpita. Las animaciones arrancan de cero, igual que la estrella quieta */
+html.cursor-hover .cursor-estrella__giro {
+  animation: estrella-gira 4.5s linear infinite;
+}
+
+html.cursor-hover .cursor-estrella__latido {
+  animation: estrella-late 1.1s ease-in-out infinite alternate;
+}
+
+@keyframes estrella-gira {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes estrella-late {
+  to {
+    transform: scale(1.28);
+  }
+}
+
+/* ---------- Estela ---------- */
+
+/* pocas chispas reutilizadas; las mueve el navegador (Web Animations), no un bucle de JS */
+.cursor-chispa {
+  --t: 4px;
+  --c: #f6de40;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483645;
+  width: var(--t);
+  height: var(--t);
+  margin: calc(var(--t) / -2) 0 0 calc(var(--t) / -2);
+  background: var(--c);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* destello en forma de cruz */
+.cursor-chispa--cruz {
+  background:
+    linear-gradient(var(--c), var(--c)) center / 100% 34% no-repeat,
+    linear-gradient(var(--c), var(--c)) center / 34% 100% no-repeat;
+}
