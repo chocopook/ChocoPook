@@ -9,9 +9,11 @@ Es una web estática (HTML + CSS + JavaScript, sin paso de compilación) pensada
 ## Secciones
 
 1. **Portada**: logo del oso pastelero y mensaje de bienvenida.
-2. **Menú**: mantel cuadrillé con un libro abierto (Menú Dulce / Menú Salado) cuyos ítems llevan a los posts de recetas, más los botones de Instagram y WhatsApp.
+2. **Menú**: mantel cuadrillé con un libro abierto (Menú Dulce / Menú Salado). Cada ítem abre "Armá tu pedido" con ese producto ya en la canasta. Abajo, los botones de Instagram y de pedidos.
 3. **Nuestras recetas**: toldo de local, vitrina con la galería de fotos y mostrador de madera.
 4. **Receta del día**: video de YouTube.
+
+Y una página aparte, **Armá tu pedido** (`pedido.html`): una estantería con los productos dibujados que se arrastran (o se tocan) hasta una canasta, un ticket con las cantidades y un botón que abre WhatsApp con el pedido escrito. Los productos no tienen precio: eso se coordina por WhatsApp. El pedido queda guardado en el navegador de quien lo arma.
 
 ## Ver el sitio en local
 
@@ -34,20 +36,25 @@ Todo lo que cambia con frecuencia está en [`js/config.js`](js/config.js), así 
 | Mensaje inicial de WhatsApp | `whatsappMensaje` | `"¡Hola Chocopook! Quiero hacer un pedido"` |
 | Video de la receta del día | `recetaDelDia.youtube` | link completo de YouTube o solo el ID |
 | Nombre de la receta del día | `recetaDelDia.titulo` | `"Cookies de chocolate"` |
-| Links de cada ítem del menú | `recetas.<clave>` | link al post de la receta |
+| Productos del pedido | `productos` | `{ id: "cookies", nombre: "Cookies", tipo: "dulce" }` |
 
-Mientras un dato esté vacío, el sitio muestra un aviso de "¡Muy pronto!" en lugar de un link roto.
+Mientras un dato esté vacío, el sitio muestra un aviso de "¡Muy pronto!" en lugar de un link roto. El botón "Hacer pedido por WhatsApp" funciona apenas se cargue `whatsappNumero`.
+
+Para sumar un producto: agregalo a `productos`, poné su dibujo en `assets/svg/productos/<id>.svg` (100 × 100) y su ítem en el libro del menú de `index.html` (`pedido.html?agregar=<id>`).
 
 Las fotos de la galería están en `assets/img/galeria/`. Hoy son ilustraciones provisorias en SVG: para cambiarlas por fotos reales, subí la foto (`.jpg` o `.webp`, idealmente 1200×900) y actualizá el `src` en `index.html`.
 
 ## Estructura
 
 ```
-index.html            Página única con las 4 secciones
-css/                  Estilos, un archivo por módulo (base, nav, portada, menu, local, receta, pie)
-js/config.js          Datos editables (redes, video, links de recetas)
-js/main.js            Comportamiento: menú móvil, links, video, visor de fotos
-assets/svg/           Ilustraciones propias (oso, cupcake, toldo, garabatos, etc.)
+index.html            Página principal con las 4 secciones
+pedido.html           Armá tu pedido (estantería, canasta y ticket)
+css/                  Estilos, un archivo por módulo (base, nav, portada, menu, local, receta, pie, pedido)
+js/config.js          Datos editables (redes, video, productos)
+js/main.js            Comportamiento común: menú móvil, links, video, visor de fotos
+js/pedido.js          Armá tu pedido: arrastrar, canasta, ticket y mensaje de WhatsApp
+assets/svg/           Ilustraciones propias (oso, libro, canasta, toldo, plantas, garabatos, etc.)
+assets/svg/productos/ Un dibujo por producto del pedido
 assets/img/galeria/   Fotos de la vitrina
 herramientas/         Script de capturas para desarrollo (no forma parte del sitio)
 docs/                 Diseño de referencia
@@ -70,5 +77,4 @@ Todas las rutas del sitio son relativas, así que funciona igual en una subcarpe
 - [ ] Usuario de Instagram.
 - [ ] Número de WhatsApp para pedidos.
 - [ ] Video de la receta del día.
-- [ ] Links a los posts de cada receta del menú.
 - [ ] Fotos reales para la galería.
