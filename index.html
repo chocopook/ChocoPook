@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/portada.css">
 
   <script src="js/config.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -58,6 +59,40 @@
   </header>
 
   <main id="contenido">
+
+    <!-- ========== 1. Portada ========== -->
+    <section class="portada" id="inicio" aria-labelledby="titulo-marca">
+      <div class="portada__marca">
+        <span class="corazon portada__corazon portada__corazon--1" aria-hidden="true"></span>
+        <span class="corazon portada__corazon portada__corazon--2" aria-hidden="true"></span>
+        <span class="corazon portada__corazon portada__corazon--3" aria-hidden="true"></span>
+        <img class="portada__logo" src="assets/svg/logo-oso.svg" alt="" width="220" height="208">
+        <h1 class="marca" id="titulo-marca">
+          Chocopook
+          <span class="marca__sub">
+            <span class="corazon" aria-hidden="true"></span>
+            <span class="marca__sub-texto">Pastelería</span>
+            <span class="corazon" aria-hidden="true"></span>
+          </span>
+        </h1>
+      </div>
+
+      <div class="portada__texto" id="nosotros">
+        <h2 class="titulo-mano">Más que postres,<br> es un momento dulce<span class="corazon" aria-hidden="true"></span></h2>
+        <p>En Chocopook elaboramos pastelería artesanal con mucho amor, desde nuestra pequeña cocina en Argentina. Somos un emprendimiento familiar que nació de la pasión por lo dulce y las cosas ricas. Cada receta está hecha con ingredientes de calidad, para que disfrutes un sabor casero, real y especial.</p>
+        <p class="portada__gracias">Gracias por ser parte de este sueño<span class="corazon" aria-hidden="true"></span></p>
+        <p class="portada__ubicacion">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5a7 7 0 0 0-7 7c0 5.2 7 12 7 12s7-6.8 7-12a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></svg>
+          Buenos Aires, Argentina
+        </p>
+      </div>
+
+      <div class="portada__escena" aria-hidden="true">
+        <div class="pizarra">Hecho<br>con<br>amor<span class="corazon"></span></div>
+        <img class="portada__plato" src="assets/svg/plato-cookies.svg" alt="" width="320" height="196">
+      </div>
+    </section>
+
   </main>
 </body>
 </html>
