@@ -1,49 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 196" width="320" height="196">
-  <!-- Plato de cookies de la portada -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 222" width="340" height="222">
+  <!-- Plato con cookies de chocolate (portada). Cada cookie se dibuja vista desde arriba
+       y se achata con scale(1 .5) para dar perspectiva. -->
   <defs>
-    <radialGradient id="loza" cx="50%" cy="40%" r="60%">
+    <radialGradient id="loza" cx="50%" cy="38%" r="62%">
       <stop offset="0" stop-color="#ffffff"/>
-      <stop offset="1" stop-color="#efe6d8"/>
+      <stop offset="1" stop-color="#ece2d3"/>
     </radialGradient>
-    <g id="cookie">
-      <ellipse cy="9" rx="52" ry="22" fill="#9b5f30"/>
-      <ellipse rx="52" ry="22" fill="#cf9455"/>
-      <ellipse cx="-7" cy="-4" rx="37" ry="13" fill="#dcaa69" opacity=".75"/>
-      <path d="M-24-2q9-5 16 1M10 7q8-3 13 2" fill="none" stroke="#b07440" stroke-width="2.2" stroke-linecap="round"/>
-      <g fill="#3f220e">
-        <ellipse cx="-24" cy="-9" rx="7" ry="3.6"/>
-        <ellipse cx="9" cy="-12" rx="6" ry="3"/>
-        <ellipse cx="26" cy="0" rx="7.5" ry="3.8"/>
-        <ellipse cx="-5" cy="3" rx="6.5" ry="3.3"/>
-        <ellipse cx="-34" cy="7" rx="5" ry="2.8"/>
-        <ellipse cx="11" cy="13" rx="6" ry="3"/>
-        <ellipse cx="37" cy="-9" rx="4.2" ry="2.4"/>
+    <radialGradient id="masa" cx="45%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#e9bd78"/>
+      <stop offset=".7" stop-color="#d9a35e"/>
+      <stop offset="1" stop-color="#b9783a"/>
+    </radialGradient>
+
+    <!-- contorno irregular de una cookie -->
+    <path id="contorno" d="M-49-4C-50-26-30-47-4-48 20-50 44-34 49-10 54 14 40 40 14 47-12 54-40 42-47 20-49 12-49 4-49-4Z"/>
+
+    <!-- costado (espesor) -->
+    <g id="costado" fill="#ad6d33">
+      <use href="#contorno" transform="translate(0 7) scale(1 .5)"/>
+      <use href="#contorno" transform="translate(0 4.5) scale(1 .5)"/>
+      <use href="#contorno" transform="translate(0 2) scale(1 .5)"/>
+    </g>
+
+    <!-- cara de arriba, vista desde arriba -->
+    <g id="cara">
+      <use href="#contorno" fill="url(#masa)"/>
+      <!-- grietas -->
+      <g fill="none" stroke="#c48745" stroke-width="2.6" stroke-linecap="round">
+        <path d="M-30-6q6-6 13-2 5 3 10-2M2-22q7 1 10 7M-16 18q8 4 15 0M18 4q6-3 12 0M-6 38q6 2 11-2"/>
       </g>
-      <g fill="#6b3f22">
-        <ellipse cx="-26" cy="-10.5" rx="3" ry="1.3"/>
-        <ellipse cx="24" cy="-1.5" rx="3.2" ry="1.4"/>
+      <g fill="none" stroke="#f1cf92" stroke-width="1.6" stroke-linecap="round" opacity=".8">
+        <path d="M-29-8q6-5 12-1M3-24q6 1 9 6M-15 16q7 3 13 0"/>
       </g>
+      <!-- trozos de chocolate -->
+      <path fill="#3a1f0d" d="M-34 -21.3C-34 -27 -28.4 -29.4 -24.6 -28C-20 -27.6 -19.3 -20.6 -21.4 -17.1C-24.2 -15.1 -31.2 -15 -34 -21.3ZM3 -32.4C3 -38.3 7.8 -39.3 11.1 -39.3C14.1 -37.8 14.6 -31.8 13.8 -28.8C11.4 -25.7 5.4 -27 3 -32.4ZM16.5 -5.3C16.5 -10.8 22.5 -13.9 26.6 -11.7C32.6 -12 33.5 -4.5 30 -0.8C27 0.6 19.5 1.5 16.5 -5.3ZM-18.5 6.7C-18.5 0.5 -13.3 -0.8 -9.7 -0.5C-5.8 0.8 -5.2 7.3 -6.8 10.6C-9.4 13.5 -15.9 12.5 -18.5 6.7ZM-43 6.5C-43 2.2 -39 0.8 -36.3 1.5C-32.5 2 -31.9 7 -34 9.5C-36 11.2 -41 11 -43 6.5ZM-2 27.6C-2 22.7 2.8 20.7 6.1 21.9C10 22.2 10.6 28.2 8.8 31.2C6.4 32.9 0.4 33 -2 27.6ZM28.4 19.5C28.4 15 32.1 14.2 34.6 14.2C36.9 15.3 37.3 19.9 36.7 22.2C34.8 24.6 30.2 23.6 28.4 19.5ZM-28.2 26.4C-28.2 23.3 -24.8 21.6 -22.5 22.8C-19.2 22.6 -18.7 26.8 -20.6 28.9C-22.3 29.7 -26.5 30.2 -28.2 26.4ZM26 -25.6C26 -29.4 29.2 -30.2 31.4 -30C33.8 -29.2 34.2 -25.2 33.2 -23.2C31.6 -21.4 27.6 -22 26 -25.6ZM-7.6 -13.6C-7.6 -16.7 -4.7 -17.8 -2.7 -17.2C0 -16.9 0.4 -13.3 -1.1 -11.5C-2.6 -10.2 -6.2 -10.4 -7.6 -13.6ZM10.6 10.3C10.6 7.6 13.3 6.4 15.2 7.1C17.4 7.3 17.7 10.7 16.7 12.4C15.4 13.4 12 13.4 10.6 10.3ZM-37.2 -7.7C-37.2 -10.8 -34.6 -11.4 -32.9 -11.3C-31.3 -10.6 -31 -7.4 -31.4 -5.8C-32.7 -4.1 -35.9 -4.8 -37.2 -7.7Z"/>
+      <!-- brillo del chocolate -->
+      <path fill="none" stroke="#7d5235" stroke-width="2" stroke-linecap="round" d="M-30.1 -24.4q2.1 -2.1 4.9 -1.8M6.3 -35.1q1.8 -1.8 4.2 -1.5M20.6 -8.6q2.3 -2.3 5.3 -1.9M-14.9 3.7q1.9 -1.9 4.5 -1.6M-40.3 4.3q1.5 -1.5 3.5 -1.3M1.3 24.9q1.8 -1.8 4.2 -1.5M30.9 17.4q1.4 -1.4 3.2 -1.1"/>
     </g>
   </defs>
 
   <!-- Sombra y plato -->
-  <ellipse cx="160" cy="166" rx="152" ry="28" fill="#573319" opacity=".18"/>
-  <ellipse cx="160" cy="154" rx="150" ry="38" fill="url(#loza)" stroke="#e2d4bf" stroke-width="2"/>
-  <ellipse cx="160" cy="150" rx="112" ry="25" fill="#f5efe5" stroke="#e8dccb" stroke-width="2"/>
+  <ellipse cx="170" cy="190" rx="160" ry="28" fill="#4f2e18" opacity=".16"/>
+  <ellipse cx="170" cy="178" rx="156" ry="38" fill="url(#loza)" stroke="#ddd0bc" stroke-width="2"/>
+  <ellipse cx="170" cy="174" rx="116" ry="25" fill="#f7f1e8" stroke="#e6dac8" stroke-width="2"/>
 
-  <!-- Pila de cookies (de atrás hacia adelante) -->
-  <use href="#cookie" transform="translate(104 128) rotate(-4)"/>
-  <use href="#cookie" transform="translate(216 126) rotate(5)"/>
-  <use href="#cookie" transform="translate(134 106) rotate(-8)"/>
-  <use href="#cookie" transform="translate(192 100) rotate(6)"/>
-  <use href="#cookie" transform="translate(162 80) rotate(-2)"/>
-  <use href="#cookie" transform="translate(160 146) rotate(2)"/>
+  <!-- Pila (de atrás hacia adelante) -->
+  <g transform="translate(98 152)"><use href="#costado"/><use href="#cara" transform="scale(1 .5) rotate(-10)"/></g>
+  <g transform="translate(242 150)"><use href="#costado"/><use href="#cara" transform="scale(1 .5) rotate(20)"/></g>
+  <g transform="translate(170 144)"><use href="#costado"/><use href="#cara" transform="scale(1 .5) rotate(60)"/></g>
+  <g transform="translate(128 128) rotate(-6)"><use href="#costado"/><use href="#cara" transform="scale(1 .5) rotate(100)"/></g>
+  <g transform="translate(212 124) rotate(7)"><use href="#costado"/><use href="#cara" transform="scale(1 .5) rotate(140)"/></g>
+  <g transform="translate(170 106) rotate(-3)"><use href="#costado"/><use href="#cara" transform="scale(1 .5) rotate(200)"/></g>
+  <g transform="translate(176 174)"><use href="#costado"/><use href="#cara" transform="scale(1 .5) rotate(250)"/></g>
 
-  <!-- Miguitas -->
+  <!-- Miguitas y trocitos -->
   <g fill="#c48a4d">
-    <circle cx="60" cy="160" r="2.4"/>
-    <circle cx="70" cy="167" r="1.6"/>
-    <circle cx="258" cy="163" r="2"/>
-    <circle cx="248" cy="170" r="1.4"/>
+    <circle cx="44" cy="186" r="2.6"/>
+    <circle cx="56" cy="194" r="1.8"/>
+    <circle cx="300" cy="190" r="2.2"/>
   </g>
+  <path d="M286 197c1-3 5-3 6 0s-2 4-4 4-3-2-2-4z" fill="#3a1f0d"/>
 </svg>
