@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 390" width="170" height="390">
+  <!-- Dos estantes de pared con frascos y plantitas (costado derecho del local) -->
+  <defs>
+    <linearGradient id="madera" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b98653"/><stop offset="1" stop-color="#8a5a33"/>
+    </linearGradient>
+    <linearGradient id="vidrio" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity=".55"/>
+      <stop offset=".3" stop-color="#ffffff" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".38"/>
+    </linearGradient>
+    <g id="galleta">
+      <ellipse rx="22" ry="7" fill="#b9783a"/>
+      <ellipse cy="-2" rx="22" ry="6.5" fill="#d9a35e"/>
+      <circle cx="-9" cy="-3" r="2" fill="#3a1f0d"/>
+      <circle cx="4" cy="-4" r="1.8" fill="#3a1f0d"/>
+      <circle cx="12" cy="-1" r="1.6" fill="#3a1f0d"/>
+    </g>
+    <path id="hoja" d="M0-2C-4 2-11 0-11-7C-11-15-5-21 0-26C5-21 11-15 11-7C11 0 4 2 0-2Z"/>
+  </defs>
+
+  <!-- ===== Estante de arriba ===== -->
+  <g fill="#7a4a28">
+    <path d="M26 172h10l-10 22z"/>
+    <path d="M144 172h-10l10 22z"/>
+  </g>
+
+  <rect x="4" y="160" width="162" height="13" rx="2.5" fill="url(#madera)"/>
+  <rect x="4" y="160" width="162" height="4" rx="2" fill="#cf9d6b"/>
+
+  <!-- frasco de vidrio con cookies -->
+  <g transform="translate(47 160)">
+    <use href="#galleta" transform="translate(0 -10)"/>
+    <use href="#galleta" transform="translate(1 -22) rotate(-4)"/>
+    <use href="#galleta" transform="translate(-1 -34) rotate(5)"/>
+    <use href="#galleta" transform="translate(1 -46) rotate(-3)"/>
+    <use href="#galleta" transform="translate(0 -58) rotate(4)"/>
+    <rect x="-31" y="-76" width="62" height="76" rx="13" fill="url(#vidrio)" stroke="#dccbb2" stroke-width="2.5"/>
+    <path d="M-23-62v44" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+    <rect x="-25" y="-90" width="50" height="15" rx="4" fill="#b07a46"/>
+    <rect x="-25" y="-90" width="50" height="5" rx="2.5" fill="#c99363"/>
+  </g>
+
+  <!-- frasquito de caramelos -->
+  <g transform="translate(106 160)">
+    <g>
+      <circle cx="-8" cy="-7" r="5" fill="#eea58f"/>
+      <circle cx="3" cy="-6" r="5" fill="#f5c47a"/>
+      <circle cx="10" cy="-11" r="4.5" fill="#fdf0dc"/>
+      <circle cx="-3" cy="-15" r="5" fill="#9b6d44"/>
+      <circle cx="7" cy="-20" r="4.5" fill="#eea58f"/>
+      <circle cx="-9" cy="-21" r="4.5" fill="#f5c47a"/>
+      <circle cx="0" cy="-26" r="4.5" fill="#fdf0dc"/>
+    </g>
+    <rect x="-17" y="-40" width="34" height="40" rx="9" fill="url(#vidrio)" stroke="#dccbb2" stroke-width="2.2"/>
+    <path d="M-11-31v20" stroke="#fff" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
+    <rect x="-13" y="-48" width="26" height="9" rx="3" fill="#c9a27b"/>
+  </g>
+
+  <!-- suculenta -->
+  <g transform="translate(146 160)">
+    <path d="M-13-24h26l-3 24h-20z" fill="#efe2cf"/>
+    <path d="M-13-24h26l-.6 5h-24.8z" fill="#d9c4a6"/>
+    <g fill="#7fae5f">
+      <path d="M0-24c-9-2-15-9-14-17 7 2 12 8 14 17z"/>
+      <path d="M0-24c9-2 15-9 14-17-7 2-12 8-14 17z"/>
+    </g>
+    <g fill="#8fbf6a">
+      <path d="M0-24c-4-6-4-15 0-22 4 7 4 16 0 22z"/>
+      <path d="M0-24c-7-3-10-9-9-14 5 2 8 7 9 14z"/>
+      <path d="M0-24c7-3 10-9 9-14-5 2-8 7-9 14z"/>
+    </g>
+  </g>
+
+  <!-- ===== Estante de abajo ===== -->
+  <g fill="#7a4a28">
+    <path d="M26 352h10l-10 22z"/>
+    <path d="M144 352h-10l10 22z"/>
+  </g>
+
+  <rect x="4" y="340" width="162" height="13" rx="2.5" fill="url(#madera)"/>
+  <rect x="4" y="340" width="162" height="4" rx="2" fill="#cf9d6b"/>
+
+  <!-- frasco Chocopook con el oso -->
+  <g transform="translate(56 340)">
+    <rect x="-38" y="-104" width="76" height="104" rx="16" fill="#fbf3e6" stroke="#e2d0b6" stroke-width="2.5"/>
+    <path d="M-28-88v66" stroke="#fff" stroke-width="6" stroke-linecap="round" opacity=".9"/>
+    <rect x="-34" y="-118" width="68" height="17" rx="6" fill="#9b6d44"/>
+    <rect x="-34" y="-118" width="68" height="6" rx="3" fill="#b4865b"/>
+    <rect x="-8" y="-126" width="16" height="10" rx="4" fill="#9b6d44"/>
+    <!-- cara de oso -->
+    <g fill="#f4dbbc" stroke="#88552e" stroke-width="2.6">
+      <circle cx="-15" cy="-68" r="7"/>
+      <circle cx="15" cy="-68" r="7"/>
+      <ellipse cx="0" cy="-52" rx="20" ry="17"/>
+    </g>
+    <ellipse cx="0" cy="-46" rx="8" ry="6" fill="#fbf3e6"/>
+    <circle cx="-8" cy="-55" r="2.2" fill="#573319"/>
+    <circle cx="8" cy="-55" r="2.2" fill="#573319"/>
+    <ellipse cx="0" cy="-49" rx="3" ry="2.2" fill="#573319"/>
+    <path d="M-6-22c-4-3-6-6-6-8a3.2 3.2 0 0 1 6-1.6 3.2 3.2 0 0 1 6 1.6c0 2-2 5-6 8z" fill="#c08a52" transform="translate(6 0)"/>
+  </g>
+
+  <!-- potus que cae por el borde del estante -->
+  <g transform="translate(132 340)">
+    <g fill="none" stroke="#5a8341" stroke-width="2.2" stroke-linecap="round">
+      <path d="M-4-30C-14-22-22-8-20 12 -18 26-22 36-26 46"/>
+      <path d="M6-30C16-20 22-6 20 10"/>
+      <path d="M0-34C-2-46-6-54-12-62"/>
+      <path d="M2-34C8-46 14-52 22-58"/>
+    </g>
+    <g fill="#7aa356">
+      <use href="#hoja" transform="translate(-12 -62) rotate(-30) scale(.8)"/>
+      <use href="#hoja" transform="translate(22 -58) rotate(38) scale(.8)"/>
+      <use href="#hoja" transform="translate(-20 12) rotate(-150) scale(.75)"/>
+      <use href="#hoja" transform="translate(-26 46) rotate(-170) scale(.7)"/>
+      <use href="#hoja" transform="translate(20 10) rotate(150) scale(.75)"/>
+    </g>
+    <g fill="#8fb766">
+      <use href="#hoja" transform="translate(-4 -48) rotate(-12) scale(.7)"/>
+      <use href="#hoja" transform="translate(10 -44) rotate(20) scale(.7)"/>
+      <use href="#hoja" transform="translate(-21 28) rotate(-120) scale(.62)"/>
+    </g>
+    <path d="M-20-32h40l-5 32h-30z" fill="#f4ece0"/>
+    <path d="M-20-32h40l-1.4 8h-37.2z" fill="#c08a52"/>
+    <path d="M-12-20l2 16" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+  </g>
+</svg>

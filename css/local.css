@@ -37,25 +37,64 @@
   box-shadow: 0 3px 0 var(--cacao-800);
 }
 
-.lampara {
+/* ---------- Decoración de las paredes ---------- */
+
+/* potus que cae desde la viga, en la esquina derecha (queda detrás de la receta) */
+.local__colgante {
   position: absolute;
-  top: -96px;
+  top: 18px;
   right: 0;
-  z-index: 3;
-  width: 128px;
+  z-index: 2;
+  width: clamp(80px, 7.5vw, 116px);
   pointer-events: none;
+}
+
+/* estantes con frascos y repisa con planta: ocupan los márgenes de las pantallas anchas */
+.local__estantes,
+.local__repisa {
+  display: none;
 }
 
 /* ---------- Interior: galería + receta del día ---------- */
 
 .local__interior {
+  --hueco: clamp(28px, 4vw, 56px);
   position: relative;
   z-index: 3; /* por encima del mostrador: el post-it se apoya sobre él */
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   align-items: end;
-  gap: clamp(28px, 4vw, 56px);
+  gap: var(--hueco);
   padding-top: 34px;
+}
+
+/* lámpara colgante: baja de la viga del toldo, centrada sobre la receta del día */
+.lampara {
+  position: absolute;
+  top: -68px;
+  right: calc((100% - var(--hueco)) * 0.2 - 44px);
+  z-index: 4;
+  width: 88px;
+  pointer-events: none;
+}
+
+.lampara img {
+  width: 100%;
+}
+
+/* cono de luz */
+.lampara::after {
+  content: "";
+  position: absolute;
+  top: 86%;
+  left: 50%;
+  width: 300px;
+  height: 240px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, rgba(255, 232, 170, 0.55), rgba(255, 232, 170, 0.14) 55%, transparent);
+  clip-path: polygon(40% 0, 60% 0, 100% 100%, 0 100%);
+  filter: blur(8px);
+  mix-blend-mode: screen;
 }
 
 /* ---------- Cartel de madera ---------- */
@@ -90,9 +129,10 @@
 /* ---------- Vitrina ---------- */
 
 .vitrina {
+  --marco: 14px;
   position: relative;
   padding: 18px 18px 22px;
-  border: 14px solid transparent;
+  border: var(--marco) solid transparent;
   border-radius: 12px;
   background:
     linear-gradient(160deg, #fbf1e1, #f1dabb) padding-box,
@@ -102,6 +142,18 @@
     inset 0 0 0 2px rgba(255, 255, 255, 0.35),
     0 3px 0 var(--cacao-800),
     0 22px 26px -14px rgba(40, 19, 9, 0.55);
+}
+
+/* plantita apoyada arriba del marco; las hojas caen sobre el borde */
+.vitrina__planta {
+  position: absolute;
+  right: 24px;
+  bottom: calc(100% + var(--marco));
+  z-index: 1;
+  width: clamp(80px, 8vw, 108px);
+  /* la base de la maceta está al 96% del alto del dibujo */
+  transform: translateY(4%);
+  pointer-events: none;
 }
 
 /* reflejo del vidrio */
@@ -296,14 +348,43 @@
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1400px) {
-  .florero {
-    display: none;
+/* márgenes anchos: estantes con frascos a la derecha y repisa con planta a la izquierda */
+@media (min-width: 1360px) {
+  .local__estantes {
+    position: absolute;
+    top: 30%;
+    /* ocupa el margen libre a la derecha del contenedor, sin meterse detrás de la receta */
+    right: max(6px, (100% - var(--ancho)) / 2 - 176px);
+    z-index: 1;
+    display: block;
+    width: clamp(100px, (100% - var(--ancho)) / 2 - 14px, 160px);
+    pointer-events: none;
+  }
+
+  .local__repisa {
+    position: absolute;
+    top: 40%;
+    left: max(10px, (100% - var(--ancho)) / 2 - 128px);
+    z-index: 1;
+    display: block;
+    width: 112px;
+    height: 11px;
+    border-radius: 2px;
+    background: var(--veta), linear-gradient(180deg, #b98653, #8a5a33);
+    box-shadow: 0 8px 10px -4px rgba(40, 19, 9, 0.35);
+  }
+
+  .local__repisa img {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    width: 104px;
+    transform: translate(-50%, 2%);
   }
 }
 
-@media (max-width: 1000px) {
-  .lampara {
+@media (max-width: 1400px) {
+  .florero {
     display: none;
   }
 }
@@ -311,6 +392,10 @@
 @media (max-width: 960px) {
   .local__interior {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lampara {
+    display: none;
   }
 }
 
@@ -330,8 +415,13 @@
   }
 
   .vitrina {
+    --marco: 10px;
     padding: 12px 12px 16px;
-    border-width: 10px;
+  }
+
+  /* en celular el cartel ocupa casi todo el ancho y la taparía */
+  .vitrina__planta {
+    display: none;
   }
 
   .vitrina__grilla {
