@@ -1,0 +1,350 @@
+/* =========================================================
+   Chocopook · Local (sección 3)
+   Toldo + vitrina con la galería + mostrador de madera.
+   ========================================================= */
+
+.local {
+  position: relative;
+  background:
+    /* luces desenfocadas del fondo */
+    radial-gradient(circle at 8% 22%, rgba(255, 238, 196, 0.75) 0 4px, transparent 22px),
+    radial-gradient(circle at 18% 12%, rgba(255, 238, 196, 0.6) 0 3px, transparent 18px),
+    radial-gradient(circle at 46% 16%, rgba(255, 238, 196, 0.55) 0 5px, transparent 26px),
+    radial-gradient(circle at 63% 26%, rgba(255, 238, 196, 0.6) 0 3px, transparent 20px),
+    radial-gradient(circle at 79% 14%, rgba(255, 238, 196, 0.7) 0 4px, transparent 24px),
+    radial-gradient(circle at 93% 30%, rgba(255, 238, 196, 0.55) 0 3px, transparent 18px),
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(255, 236, 200, 0.55), transparent 70%),
+    linear-gradient(180deg, #d5ae89 0%, #e5c39d 22%, #eccfab 60%, #e2bd94 100%);
+}
+
+/* ---------- Toldo ---------- */
+
+.toldo {
+  position: relative;
+  z-index: 2;
+  height: 96px;
+  background: url("../assets/svg/toldo.svg") 0 26px / 120px 70px repeat-x;
+  filter: drop-shadow(0 8px 6px rgba(63, 34, 14, 0.3));
+}
+
+/* viga de madera de la que cuelga */
+.toldo::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 28px;
+  background: var(--veta), linear-gradient(180deg, #94592f, var(--cacao-700));
+  box-shadow: 0 3px 0 var(--cacao-800);
+}
+
+.lampara {
+  position: absolute;
+  top: -96px;
+  right: 0;
+  z-index: 3;
+  width: 128px;
+  pointer-events: none;
+}
+
+/* ---------- Interior: galería + receta del día ---------- */
+
+.local__interior {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: end;
+  gap: clamp(28px, 4vw, 56px);
+  padding-top: 34px;
+}
+
+/* ---------- Cartel de madera ---------- */
+
+.cartel {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 -16px 30px;
+  padding: 8px 28px 12px;
+  font-family: var(--f-mano);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
+  line-height: 1.1;
+  color: var(--crema-50);
+  text-shadow: 0 2px 0 rgba(40, 19, 9, 0.35);
+  background: var(--veta), linear-gradient(180deg, #8a5330, #6e3d1d);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.08),
+    inset 0 -4px 0 rgba(40, 19, 9, 0.25),
+    0 10px 16px -6px rgba(40, 19, 9, 0.5);
+  transform: rotate(-1.5deg);
+}
+
+.cartel .corazon {
+  font-size: 0.6em;
+}
+
+/* ---------- Vitrina ---------- */
+
+.vitrina {
+  position: relative;
+  padding: 18px 18px 22px;
+  border: 14px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(160deg, #fbf1e1, #f1dabb) padding-box,
+    var(--veta) border-box,
+    linear-gradient(180deg, #a06b42, #7a4a28) border-box;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35),
+    0 3px 0 var(--cacao-800),
+    0 22px 26px -14px rgba(40, 19, 9, 0.55);
+}
+
+/* reflejo del vidrio */
+.vitrina::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(
+    115deg,
+    transparent 28%,
+    rgba(255, 255, 255, 0.24) 29% 36%,
+    transparent 37% 42%,
+    rgba(255, 255, 255, 0.16) 43% 45%,
+    transparent 46%
+  );
+  pointer-events: none;
+}
+
+.vitrina__grilla {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vitrina figure {
+  margin: 0;
+  text-align: center;
+}
+
+.foto {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 3px solid var(--crema-50);
+  border-radius: 8px;
+  background: var(--crema-100);
+  box-shadow: 0 8px 14px -6px rgba(40, 19, 9, 0.45);
+  cursor: zoom-in;
+}
+
+.foto img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.foto:hover img,
+.foto:focus-visible img {
+  transform: scale(1.06);
+}
+
+/* etiqueta de papel colgada debajo de cada foto */
+.etiqueta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  margin-top: -12px;
+  padding: 2px 14px 3px;
+  font-family: var(--f-mano);
+  font-size: 1.1rem;
+  color: var(--cacao-800);
+  background: var(--crema-50);
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(40, 19, 9, 0.25);
+  transform: rotate(-1.5deg);
+}
+
+.vitrina li:nth-child(even) .etiqueta {
+  transform: rotate(1.5deg);
+}
+
+.etiqueta .corazon {
+  font-size: 0.7em;
+  color: var(--cacao-600);
+}
+
+/* ---------- Mostrador ---------- */
+
+.mostrador {
+  position: relative;
+}
+
+.mostrador__tapa {
+  position: relative;
+  z-index: 1;
+  height: 26px;
+  background: var(--veta), linear-gradient(180deg, #b47a4a, #9b6234);
+  box-shadow:
+    0 3px 0 #5e3519,
+    0 10px 14px rgba(40, 19, 9, 0.4);
+}
+
+.mostrador__frente {
+  display: grid;
+  place-items: center;
+  height: clamp(110px, 13vw, 160px);
+  background:
+    repeating-linear-gradient(90deg, rgba(40, 19, 9, 0.28) 0 3px, transparent 3px 96px),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 9px),
+    linear-gradient(180deg, #7d4724, #66391b);
+}
+
+.mostrador__oso {
+  width: 84px;
+  opacity: 0.2;
+  filter: brightness(0);
+}
+
+/* mantelito cuadrillé que cuelga del mostrador */
+.mostrador__mantel {
+  position: absolute;
+  top: -2px;
+  left: max(16px, 50% - 610px);
+  z-index: 2;
+  width: clamp(150px, 18vw, 230px);
+  height: clamp(80px, 9vw, 112px);
+  background-color: #f6dfbd;
+  background-image:
+    linear-gradient(90deg, rgba(236, 182, 108, 0.5) 50%, transparent 0),
+    linear-gradient(rgba(236, 182, 108, 0.5) 50%, transparent 0);
+  background-size: 20px 20px;
+  clip-path: polygon(0 0, 100% 0, 97% 82%, 82% 90%, 64% 85%, 46% 93%, 27% 86%, 10% 92%, 2% 84%);
+}
+
+.florero {
+  position: absolute;
+  bottom: 100%;
+  left: max(-40px, 50% - 720px);
+  z-index: 2;
+  width: 120px;
+  margin-bottom: -4px;
+}
+
+/* ---------- Visor de fotos ---------- */
+
+.visor {
+  max-width: min(92vw, 960px);
+  padding: 0;
+  overflow: visible;
+  border: 0;
+  background: transparent;
+}
+
+.visor::backdrop {
+  background: rgba(40, 19, 9, 0.78);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.visor img {
+  width: min(92vw, 960px);
+  max-height: 80vh;
+  object-fit: contain;
+  border: 6px solid var(--crema-50);
+  border-radius: 12px;
+  background: var(--crema-50);
+}
+
+.visor__pie {
+  margin: 0.6rem 0 0;
+  font-family: var(--f-mano);
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--crema-50);
+}
+
+.visor__cerrar {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--crema-50);
+  background: var(--cacao-700);
+  box-shadow: 0 4px 10px rgba(40, 19, 9, 0.4);
+  cursor: pointer;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1400px) {
+  .florero {
+    display: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .lampara {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .local__interior {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .toldo {
+    height: 78px;
+    background-position: 0 24px;
+    background-size: 90px 53px;
+  }
+
+  .toldo::before {
+    height: 26px;
+  }
+
+  .cartel {
+    margin-left: 12px;
+  }
+
+  .vitrina {
+    padding: 12px 12px 16px;
+    border-width: 10px;
+  }
+
+  .vitrina__grilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 10px;
+  }
+
+  .etiqueta {
+    font-size: 1rem;
+    padding-inline: 10px;
+  }
+
+  .mostrador__mantel {
+    display: none;
+  }
+}

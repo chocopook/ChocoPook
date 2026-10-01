@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Ilustración provisoria: cookies con chips de chocolate sobre papel manteca -->
+  <defs>
+    <radialGradient id="bandeja" cx="35%" cy="25%" r="85%">
+      <stop offset="0" stop-color="#6e5240"/>
+      <stop offset="1" stop-color="#3f2c20"/>
+    </radialGradient>
+    <g id="cookie">
+      <circle r="54" fill="#2a1a10" opacity=".14"/>
+      <circle r="50" fill="#b0743f"/>
+      <circle cx="-2" cy="-3" r="46" fill="#d39b5d"/>
+      <circle cx="-9" cy="-10" r="31" fill="#e0b073" opacity=".55"/>
+      <path d="M-22-4q10-7 19 1M7 16q9-3 15 5M-30 20q6-4 12 0" fill="none" stroke="#b0743f" stroke-width="2.6" stroke-linecap="round"/>
+      <g fill="#3f220e">
+        <path d="M-29-26q6-5 12 0 1 7-6 8-7-1-6-8z"/>
+        <path d="M6-33q6-4 11 1 0 6-6 6-6 0-5-7z"/>
+        <path d="M17-2q7-5 14 1 0 8-8 8-7-1-6-9z"/>
+        <path d="M-12 2q6-4 12 1 0 7-6 7-7-1-6-8z"/>
+        <path d="M-39 8q5-4 10 1 0 6-5 6-6 0-5-7z"/>
+        <path d="M2 25q6-4 11 1-1 6-6 6-6-1-5-7z"/>
+        <path d="M27-26q4-3 8 1-1 5-4 5-5-1-4-6z"/>
+        <path d="M-20 30q4-3 8 1-1 5-4 4-5 0-4-5z"/>
+      </g>
+      <g fill="#7a4a2a">
+        <ellipse cx="-24" cy="-24" rx="3" ry="1.4"/>
+        <ellipse cx="22" cy="-1" rx="3" ry="1.4"/>
+        <ellipse cx="-7" cy="3" rx="2.6" ry="1.2"/>
+      </g>
+    </g>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#bandeja)"/>
+  <rect x="16" y="14" width="368" height="272" rx="8" fill="#f6ead2"/>
+  <path d="M60 14l-8 272M210 14l10 272M330 14l-6 272" stroke="#ecdcbd" stroke-width="2"/>
+
+  <use href="#cookie" transform="translate(88 84) rotate(10)"/>
+  <use href="#cookie" transform="translate(202 76) rotate(130)"/>
+  <use href="#cookie" transform="translate(316 88) rotate(250)"/>
+  <use href="#cookie" transform="translate(96 210) rotate(70)"/>
+  <use href="#cookie" transform="translate(210 218) rotate(190)"/>
+  <use href="#cookie" transform="translate(320 206) rotate(310)"/>
+
+  <g fill="#3f220e">
+    <circle cx="150" cy="148" r="4"/>
+    <circle cx="262" cy="150" r="3.2"/>
+    <circle cx="40" cy="150" r="2.6"/>
+  </g>
+  <g fill="#c48a4d">
+    <circle cx="158" cy="156" r="2.2"/>
+    <circle cx="255" cy="142" r="1.8"/>
+    <circle cx="362" cy="150" r="2.2"/>
+  </g>
+</svg>

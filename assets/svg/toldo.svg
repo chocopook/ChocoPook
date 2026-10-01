@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 70" width="120" height="70">
+  <!-- Módulo del toldo (se repite en horizontal): una lengüeta miel y una cacao -->
+  <defs>
+    <linearGradient id="miel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9a955"/>
+      <stop offset=".35" stop-color="#f5c47a"/>
+      <stop offset="1" stop-color="#efb566"/>
+    </linearGradient>
+    <linearGradient id="cacao" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5e3519"/>
+      <stop offset=".35" stop-color="#7a4a28"/>
+      <stop offset="1" stop-color="#724423"/>
+    </linearGradient>
+  </defs>
+  <path d="M0 0h60v40a30 30 0 0 1-60 0z" fill="url(#miel)"/>
+  <path d="M60 0h60v40a30 30 0 0 1-60 0z" fill="url(#cacao)"/>
+  <!-- borde interno de cada lengüeta -->
+  <path d="M5 40a25 25 0 0 0 50 0" fill="none" stroke="#fff3d6" stroke-width="2" opacity=".55"/>
+  <path d="M65 40a25 25 0 0 0 50 0" fill="none" stroke="#c69b74" stroke-width="2" opacity=".45"/>
+</svg>

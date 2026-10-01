@@ -47,6 +47,31 @@
     });
   }
 
+  /* ---------- Galería: visor de fotos ---------- */
+
+  function iniciarVisor() {
+    const visor = document.querySelector(".visor");
+    if (!visor || typeof visor.showModal !== "function") return;
+
+    const imagen = visor.querySelector("img");
+    const pie = visor.querySelector(".visor__pie");
+
+    document.querySelectorAll(".foto").forEach((boton) => {
+      boton.addEventListener("click", () => {
+        const miniatura = boton.querySelector("img");
+        imagen.src = boton.dataset.grande || miniatura.currentSrc || miniatura.src;
+        imagen.alt = miniatura.alt;
+        pie.textContent = miniatura.alt;
+        visor.showModal();
+      });
+    });
+
+    // Cierra con la cruz o tocando fuera de la foto (Esc lo maneja el <dialog>).
+    visor.addEventListener("click", (evento) => {
+      if (evento.target === visor || evento.target.closest(".visor__cerrar")) visor.close();
+    });
+  }
+
   /* ---------- Navegación ---------- */
 
   function iniciarMenuMovil() {
@@ -111,6 +136,7 @@
 
   iniciarRedes();
   iniciarRecetas();
+  iniciarVisor();
   iniciarMenuMovil();
   iniciarSeccionActiva();
 })();

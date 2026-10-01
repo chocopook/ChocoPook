@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/portada.css">
   <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/local.css">
 
   <script src="js/config.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -172,6 +173,73 @@
       </div>
     </section>
 
+    <!-- ========== 3. Local: toldo + vitrina + mostrador ========== -->
+    <section class="local" id="recetas" aria-labelledby="titulo-recetas">
+      <div class="toldo" aria-hidden="true"></div>
+      <img class="lampara" src="assets/svg/lampara.svg" alt="" width="140" height="210">
+
+      <div class="local__interior contenedor">
+        <div class="galeria">
+          <h2 class="cartel" id="titulo-recetas">Nuestras recetas<span class="corazon" aria-hidden="true"></span></h2>
+          <div class="vitrina">
+            <ul class="vitrina__grilla">
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/budines.svg" alt="Budín de limón glaseado" width="400" height="300" loading="lazy"></button>
+                  <figcaption class="etiqueta">Budines<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/cookies.svg" alt="Cookies con chips de chocolate" width="400" height="300" loading="lazy"></button>
+                  <figcaption class="etiqueta">Cookies<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/cupcakes.svg" alt="Cupcakes de chocolate, vainilla y dulce de leche" width="400" height="300" loading="lazy"></button>
+                  <figcaption class="etiqueta">Cupcakes<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/tartas.svg" alt="Tarta de frutillas con crema pastelera" width="400" height="300" loading="lazy"></button>
+                  <figcaption class="etiqueta">Tartas<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/alfajores.svg" alt="Alfajores de chocolate y de maicena" width="400" height="300" loading="lazy"></button>
+                  <figcaption class="etiqueta">Alfajores<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/empanadas.svg" alt="Empanadas al horno" width="400" height="300" loading="lazy"></button>
+                  <figcaption class="etiqueta">Empanadas<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mostrador" aria-hidden="true">
+        <img class="florero" src="assets/svg/florero.svg" alt="" width="130" height="190">
+        <div class="mostrador__tapa"></div>
+        <div class="mostrador__mantel"></div>
+        <div class="mostrador__frente">
+          <img class="mostrador__oso" src="assets/svg/oso-cabeza.svg" alt="" width="112" height="96">
+        </div>
+      </div>
+    </section>
+
   </main>
+
+  <dialog class="visor" aria-label="Foto ampliada">
+    <button class="visor__cerrar" type="button" aria-label="Cerrar">&times;</button>
+    <img alt="">
+    <p class="visor__pie"></p>
+  </dialog>
 </body>
 </html>

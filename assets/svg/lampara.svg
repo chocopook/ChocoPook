@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 210" width="140" height="210">
+  <!-- Lámpara de pared colgante -->
+  <defs>
+    <radialGradient id="luz" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#ffe9a8" stop-opacity=".95"/>
+      <stop offset=".4" stop-color="#ffe2a0" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#ffe2a0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pantalla" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2e3a32"/>
+      <stop offset=".4" stop-color="#4b5c50"/>
+      <stop offset="1" stop-color="#26302a"/>
+    </linearGradient>
+  </defs>
+  <circle cx="62" cy="150" r="62" fill="url(#luz)"/>
+  <rect x="128" y="4" width="12" height="30" rx="3" fill="#2e2422"/>
+  <path d="M132 19H62v56" fill="none" stroke="#2e2422" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M132 30q-30 0-44-11" fill="none" stroke="#2e2422" stroke-width="3"/>
+  <rect x="55" y="74" width="14" height="14" rx="3" fill="#2e2422"/>
+  <path d="M18 134c2-30 20-48 44-48s42 18 44 48z" fill="url(#pantalla)"/>
+  <path d="M30 126c3-18 14-30 30-32" fill="none" stroke="#7d8f80" stroke-width="3.5" stroke-linecap="round" opacity=".7"/>
+  <ellipse cx="62" cy="134" rx="44" ry="6" fill="#1f2722"/>
+  <ellipse cx="62" cy="137" rx="13" ry="8" fill="#fff4c8"/>
+</svg>

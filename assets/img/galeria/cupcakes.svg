@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Ilustración provisoria: cupcakes de chocolate, vainilla y dulce de leche -->
+  <defs>
+    <linearGradient id="fondo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8e5cb"/>
+      <stop offset="1" stop-color="#e9c99f"/>
+    </linearGradient>
+    <linearGradient id="mesa" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b4865b"/>
+      <stop offset="1" stop-color="#88552e"/>
+    </linearGradient>
+    <g id="pirotin">
+      <ellipse cy="2" rx="46" ry="7" fill="#3f220e" opacity=".22"/>
+      <path d="M-44-72h88l-9 68q-1 4-5 4h-60q-4 0-5-4z" fill="#c98a52"/>
+      <path d="M-30-70l4 68M-15-70l2 68M0-70v68M15-70l-2 68M30-70l-4 68" stroke="#a96c3a" stroke-width="3.2" stroke-linecap="round"/>
+    </g>
+    <g id="crema" fill="currentColor" stroke="#3f220e" stroke-opacity=".16" stroke-width="2.5" stroke-linejoin="round">
+      <path d="M-54-70c-8-16 8-26 22-24 4-10 60-10 64 0 14-2 30 8 22 24-2 6-10 8-18 6h-72c-8 2-16 0-18-6z"/>
+      <path d="M-40-94c-5-13 8-20 18-18 6-9 38-9 44 0 10-2 23 5 18 18-2 5-8 7-14 5h-52c-6 2-12 0-14-5z"/>
+      <path d="M-26-114c-3-10 6-15 13-13 5-9 21-9 26 0 7-2 16 3 13 13-2 4-6 5-10 3h-32c-4 2-8 1-10-3z"/>
+      <path d="M-8-127q4-18 8-20 6 8 8 20z"/>
+    </g>
+    <g id="brillo" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="3.5" stroke-linecap="round">
+      <path d="M-34-84q10-8 22-8M-22-104q8-6 16-6M-12-121q4-3 8-3"/>
+    </g>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#fondo)"/>
+  <g fill="#fff6e6" opacity=".55">
+    <circle cx="40" cy="40" r="18"/>
+    <circle cx="350" cy="30" r="24"/>
+    <circle cx="300" cy="80" r="10"/>
+    <circle cx="90" cy="96" r="8"/>
+    <circle cx="200" cy="24" r="12"/>
+  </g>
+  <rect y="238" width="400" height="62" fill="url(#mesa)"/>
+  <rect y="238" width="400" height="5" fill="#cd9d70"/>
+
+  <!-- Chocolate con chispitas -->
+  <g transform="translate(90 262)">
+    <use href="#pirotin"/>
+    <use href="#crema" color="#6b3f22"/>
+    <use href="#brillo"/>
+    <g stroke-width="3.6" stroke-linecap="round">
+      <path d="M-30-80l5-3" stroke="#f5c47a"/>
+      <path d="M14-82l5 2" stroke="#eea58f"/>
+      <path d="M-6-104l1 5" stroke="#fdf0dc"/>
+      <path d="M18-108l-4 3" stroke="#f5c47a"/>
+      <path d="M-20-100l-3-3" stroke="#eea58f"/>
+      <path d="M36-76l-2 4" stroke="#fdf0dc"/>
+      <path d="M2-124l4-1" stroke="#eea58f"/>
+    </g>
+  </g>
+
+  <!-- Dulce de leche con chip -->
+  <g transform="translate(312 262)">
+    <use href="#pirotin"/>
+    <use href="#crema" color="#d9a25b"/>
+    <use href="#brillo"/>
+    <path d="M-40-76q8 10 16 0t16 0 16 0 16 0 16 0" fill="none" stroke="#88552e" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-7-148q7-6 14 0 1 8-7 9-8-1-7-9z" fill="#3f220e"/>
+  </g>
+
+  <!-- Vainilla con cereza (adelante) -->
+  <g transform="translate(200 270) scale(1.12)">
+    <use href="#pirotin"/>
+    <use href="#crema" color="#fdf3e3"/>
+    <use href="#brillo"/>
+    <path d="M3-158q3-10 12-14" fill="none" stroke="#573319" stroke-width="3" stroke-linecap="round"/>
+    <circle cy="-152" r="10" fill="#d9483e"/>
+    <circle cx="-3.5" cy="-155.5" r="2.8" fill="#fff" opacity=".8"/>
+  </g>
+</svg>
