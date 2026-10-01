@@ -179,6 +179,13 @@
     actualizar();
   }
 
+  function actualizarAnio() {
+    const anio = String(new Date().getFullYear());
+    document.querySelectorAll("[data-anio]").forEach((elemento) => {
+      elemento.textContent = anio;
+    });
+  }
+
   /* ---------- Arranque ---------- */
 
   iniciarRedes();
@@ -187,4 +194,5 @@
   iniciarRecetaDelDia();
   iniciarMenuMovil();
   iniciarSeccionActiva();
+  actualizarAnio();
 })();
