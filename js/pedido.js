@@ -63,8 +63,9 @@
 
   function armarEstanteria() {
     document.querySelectorAll("[data-tipo]").forEach((ul) => {
-      for (const p of productos.filter((p) => p.tipo === ul.dataset.tipo)) {
+      productos.filter((p) => p.tipo === ul.dataset.tipo).forEach((p, i) => {
         const li = document.createElement("li");
+        li.style.setProperty("--i", String(i));
         const boton = document.createElement("button");
         boton.type = "button";
         boton.className = "producto";
@@ -89,7 +90,7 @@
         boton.append(img, mas, nombre);
         li.append(boton);
         ul.append(li);
-      }
+      });
     });
   }
 
@@ -118,8 +119,10 @@
     });
   }
 
-  function sumarAPila(id, caer) {
-    if (enPila.length >= MAX_PILA) return;
+  // reservado: ocupa su lugar pero no se ve todavía (un producto viene volando hacia ahí);
+  // así el dibujo se prepara durante el vuelo y el cambio no tiene cortes.
+  function sumarAPila(id, { caer = false, reservado = false } = {}) {
+    if (enPila.length >= MAX_PILA) return null;
     const el = document.createElement("img");
     el.src = dibujo(id);
     el.alt = "";
@@ -128,15 +131,26 @@
     el.dataset.jx = String((Math.random() - 0.5) * 5);
     el.dataset.jy = String((Math.random() - 0.5) * 4);
     el.style.setProperty("--giro", `${Math.round((Math.random() - 0.5) * 44)}deg`);
-    if (caer && !sinMovimiento) el.classList.add("pila__item--cae");
+    if (reservado) el.classList.add("pila__item--reservado");
+    else if (caer && !sinMovimiento) el.classList.add("pila__item--cae");
     pila.append(el);
     enPila.push(el);
+    acomodar();
+    if (reservado && el.decode) el.decode().catch(() => {});
+    return el;
+  }
+
+  function descartar(el) {
+    const i = enPila.indexOf(el);
+    if (i >= 0) enPila.splice(i, 1);
+    el.remove();
     acomodar();
   }
 
   function sacarDePila(id, cuantas) {
     for (let i = enPila.length - 1; i >= 0 && cuantas > 0; i--) {
-      if (enPila[i].dataset.id !== id) continue;
+      // las reservadas son productos que todavía están volando: no se tocan
+      if (enPila[i].dataset.id !== id || enPila[i].classList.contains("pila__item--reservado")) continue;
       const [el] = enPila.splice(i, 1);
       cuantas -= 1;
       if (sinMovimiento) el.remove();
@@ -150,7 +164,7 @@
     for (const [pid, n] of pedido) {
       let dibujadas = enPila.filter((el) => el.dataset.id === pid).length;
       while (dibujadas < n && enPila.length < MAX_PILA) {
-        sumarAPila(pid, false);
+        sumarAPila(pid);
         dibujadas += 1;
       }
     }
@@ -159,13 +173,16 @@
 
   /* ---------- Acciones ---------- */
 
-  function agregar(id, { caer = true } = {}) {
+  // el: unidad que ya está en la pila (llegó volando a su lugar reservado)
+  function agregar(id, { caer = true, el = null } = {}) {
     const p = porId.get(id);
-    if (!p) return;
     const n = pedido.get(id) || 0;
-    if (n >= MAX_CANTIDAD) return;
+    if (!p || n >= MAX_CANTIDAD) {
+      if (el) descartar(el);
+      return;
+    }
     pedido.set(id, n + 1);
-    sumarAPila(id, caer);
+    if (!el) sumarAPila(id, { caer });
     if (caer) festejar();
     actualizar();
     decir(`Agregaste ${p.nombre}. Tenés ${n + 1} en el pedido.`);
@@ -311,6 +328,13 @@
 
   /* ---------- Arrastrar y volar ---------- */
 
+  const ANCHO_ARRASTRE = 92;
+
+  // Transform del producto que vuela. (x, y) es su punto de apoyo: 50 % del ancho y 80 % del alto,
+  // el mismo punto sobre el que giran las unidades de la pila (transform-origin en css/pedido.css).
+  const pose = (x, y, giro = 0, escala = 1) =>
+    `translate(${x}px, ${y}px) translate(-50%, -80%) rotate(${giro}deg) scale(${escala})`;
+
   function crearFantasma(id, ancho) {
     const img = document.createElement("img");
     img.src = dibujo(id);
@@ -321,45 +345,90 @@
     return img;
   }
 
+  // Punto de apoyo y ancho en pantalla de una unidad de la pila.
+  function apoyo(el) {
+    const r = pila.getBoundingClientRect();
+    return { x: r.left + el.offsetLeft + el.offsetWidth / 2, y: r.top + el.offsetTop + el.offsetHeight * 0.8, ancho: el.offsetWidth };
+  }
+  const giroDe = (el) => parseFloat(el.style.getPropertyValue("--giro")) || 0;
+
   const enPantalla = (rect) => rect.bottom > 0 && rect.top < window.innerHeight && rect.width > 0;
 
-  // A dónde vuela un producto que se agrega con un toque: la canasta si se ve, si no la barrita de abajo.
-  function destino() {
-    const r = zona.getBoundingClientRect();
-    if (enPantalla(r)) return { x: r.left + r.width / 2, y: r.top + r.height * 0.42 };
-    if (barra && getComputedStyle(barra).display !== "none") {
-      const b = barra.getBoundingClientRect();
-      return { x: b.left + 34, y: b.top + b.height / 2 };
+  // Vuelo en arco: una curva suave (bezier) muestreada en varios cuadros clave.
+  // fill "forwards": el producto se queda donde llegó hasta que lo reemplaza su unidad de la pila.
+  function vueloEnArco(fantasma, desde, hasta) {
+    const cima = { x: (desde.x + hasta.x) / 2, y: Math.min(desde.y, hasta.y) - 140 };
+    const cuadros = [];
+    const N = 20;
+    for (let i = 0; i <= N; i++) {
+      const t = i / N, u = 1 - t;
+      const x = u * u * desde.x + 2 * u * t * cima.x + t * t * hasta.x;
+      const y = u * u * desde.y + 2 * u * t * cima.y + t * t * hasta.y;
+      const giro = hasta.giro * t - 22 * Math.sin(Math.PI * t);
+      cuadros.push({ transform: pose(x, y, giro, 1 + (hasta.escala - 1) * t) });
     }
-    return null;
+    return fantasma.animate(cuadros, { duration: 620, easing: "cubic-bezier(.4,.1,.35,1)", fill: "forwards" });
   }
 
+  // El producto llegó: en el mismo cuadro se cambia por su unidad de la pila, que se asienta con un rebote.
+  function aterrizar(fantasma, el, id, llegada, enCanasta) {
+    if (el) {
+      el.classList.remove("pila__item--reservado");
+      if (llegada && !sinMovimiento) {
+        const ahora = apoyo(el);
+        const giro = giroDe(el);
+        el.animate(
+          [
+            { transform: `translate(${llegada.x - ahora.x}px, ${llegada.y - ahora.y}px) rotate(${giro}deg) scale(${llegada.ancho / ahora.ancho})` },
+            { transform: `rotate(${giro}deg) scale(1.1, .86)`, offset: 0.5 },
+            { transform: `rotate(${giro}deg)` },
+          ],
+          { duration: 260, easing: "ease-out" }
+        );
+      }
+    }
+    fantasma.remove();
+    agregar(id, { el, caer: enCanasta });
+    if (!enCanasta && barra) {
+      barra.classList.remove("barra-pedido--suma");
+      void barra.offsetWidth;
+      barra.classList.add("barra-pedido--suma");
+    }
+  }
+
+  // Toque, click o Enter: el producto vuela hasta su lugar en la canasta (o a la barrita, si la canasta no se ve).
   function volar(boton) {
     const id = boton.dataset.id;
     boton.classList.remove("producto--salta");
     void boton.offsetWidth;
     boton.classList.add("producto--salta");
-    const hacia = destino();
+    if ((pedido.get(id) || 0) >= MAX_CANTIDAD) return;
+
     const origen = boton.querySelector("img").getBoundingClientRect();
-    if (sinMovimiento || !hacia || !origen.width) {
-      agregar(id, { caer: Boolean(hacia) });
+    const enCanasta = enPantalla(zona.getBoundingClientRect());
+    const conBarra = barra && getComputedStyle(barra).display !== "none";
+    if (sinMovimiento || !origen.width || (!enCanasta && !conBarra)) {
+      agregar(id, { caer: enCanasta });
       return;
     }
-    const x0 = origen.left + origen.width / 2, y0 = origen.top + origen.height / 2;
-    const alto = Math.min(y0, hacia.y) - 110;
+
+    const el = sumarAPila(id, { reservado: true });
+    let hasta, llegada = null;
+    if (enCanasta && el) {
+      llegada = apoyo(el);
+      hasta = { x: llegada.x, y: llegada.y, giro: giroDe(el), escala: llegada.ancho / origen.width };
+    } else if (enCanasta) {
+      const r = zona.getBoundingClientRect(); // canasta llena de dibujos: cae al centro
+      hasta = { x: r.left + r.width / 2, y: r.top + r.height * 0.45, giro: 12, escala: 0.5 };
+    } else {
+      const b = barra.getBoundingClientRect();
+      hasta = { x: b.left + 40, y: b.top + b.height * 0.7, giro: 12, escala: 0.35 };
+    }
+
+    const desde = { x: origen.left + origen.width / 2, y: origen.top + origen.height * 0.8 };
     const fantasma = crearFantasma(id, origen.width);
-    const vuelo = fantasma.animate(
-      [
-        { transform: `translate(${x0}px, ${y0}px) translate(-50%, -50%) rotate(0deg) scale(1)` },
-        { transform: `translate(${(x0 + hacia.x) / 2}px, ${alto}px) translate(-50%, -50%) rotate(-25deg) scale(.95)`, offset: 0.5 },
-        { transform: `translate(${hacia.x}px, ${hacia.y}px) translate(-50%, -50%) rotate(12deg) scale(.6)` },
-      ],
-      { duration: 650, easing: "cubic-bezier(.45,.05,.35,1)" }
-    );
-    vuelo.onfinish = () => {
-      fantasma.remove();
-      agregar(id, { caer: true });
-    };
+    fantasma.style.transform = pose(desde.x, desde.y);
+    vueloEnArco(fantasma, desde, hasta).onfinish = () => aterrizar(fantasma, el, id, llegada, enCanasta);
   }
 
   function iniciarArrastre() {
@@ -370,8 +439,9 @@
       const r = zona.getBoundingClientRect();
       return x > r.left - 24 && x < r.right + 24 && y > r.top - 24 && y < r.bottom + 24;
     };
+    // el puntero queda en el centro del dibujo; el punto de apoyo está un 30 % más abajo
     const mover = (el, x, y) => {
-      el.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%) rotate(-8deg) scale(1.08)`;
+      el.style.transform = pose(x, y + ANCHO_ARRASTRE * 1.08 * 0.3, -8, 1.08);
     };
     const terminar = () => {
       document.body.classList.remove("arrastrando");
@@ -389,7 +459,7 @@
       if (!arrastre) return;
       if (!arrastre.fantasma) {
         if (Math.hypot(e.clientX - arrastre.x0, e.clientY - arrastre.y0) < 6) return;
-        arrastre.fantasma = crearFantasma(arrastre.id, 92);
+        arrastre.fantasma = crearFantasma(arrastre.id, ANCHO_ARRASTRE);
         document.body.classList.add("arrastrando");
       }
       mover(arrastre.fantasma, e.clientX, e.clientY);
@@ -404,16 +474,30 @@
       ignorarClick = true;
       setTimeout(() => (ignorarClick = false), 0);
       terminar();
+
       if (sobreZona(e.clientX, e.clientY)) {
-        fantasma.remove();
-        agregar(id, { caer: true });
+        // cae desde donde se soltó hasta su lugar reservado en la pila
+        const el = (pedido.get(id) || 0) < MAX_CANTIDAD ? sumarAPila(id, { reservado: true }) : null;
+        if (!el || sinMovimiento) {
+          fantasma.remove();
+          if (el) el.classList.remove("pila__item--reservado");
+          agregar(id, { el, caer: true });
+          return;
+        }
+        const llegada = apoyo(el);
+        const caida = fantasma.animate(
+          [{ transform: fantasma.style.transform }, { transform: pose(llegada.x, llegada.y, giroDe(el), llegada.ancho / ANCHO_ARRASTRE) }],
+          { duration: 230, easing: "cubic-bezier(.55,0,.8,.6)", fill: "forwards" }
+        );
+        caida.onfinish = () => aterrizar(fantasma, el, id, llegada, true);
         return;
       }
+
       // no cayó en la canasta: vuelve a su estante
       const r = boton.querySelector("img").getBoundingClientRect();
       const vuelta = fantasma.animate(
-        [{ transform: fantasma.style.transform }, { transform: `translate(${r.left + r.width / 2}px, ${r.top + r.height / 2}px) translate(-50%, -50%) scale(.9)`, opacity: 0.4 }],
-        { duration: sinMovimiento ? 1 : 280, easing: "ease-in" }
+        [{ transform: fantasma.style.transform }, { transform: pose(r.left + r.width / 2, r.top + r.height * 0.8, 0, r.width / ANCHO_ARRASTRE), opacity: 0.4 }],
+        { duration: sinMovimiento ? 1 : 280, easing: "ease-in", fill: "forwards" }
       );
       vuelta.onfinish = () => fantasma.remove();
     });
@@ -430,6 +514,48 @@
       if (!boton || ignorarClick) return;
       volar(boton);
     });
+  }
+
+  /* ---------- Filtro Dulce / Salado ---------- */
+
+  const CLAVE_CATEGORIA = "chocopook-categoria";
+
+  function mostrarCategoria(tipo, animar) {
+    document.querySelectorAll("[data-grupo]").forEach((grupo) => {
+      const visible = grupo.dataset.grupo === tipo;
+      grupo.hidden = !visible;
+      grupo.classList.remove("estanteria__grupo--entra");
+      if (visible && animar && !sinMovimiento) {
+        void grupo.offsetWidth; // reinicia la animación
+        grupo.classList.add("estanteria__grupo--entra");
+      }
+    });
+    const opcion = document.querySelector(`input[name="categoria"][value="${tipo}"]`);
+    if (opcion) opcion.checked = true;
+    try {
+      localStorage.setItem(CLAVE_CATEGORIA, tipo);
+    } catch {
+      /* sin almacenamiento: se recuerda solo durante la visita */
+    }
+  }
+
+  // Se abre en la categoría del producto que viene del menú, o en la última que se miró.
+  function categoriaInicial(elegido) {
+    if (elegido) return porId.get(elegido).tipo;
+    try {
+      const guardada = localStorage.getItem(CLAVE_CATEGORIA);
+      if (guardada === "dulce" || guardada === "salado") return guardada;
+    } catch {
+      /* sin almacenamiento: dulce por defecto */
+    }
+    return "dulce";
+  }
+
+  function iniciarFiltro(inicial) {
+    document.querySelectorAll('input[name="categoria"]').forEach((opcion) => {
+      opcion.addEventListener("change", () => mostrarCategoria(opcion.value, true));
+    });
+    mostrarCategoria(inicial, false);
   }
 
   /* ---------- Eventos del ticket ---------- */
@@ -466,16 +592,20 @@
 
   /* ---------- Arranque ---------- */
 
+  // Viene del menú con un producto elegido: pedido.html?agregar=budines
+  const pedidoDelMenu = new URLSearchParams(location.search).get("agregar");
+  const elegido = porId.has(pedidoDelMenu) ? pedidoDelMenu : null;
+
   cargar();
   armarEstanteria();
-  for (const [id, n] of pedido) for (let i = 0; i < n; i++) sumarAPila(id, false);
+  iniciarFiltro(categoriaInicial(elegido));
+  for (const [id, n] of pedido) for (let i = 0; i < n; i++) sumarAPila(id);
   actualizar();
   iniciarArrastre();
 
-  // Viene del menú con un producto elegido: pedido.html?agregar=budines
-  const elegido = new URLSearchParams(location.search).get("agregar");
-  if (elegido && porId.has(elegido)) {
+  if (elegido) {
     history.replaceState(null, "", location.pathname + location.hash);
-    setTimeout(() => agregar(elegido, { caer: true }), 400);
+    // sale volando de su estante hasta la canasta
+    setTimeout(() => volar(document.querySelector(`.producto[data-id="${elegido}"]`)), 450);
   }
 })();

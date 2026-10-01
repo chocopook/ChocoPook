@@ -54,24 +54,77 @@
     0 22px 26px -14px rgba(40, 19, 9, 0.55);
 }
 
-.estanteria__grupo + .estanteria__grupo {
-  margin-top: 6px;
+/* ---------- Filtro Dulce / Salado ---------- */
+
+.filtro {
+  display: flex;
+  width: fit-content;
+  margin: 0 auto 6px;
+  padding: 5px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--veta), linear-gradient(180deg, #8a5330, #6e3d1d);
+  box-shadow:
+    inset 0 2px 4px rgba(40, 19, 9, 0.4),
+    0 2px 0 rgba(255, 255, 255, 0.5);
 }
 
-.estanteria__titulo {
+.filtro__opcion {
+  position: relative;
+  cursor: pointer;
+}
+
+/* el radio queda oculto pero sigue siendo usable con teclado (flechas) */
+.filtro__opcion input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.filtro__opcion > span {
   display: flex;
   align-items: center;
   gap: 0.35em;
-  margin: 0 0 4px;
+  min-width: 132px;
+  justify-content: center;
+  padding: 4px 22px 6px;
+  border-radius: 999px;
   font-family: var(--f-mano);
-  font-weight: 400;
-  font-size: 1.7rem;
-  color: var(--cacao-800);
+  font-size: 1.45rem;
+  line-height: 1.2;
+  color: var(--crema-100);
+  transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
 }
 
-.estanteria__titulo .corazon {
+.filtro__opcion > span .corazon {
   font-size: 0.55em;
+}
+
+.filtro__opcion:hover > span {
+  color: var(--miel-300);
+}
+
+.filtro__opcion input:checked + span {
+  color: var(--cacao-800);
+  background: linear-gradient(180deg, var(--crema-50), #f3dcbb);
+  box-shadow: 0 3px 6px rgba(40, 19, 9, 0.35);
+}
+
+.filtro__opcion input:checked + span .corazon {
   color: var(--cacao-600);
+}
+
+.filtro__opcion input:focus-visible + span {
+  outline: 3px dashed var(--miel-400);
+  outline-offset: 2px;
+}
+
+/* al cambiar de categoría, los productos entran en cascada */
+.estanteria__grupo--entra li {
+  animation: asomar 0.4s cubic-bezier(.3, .7, .4, 1.2) both;
+  animation-delay: calc(var(--i, 0) * 45ms);
 }
 
 .estanteria__lista {
@@ -197,7 +250,36 @@
   width: min(100%, 460px);
   aspect-ratio: 400 / 260;
   margin: 4px auto 0;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  /* capa propia: el rebote al recibir un producto no repinta todo el mimbre en cada cuadro.
+     Ojo: la canasta no se agranda al pasar por encima, porque el lugar de cada producto
+     se mide antes de que caiga y tiene que seguir en el mismo sitio cuando llega. */
+  will-change: transform;
+}
+
+/* resplandor detrás de la canasta mientras se arrastra: solo cambia de opacidad
+   (un filter sobre toda la canasta obligaba a redibujarla y trababa la animación) */
+.canasta__dibujo::before {
+  content: "";
+  position: absolute;
+  inset: 4% 0 -4%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 214, 140, 0.95), rgba(255, 214, 140, 0) 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+
+.arrastrando .canasta__dibujo::before {
+  opacity: 0.6;
+}
+
+.canasta__dibujo--encima::before {
+  opacity: 1;
+}
+
+.canasta__dibujo--encima .canasta__soltar {
+  background: var(--miel-500);
+  transform: translate(-50%, -4px) scale(1.08);
 }
 
 .canasta__capa {
@@ -225,6 +307,11 @@
   transform: rotate(var(--giro, 0deg));
   transform-origin: 50% 80%;
   transition: left 0.35s ease, bottom 0.35s ease;
+}
+
+/* lugar reservado: un producto viene volando hacia acá */
+.pila__item--reservado {
+  visibility: hidden;
 }
 
 .pila__item--cae {
@@ -257,14 +344,6 @@
   transform: translate(-50%, 0);
 }
 
-.arrastrando .canasta__dibujo {
-  filter: drop-shadow(0 0 14px rgba(245, 196, 122, 0.9));
-}
-
-.canasta__dibujo--encima {
-  transform: scale(1.05) rotate(-1.5deg);
-}
-
 .canasta__dibujo--recibe {
   animation: recibe 0.45s ease;
 }
@@ -287,7 +366,11 @@
   top: 0;
   left: 0;
   z-index: 200;
+  height: auto;
+  /* mismo punto de giro que las unidades de la pila, para que el cambio no salte */
+  transform-origin: 50% 80%;
   pointer-events: none;
+  will-change: transform;
   filter: drop-shadow(0 12px 10px rgba(40, 19, 9, 0.35));
 }
 
@@ -551,6 +634,14 @@
   from { opacity: 0; transform: translateX(-8px); }
 }
 
+@keyframes asomar {
+  from { opacity: 0; transform: translateY(18px) scale(.9); }
+}
+
+@keyframes latido {
+  40% { transform: scale(1.05); }
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
@@ -568,6 +659,22 @@
     --tabla: 92px;
     padding: 12px 10px 4px;
     border-width: 10px;
+  }
+
+  /* el filtro queda a mano mientras se recorre la estantería */
+  .filtro {
+    position: sticky;
+    top: calc(var(--alto-barra) + 8px);
+    z-index: 5;
+  }
+
+  .filtro__opcion > span {
+    min-width: 116px;
+    font-size: 1.3rem;
+  }
+
+  .barra-pedido--suma {
+    animation: latido 0.35s ease;
   }
 
   .estanteria__lista {

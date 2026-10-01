@@ -78,12 +78,25 @@
     <div class="pedido__juego contenedor">
       <!-- Estantería: los productos salen de js/config.js (productos) -->
       <section class="estanteria" aria-label="Productos">
-        <div class="estanteria__grupo">
-          <h2 class="estanteria__titulo">Dulce<span class="corazon" aria-hidden="true"></span></h2>
+        <!-- Filtro: muestra una categoría por vez (js/pedido.js) -->
+        <fieldset class="filtro">
+          <legend class="visualmente-oculto">Elegí la categoría</legend>
+          <label class="filtro__opcion">
+            <input type="radio" name="categoria" value="dulce" checked>
+            <span>Dulce <span class="corazon" aria-hidden="true"></span></span>
+          </label>
+          <label class="filtro__opcion">
+            <input type="radio" name="categoria" value="salado">
+            <span>Salado <span class="corazon" aria-hidden="true"></span></span>
+          </label>
+        </fieldset>
+
+        <div class="estanteria__grupo" data-grupo="dulce">
+          <h2 class="visualmente-oculto">Dulce</h2>
           <ul class="estanteria__lista" data-tipo="dulce"></ul>
         </div>
-        <div class="estanteria__grupo">
-          <h2 class="estanteria__titulo">Salado<span class="corazon" aria-hidden="true"></span></h2>
+        <div class="estanteria__grupo" data-grupo="salado" hidden>
+          <h2 class="visualmente-oculto">Salado</h2>
           <ul class="estanteria__lista" data-tipo="salado"></ul>
         </div>
         <noscript>

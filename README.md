@@ -13,7 +13,7 @@ Es una web estática (HTML + CSS + JavaScript, sin paso de compilación) pensada
 3. **Nuestras recetas**: toldo de local, vitrina con la galería de fotos y mostrador de madera.
 4. **Receta del día**: video de YouTube.
 
-Y una página aparte, **Armá tu pedido** (`pedido.html`): una estantería con los productos dibujados que se arrastran (o se tocan) hasta una canasta, un ticket con las cantidades y un botón que abre WhatsApp con el pedido escrito. Los productos no tienen precio: eso se coordina por WhatsApp. El pedido queda guardado en el navegador de quien lo arma.
+Y una página aparte, **Armá tu pedido** (`pedido.html`): una estantería con los productos dibujados (con un filtro Dulce / Salado) que se arrastran (o se tocan) hasta una canasta, un ticket con las cantidades y un botón que abre WhatsApp con el pedido escrito. Los productos no tienen precio: eso se coordina por WhatsApp. El pedido queda guardado en el navegador de quien lo arma.
 
 ## Ver el sitio en local
 
