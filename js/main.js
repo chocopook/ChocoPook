@@ -72,6 +72,53 @@
     });
   }
 
+  /* ---------- Receta del día (YouTube) ---------- */
+
+  // Acepta un link de YouTube (watch, youtu.be, shorts, embed, live) o el ID solo.
+  function idDeYoutube(valor) {
+    const texto = (valor || "").trim();
+    if (/^[\w-]{11}$/.test(texto)) return texto;
+    const encontrado = texto.match(/(?:youtu\.be\/|[?&]v=|\/(?:embed|shorts|live)\/)([\w-]{11})/);
+    return encontrado ? encontrado[1] : "";
+  }
+
+  // Muestra solo la miniatura; el reproductor de YouTube se carga recién al tocar play.
+  function iniciarRecetaDelDia() {
+    const contenedor = document.querySelector("[data-video]");
+    if (!contenedor) return;
+
+    const receta = config.recetaDelDia || {};
+    const titulo = receta.titulo || "Receta del día";
+    document.querySelectorAll("[data-receta-titulo]").forEach((elemento) => {
+      elemento.textContent = titulo;
+    });
+
+    const id = idDeYoutube(receta.youtube);
+    if (!id) return;
+
+    const portada = contenedor.querySelector(".video__portada");
+    const miniatura = portada.querySelector("img");
+    miniatura.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+    contenedor.querySelector(".video__aviso")?.remove();
+    portada.disabled = false;
+    portada.setAttribute("aria-label", `Reproducir video: ${titulo}`);
+
+    portada.addEventListener(
+      "click",
+      () => {
+        const reproductor = document.createElement("iframe");
+        reproductor.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+        reproductor.title = `Video: ${titulo}`;
+        reproductor.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        reproductor.referrerPolicy = "strict-origin-when-cross-origin";
+        reproductor.allowFullscreen = true;
+        portada.replaceWith(reproductor);
+        reproductor.focus();
+      },
+      { once: true }
+    );
+  }
+
   /* ---------- Navegación ---------- */
 
   function iniciarMenuMovil() {
@@ -137,6 +184,7 @@
   iniciarRedes();
   iniciarRecetas();
   iniciarVisor();
+  iniciarRecetaDelDia();
   iniciarMenuMovil();
   iniciarSeccionActiva();
 })();

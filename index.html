@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="css/portada.css">
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/local.css">
+  <link rel="stylesheet" href="css/receta.css">
 
   <script src="js/config.js" defer></script>
   <script src="js/main.js" defer></script>
@@ -222,6 +223,35 @@
             </ul>
           </div>
         </div>
+
+        <!-- ========== 4. Receta del día ========== -->
+        <article class="receta-dia" id="receta-del-dia" aria-labelledby="titulo-receta-dia">
+          <h2 class="receta-dia__titulo" id="titulo-receta-dia">
+            <span class="corazon" aria-hidden="true"></span>Receta del día<span class="corazon" aria-hidden="true"></span>
+          </h2>
+
+          <!-- El video se configura en js/config.js (recetaDelDia.youtube) -->
+          <div class="video" data-video>
+            <button class="video__portada" type="button" disabled aria-label="Video de la receta del día: muy pronto">
+              <img src="assets/img/galeria/cookies.svg" alt="" width="400" height="300" loading="lazy">
+              <span class="video__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15a1 1 0 0 0 1.5.9l12-7.5a1 1 0 0 0 0-1.7l-12-7.5A1 1 0 0 0 7 4.5z"/></svg>
+              </span>
+            </button>
+            <span class="video__aviso">Video muy pronto</span>
+          </div>
+
+          <p class="receta-dia__nombre">
+            <span data-receta-titulo>Cookies de chocolate</span>
+            <span class="corazon" aria-hidden="true"></span>
+            <svg class="receta-dia__flecha" viewBox="0 0 34 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 16c6 6 16 6 22-2 3-4 3-9 0-11"/><path d="M19 4l5-1 1 5"/></svg>
+          </p>
+
+          <a class="postit" href="#contacto" data-link="instagram">
+            Seguinos y descubrí más recetas
+            <span class="corazon" aria-hidden="true"></span>
+          </a>
+        </article>
       </div>
 
       <div class="mostrador" aria-hidden="true">

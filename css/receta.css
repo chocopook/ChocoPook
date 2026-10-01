@@ -1,0 +1,204 @@
+/* =========================================================
+   Chocopook · Receta del día (sección 4)
+   Tarjeta de papel con el video de YouTube.
+   ========================================================= */
+
+.receta-dia {
+  position: relative;
+  margin-bottom: 34px;
+  padding: 18px 22px 26px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--crema-50), #f8e8cf);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+    0 1px 0 rgba(40, 19, 9, 0.08),
+    0 24px 30px -16px rgba(40, 19, 9, 0.55);
+}
+
+.receta-dia__titulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin: 0 0 0.8rem;
+  font-family: var(--f-mano);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.4vw, 1.9rem);
+  color: var(--cacao-800);
+}
+
+.receta-dia__titulo .corazon {
+  font-size: 0.55em;
+  color: var(--cacao-700);
+}
+
+/* ---------- Reproductor ---------- */
+
+.video {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  background: var(--pizarra);
+  box-shadow:
+    0 0 0 6px var(--pizarra),
+    0 12px 20px -8px rgba(40, 19, 9, 0.55);
+}
+
+.video__portada {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--pizarra);
+  cursor: pointer;
+}
+
+.video__portada:disabled {
+  cursor: default;
+}
+
+.video__portada img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.video__portada:not(:disabled):hover img {
+  transform: scale(1.04);
+}
+
+.video__portada:disabled img {
+  filter: saturate(0.85) brightness(0.92);
+}
+
+.video__play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 66px;
+  height: 66px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: rgba(46, 36, 34, 0.55);
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.video__play svg {
+  width: 26px;
+  height: 26px;
+  margin-left: 4px;
+  color: #fff;
+}
+
+.video__portada:not(:disabled):hover .video__play {
+  background: rgba(114, 68, 35, 0.9);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.video__aviso {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  padding: 2px 12px 3px;
+  border-radius: 999px;
+  font-family: var(--f-mano);
+  font-size: 1.05rem;
+  color: var(--cacao-800);
+  background: rgba(253, 240, 220, 0.94);
+  box-shadow: 0 3px 8px rgba(40, 19, 9, 0.3);
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---------- Nombre de la receta y post-it ---------- */
+
+.receta-dia__nombre {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  margin: 1.1rem 0 0;
+  font-family: var(--f-mano);
+  font-size: 1.35rem;
+  color: var(--cacao-800);
+}
+
+.receta-dia__nombre .corazon {
+  font-size: 0.75em;
+  color: var(--cacao-700);
+}
+
+.receta-dia__flecha {
+  width: 34px;
+  height: 24px;
+  color: var(--cacao-700);
+}
+
+.postit {
+  position: absolute;
+  right: -26px;
+  bottom: -62px;
+  z-index: 3;
+  display: block;
+  width: 136px;
+  padding: 18px 12px 14px;
+  font-family: var(--f-mano);
+  font-size: 1.08rem;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  color: var(--cacao-800);
+  background: linear-gradient(180deg, #fbefd6, #f4e0bc);
+  box-shadow: 0 10px 16px -6px rgba(40, 19, 9, 0.45);
+  transform: rotate(-9deg);
+  transition: transform 0.2s ease;
+}
+
+/* cinta adhesiva */
+.postit::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 58px;
+  height: 20px;
+  background: rgba(239, 181, 102, 0.55);
+  transform: translateX(-50%) rotate(4deg);
+}
+
+.postit:hover {
+  transform: rotate(-5deg) scale(1.04);
+}
+
+.postit .corazon {
+  display: block;
+  margin: 4px auto 0;
+  font-size: 0.85em;
+  color: var(--cacao-700);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 960px) {
+  .receta-dia {
+    width: min(100%, 560px);
+    margin: 8px auto 86px;
+  }
+
+  .postit {
+    right: -8px;
+    bottom: -84px;
+  }
+}
