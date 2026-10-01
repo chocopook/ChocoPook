@@ -44,11 +44,12 @@ Las fotos de la galería están en `assets/img/galeria/`. Hoy son ilustraciones 
 
 ```
 index.html            Página única con las 4 secciones
-css/                  Estilos, un archivo por módulo (base, nav, portada, menu, local, pie)
+css/                  Estilos, un archivo por módulo (base, nav, portada, menu, local, receta, pie)
 js/config.js          Datos editables (redes, video, links de recetas)
 js/main.js            Comportamiento: menú móvil, links, video, visor de fotos
 assets/svg/           Ilustraciones propias (oso, cupcake, toldo, garabatos, etc.)
 assets/img/galeria/   Fotos de la vitrina
+herramientas/         Script de capturas para desarrollo (no forma parte del sitio)
 docs/                 Diseño de referencia
 ```
 
