@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1368" height="816" viewBox="84 48 1368 816">
+  <!-- Libro recetario abierto (fondo del menú). Basado en libro_recetario.svg de la dueña:
+       la cinta ahora sale de abajo de las hojas y cuelga por fuera de la tapa. -->
+  <defs>
+    <linearGradient id="cover" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9b6544"/><stop offset="1" stop-color="#6f432d"/>
+    </linearGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff2d9"/><stop offset="1" stop-color="#f7e3c2"/>
+    </linearGradient>
+    <linearGradient id="cinta" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e09c48"/><stop offset=".5" stop-color="#f2bc68"/><stop offset="1" stop-color="#dd9845"/>
+    </linearGradient>
+    <linearGradient id="sombraHojas" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4b2a1b" stop-opacity=".55"/><stop offset="1" stop-color="#4b2a1b" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cubierta exterior -->
+  <path d="M105 112 Q116 92 150 88 L690 58 Q735 58 768 91 Q801 58 846 58 L1385 88 Q1420 92 1430 113 L1430 760 Q1428 786 1390 793 L850 806 Q805 807 768 779 Q731 807 686 806 L146 793 Q108 786 105 760 Z"
+        fill="url(#cover)" stroke="#4b2a1b" stroke-width="10" stroke-linejoin="round"/>
+
+  <!-- Lomo/cantos laterales -->
+  <path d="M105 112 Q91 125 96 160 L96 744 Q95 775 119 784 L145 793 L145 106 Z"
+        fill="#805136" stroke="#4b2a1b" stroke-width="7"/>
+  <path d="M1430 113 Q1445 126 1440 160 L1440 744 Q1441 775 1417 784 L1390 793 L1390 106 Z"
+        fill="#805136" stroke="#4b2a1b" stroke-width="7"/>
+
+  <!-- Detalles de la cubierta -->
+  <path d="M119 137 L119 739 Q119 759 143 765 L681 777 Q728 779 768 752" fill="none" stroke="#b9825b" stroke-width="5"/>
+  <path d="M1417 137 L1417 739 Q1417 759 1393 765 L855 777 Q808 779 768 752" fill="none" stroke="#b9825b" stroke-width="5"/>
+
+  <!-- Cinta señaladora: va entre la tapa y las hojas, así asoma por debajo de ellas -->
+  <path d="M813 680 L853 680 L853 848 L833 831 L813 848 Z"
+        fill="url(#cinta)" stroke="#6d4328" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M822 680 L822 828 M844 680 L844 828" stroke="#f8d590" stroke-width="2.5" opacity=".7"/>
+  <!-- sombra de las hojas sobre la cinta -->
+  <rect x="811" y="700" width="44" height="52" fill="url(#sombraHojas)"/>
+
+  <!-- Páginas izquierda -->
+  <path d="M151 103 Q176 88 216 87 L681 65 Q733 65 768 103 L768 755 Q731 725 684 726 L157 719 Q143 717 143 699 L143 128 Q143 112 151 103 Z"
+        fill="url(#page)" stroke="#5b3926" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- Páginas derecha -->
+  <path d="M768 103 Q803 65 855 65 L1320 87 Q1360 88 1385 103 Q1393 112 1393 128 L1393 699 Q1393 717 1379 719 L852 726 Q805 725 768 755 Z"
+        fill="url(#page)" stroke="#5b3926" stroke-width="7" stroke-linejoin="round"/>
+
+  <!-- Ondulación/capitas de páginas -->
+  <path d="M153 707 Q415 714 682 716 Q730 716 768 743" fill="none" stroke="#d5b78e" stroke-width="5"/>
+  <path d="M153 716 Q420 723 680 725 Q730 725 768 750" fill="none" stroke="#e0c49c" stroke-width="4"/>
+  <path d="M1383 707 Q1121 714 854 716 Q806 716 768 743" fill="none" stroke="#d5b78e" stroke-width="5"/>
+  <path d="M1383 716 Q1116 723 856 725 Q806 725 768 750" fill="none" stroke="#e0c49c" stroke-width="4"/>
+
+  <!-- Bordes interiores de las páginas -->
+  <path d="M166 116 Q180 104 217 102 L677 81 Q724 81 751 110 L751 730 Q720 704 678 704 L169 698 Q160 697 160 684 L160 132 Q160 122 166 116 Z"
+        fill="none" stroke="#ead0a9" stroke-width="4"/>
+  <path d="M1370 116 Q1356 104 1319 102 L859 81 Q812 81 785 110 L785 730 Q816 704 858 704 L1367 698 Q1376 697 1376 684 L1376 132 Q1376 122 1370 116 Z"
+        fill="none" stroke="#ead0a9" stroke-width="4"/>
+
+  <!-- Curva central / unión -->
+  <path d="M768 103 C756 115 752 137 752 164 L752 716 Q752 742 768 755 Q784 742 784 716 L784 164 Q784 115 768 103 Z"
+        fill="#ead0aa" opacity=".9"/>
+  <path d="M768 104 L768 755" stroke="#68412b" stroke-width="5" fill="none"/>
+  <path d="M752 717 Q758 740 768 755 Q778 740 784 717" fill="none" stroke="#4b2a1b" stroke-width="6"/>
+
+  <!-- Pequeñas líneas de página -->
+  <path d="M177 126 L177 682 M184 123 L184 684" stroke="#f1dcb9" stroke-width="3" opacity=".9"/>
+  <path d="M1359 126 L1359 682 M1352 123 L1352 684" stroke="#f1dcb9" stroke-width="3" opacity=".9"/>
+
+  <!-- Pequeño broche inferior del lomo -->
+  <path d="M731 764 Q748 781 768 784 Q788 781 805 764" fill="none" stroke="#4b2a1b" stroke-width="9" stroke-linecap="round"/>
+</svg>

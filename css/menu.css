@@ -16,7 +16,7 @@
 
 .mantel__grilla {
   display: grid;
-  grid-template-columns: 1fr minmax(0, 740px) 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 800px) minmax(0, 1fr);
   align-items: center;
   gap: 24px;
 }
@@ -58,73 +58,47 @@
 
 /* ---------- Libro ---------- */
 
+/* El libro es el dibujo assets/svg/libro-recetario.svg (viewBox 1368 × 816).
+   Las páginas de texto se ubican encima en porcentajes de ese dibujo, y las
+   medidas internas van en cqi (1% del ancho del libro) para escalar con él. */
 .libro {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 12px 12px 18px;
-  background: linear-gradient(180deg, #94592f, var(--cacao-700));
-  border-radius: 18px 18px 26px 26px;
-  box-shadow:
-    inset 0 0 0 2px rgba(255, 255, 255, 0.08),
-    0 3px 0 var(--cacao-800),
-    0 28px 34px -16px rgba(63, 34, 14, 0.6);
-}
-
-/* sombra del lomo */
-.libro::after {
-  content: "";
-  position: absolute;
-  top: 12px;
-  bottom: 18px;
-  left: 50%;
-  width: 46px;
-  transform: translateX(-50%);
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(136, 85, 46, 0.18) 35%,
-    rgba(87, 51, 25, 0.42) 50%,
-    rgba(136, 85, 46, 0.18) 65%,
-    transparent
-  );
-  pointer-events: none;
+  width: 100%;
+  aspect-ratio: 1368 / 816;
+  background: url("../assets/svg/libro-recetario.svg") center / 100% 100% no-repeat;
+  filter: drop-shadow(0 22px 18px rgba(63, 34, 14, 0.32));
+  container-type: inline-size;
 }
 
 .libro__pagina {
-  position: relative;
-  min-height: 420px;
-  padding: 34px clamp(18px, 3vw, 36px) 82px;
+  position: absolute;
+  top: 7.4%;
+  width: 39.4%;
+  height: 72%;
+  padding-top: 2.4cqi;
   text-align: center;
 }
 
 .libro__pagina--izq {
-  background: linear-gradient(90deg, #f1dcbd 0%, var(--crema-50) 9%, var(--crema-100) 80%, #e6cba6 100%);
-  border-radius: 10px 4px 4px 14px;
-  box-shadow:
-    -3px 3px 0 -1px #efd6b4,
-    -6px 6px 0 -2px #e2c49c;
+  left: 8.2%;
 }
 
 .libro__pagina--der {
-  background: linear-gradient(90deg, #e6cba6 0%, var(--crema-100) 20%, var(--crema-50) 91%, #f1dcbd 100%);
-  border-radius: 4px 10px 14px 4px;
-  box-shadow:
-    3px 3px 0 -1px #efd6b4,
-    6px 6px 0 -2px #e2c49c;
+  left: 52.4%;
 }
 
 .libro__titulo {
   display: inline-flex;
   align-items: center;
   gap: 0.35em;
-  margin: 0 0 1.2rem;
-  padding: 0 0.2em 12px;
+  margin: 0 0 1.6cqi;
+  padding: 0 0.2em 1.5cqi;
   font-family: var(--f-mano);
   font-weight: 400;
-  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  font-size: clamp(1.5rem, 4.8cqi, 2.6rem);
+  line-height: 1.1;
   color: var(--cacao-800);
-  background: url("../assets/svg/subrayado.svg") center bottom / 78% 12px no-repeat;
+  background: url("../assets/svg/subrayado.svg") center bottom / 78% 1.5cqi no-repeat;
 }
 
 .libro__titulo .corazon {
@@ -134,16 +108,16 @@
 
 .libro__lista {
   display: grid;
-  gap: 0.2rem;
   margin: 0;
   padding: 0;
   list-style: none;
-  font-size: 1.08rem;
+  font-size: clamp(0.8rem, 2.2cqi, 1.1rem);
+  line-height: 1.45;
 }
 
 .libro__lista a {
   display: inline-block;
-  padding: 1px 12px;
+  padding: 0 1.4cqi;
   border-radius: 10px;
   color: var(--cacao-800);
   text-decoration: none;
@@ -158,87 +132,74 @@
 }
 
 .libro__mas {
-  margin: 0.35rem 0 0;
+  margin: 0.5cqi 0 0;
   font-family: var(--f-mano);
-  font-size: 1.22rem;
+  font-size: clamp(0.95rem, 2.5cqi, 1.3rem);
   color: var(--cacao-600);
 }
 
-/* cinta señaladora */
-.libro__cinta {
-  position: absolute;
-  left: 50%;
-  bottom: -30px;
-  z-index: 1;
-  width: 24px;
-  height: 52px;
-  transform: translateX(-50%);
-  background: linear-gradient(90deg, var(--miel-500), var(--miel-400) 50%, var(--miel-500));
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%);
-}
-
-/* garabatos decorativos */
+/* garabatos decorativos (posiciones en % de la página) */
 .garabato {
   position: absolute;
   pointer-events: none;
 }
 
 .garabato--cupcake-arriba {
-  top: 92px;
-  left: 22px;
-  width: 46px;
+  top: 17%;
+  left: 3%;
+  width: 6.4cqi;
   transform: rotate(-10deg);
 }
 
 .garabato--cupcake-abajo {
-  bottom: 20px;
+  bottom: 0;
   left: 50%;
-  width: 40px;
+  width: 5.2cqi;
   transform: translateX(-50%);
 }
 
 .garabato--palote {
-  top: 84px;
-  right: 22px;
-  width: 52px;
+  top: 15%;
+  right: 3%;
+  width: 7cqi;
 }
 
 .garabato--hoja {
-  bottom: 52px;
-  right: 30px;
-  width: 30px;
+  bottom: 6%;
+  right: 6%;
+  width: 4cqi;
 }
 
 .garabato--empanada {
-  bottom: 18px;
+  bottom: -1%;
   left: 50%;
-  width: 82px;
+  width: 11cqi;
   transform: translateX(-50%);
 }
 
 .libro .garabato.corazon {
-  font-size: 1.05rem;
+  font-size: 1.9cqi;
   color: var(--cacao-600);
 }
 
 .garabato--corazon-1 {
-  top: 54%;
-  left: 30px;
+  top: 52%;
+  left: 5%;
 }
 
 .garabato--corazon-2 {
-  bottom: 30px;
-  right: 46px;
+  bottom: 4%;
+  right: 14%;
 }
 
 .garabato--corazon-3 {
-  top: 140px;
-  right: 34px;
+  top: 31%;
+  right: 6%;
 }
 
 .garabato--corazon-4 {
-  bottom: 32px;
-  left: 42px;
+  bottom: 4%;
+  left: 12%;
 }
 
 /* ---------- Botones de pedido ---------- */
@@ -324,9 +285,9 @@
 
 /* ---------- Responsive ---------- */
 
-@media (max-width: 1120px) {
+@media (max-width: 1200px) {
   .mantel__grilla {
-    grid-template-columns: minmax(0, 740px);
+    grid-template-columns: minmax(0, 800px);
     justify-content: center;
   }
 
@@ -336,31 +297,56 @@
 }
 
 @media (max-width: 640px) {
+  /* En celular las dos páginas lado a lado no se leen: se apilan, con tapa en CSS */
   .libro {
-    grid-template-columns: 1fr;
+    display: grid;
+    aspect-ratio: auto;
     padding: 10px 10px 14px;
-  }
-
-  .libro::after,
-  .libro__cinta {
-    display: none;
+    background: linear-gradient(180deg, #9b6544, #6f432d);
+    border: 4px solid #4b2a1b;
+    border-radius: 18px;
+    filter: none;
+    box-shadow: 0 26px 30px -16px rgba(63, 34, 14, 0.6);
   }
 
   .libro__pagina {
-    min-height: 0;
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    height: auto;
     padding: 28px 20px 84px;
-    box-shadow: none;
   }
 
   .libro__pagina--izq {
     border-radius: 10px 10px 4px 4px;
-    background: linear-gradient(180deg, var(--crema-50), var(--crema-100) 90%, #ead2b0);
+    background: linear-gradient(180deg, #fff2d9, #f7e3c2 90%, #ead0aa);
   }
 
   .libro__pagina--der {
     margin-top: 6px;
     border-radius: 4px 4px 12px 12px;
-    background: linear-gradient(180deg, #ead2b0, var(--crema-100) 10%, var(--crema-50));
+    background: linear-gradient(180deg, #ead0aa, #f7e3c2 10%, #fff2d9);
+  }
+
+  .libro__titulo {
+    margin-bottom: 1rem;
+    padding-bottom: 12px;
+    font-size: 2.1rem;
+    background-size: 78% 12px;
+  }
+
+  .libro__lista {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .libro__lista a {
+    padding: 0 12px;
+  }
+
+  .libro__mas {
+    font-size: 1.2rem;
   }
 
   .garabato--cupcake-arriba,
@@ -369,12 +355,41 @@
     width: 38px;
   }
 
+  .garabato--cupcake-arriba {
+    left: 18px;
+  }
+
+  .garabato--palote {
+    right: 18px;
+  }
+
+  .garabato--cupcake-abajo {
+    bottom: 20px;
+    width: 40px;
+  }
+
+  .garabato--empanada {
+    bottom: 18px;
+    width: 80px;
+  }
+
+  .garabato--hoja {
+    bottom: 50px;
+    right: 28px;
+    width: 28px;
+  }
+
+  .libro .garabato.corazon {
+    font-size: 1rem;
+  }
+
   .garabato--corazon-1,
   .garabato--corazon-3 {
     display: none;
   }
 
   .pedidos {
+    gap: 52px;
     padding-left: 24px;
   }
 
