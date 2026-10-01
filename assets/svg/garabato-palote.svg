@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Garabato: palo de amasar -->
+  <g transform="rotate(-52 32 32)" stroke="#724423" stroke-width="2.6" stroke-linejoin="round">
+    <rect x="1" y="28.5" width="12" height="7" rx="3.5" fill="#c69b74"/>
+    <rect x="13" y="22" width="38" height="20" rx="6" fill="#f2d0a1"/>
+    <rect x="51" y="28.5" width="12" height="7" rx="3.5" fill="#c69b74"/>
+    <path d="M21 27h6M33 37h8" fill="none" stroke="#c69b74" stroke-linecap="round"/>
+  </g>
+</svg>

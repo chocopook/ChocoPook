@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48">
+  <!-- Garabato: hojita -->
+  <g stroke="#724423" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 42C6 22 20 8 42 6c0 20-14 34-36 36z" fill="#f2d0a1"/>
+    <path d="M6 42L34 14M16 32l-1-8M22 26l-1-9M16 32l8 1M22 26l9 1" fill="none"/>
+  </g>
+</svg>

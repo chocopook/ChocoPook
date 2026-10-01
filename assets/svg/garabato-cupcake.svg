@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 64" width="60" height="64">
+  <!-- Garabato: cupcake -->
+  <g stroke="#724423" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 36h32l-4.5 21q-.5 2.5-3 2.5h-17q-2.5 0-3-2.5z" fill="#f2d0a1"/>
+    <path d="M22 39l2 18M30 39v18M38 39l-2 18" fill="none"/>
+    <path d="M11 36c-3-7 3-11 8-10 1-8 6-12 11-12s10 4 11 12c5-1 11 3 8 10-1 2-3 3-5 2H16c-2 1-4 0-5-2z" fill="#fdf0dc"/>
+    <path d="M30 14q1-5 5-8" fill="none"/>
+    <circle cx="29" cy="11" r="4.2" fill="#e0574f"/>
+  </g>
+  <g stroke-width="2.4" stroke-linecap="round">
+    <path d="M20 30l2-2" stroke="#e0574f"/>
+    <path d="M36 27l2 1" stroke="#efb566"/>
+    <path d="M28 22v2" stroke="#9b6d44"/>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 52" width="96" height="52">
+  <!-- Garabato: empanada con repulgue -->
+  <g stroke="#724423" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 42C10 14 30 6 48 6s38 8 40 36q-40 6-80 0z" fill="#f2d0a1"/>
+    <path d="M8 42q3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0 3.33 6 6.67 0" fill="none"/>
+    <path d="M30 22q4-3 8 0M56 18q4-3 8 0M44 30q4-3 8 0" fill="none"/>
+  </g>
+</svg>

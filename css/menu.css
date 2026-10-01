@@ -1,0 +1,395 @@
+/* =========================================================
+   Chocopook · Menú (sección 2)
+   Mantel cuadrillé + libro abierto + botones de pedido.
+   ========================================================= */
+
+.mantel {
+  position: relative;
+  padding: clamp(48px, 7vw, 76px) 0 clamp(60px, 8vw, 96px);
+  background-color: #f4d8b5;
+  background-image:
+    linear-gradient(90deg, rgba(236, 182, 108, 0.27) 50%, transparent 0),
+    linear-gradient(rgba(236, 182, 108, 0.27) 50%, transparent 0);
+  background-size: 56px 56px;
+  box-shadow: inset 0 16px 18px -14px rgba(87, 51, 25, 0.3);
+}
+
+.mantel__grilla {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 740px) 1fr;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ---------- Notas escritas a mano a los costados ---------- */
+
+.nota {
+  justify-self: center;
+  max-width: 180px;
+  margin: 0;
+  padding-bottom: 18px;
+  font-family: var(--f-mano);
+  font-size: 1.45rem;
+  line-height: 1.25;
+  text-align: center;
+  color: var(--cacao-800);
+  background: url("../assets/svg/subrayado.svg") center bottom / 80% 12px no-repeat;
+}
+
+.nota .corazon-linea {
+  display: block;
+  margin: 0 auto 8px;
+  font-size: 1.6rem;
+  color: var(--cacao-700);
+}
+
+.nota .corazon {
+  font-size: 0.9em;
+  color: var(--cacao-700);
+}
+
+.nota--izq {
+  transform: rotate(-9deg);
+}
+
+.nota--der {
+  transform: rotate(-10deg);
+}
+
+/* ---------- Libro ---------- */
+
+.libro {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 12px 12px 18px;
+  background: linear-gradient(180deg, #94592f, var(--cacao-700));
+  border-radius: 18px 18px 26px 26px;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.08),
+    0 3px 0 var(--cacao-800),
+    0 28px 34px -16px rgba(63, 34, 14, 0.6);
+}
+
+/* sombra del lomo */
+.libro::after {
+  content: "";
+  position: absolute;
+  top: 12px;
+  bottom: 18px;
+  left: 50%;
+  width: 46px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(136, 85, 46, 0.18) 35%,
+    rgba(87, 51, 25, 0.42) 50%,
+    rgba(136, 85, 46, 0.18) 65%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.libro__pagina {
+  position: relative;
+  min-height: 420px;
+  padding: 34px clamp(18px, 3vw, 36px) 82px;
+  text-align: center;
+}
+
+.libro__pagina--izq {
+  background: linear-gradient(90deg, #f1dcbd 0%, var(--crema-50) 9%, var(--crema-100) 80%, #e6cba6 100%);
+  border-radius: 10px 4px 4px 14px;
+  box-shadow:
+    -3px 3px 0 -1px #efd6b4,
+    -6px 6px 0 -2px #e2c49c;
+}
+
+.libro__pagina--der {
+  background: linear-gradient(90deg, #e6cba6 0%, var(--crema-100) 20%, var(--crema-50) 91%, #f1dcbd 100%);
+  border-radius: 4px 10px 14px 4px;
+  box-shadow:
+    3px 3px 0 -1px #efd6b4,
+    6px 6px 0 -2px #e2c49c;
+}
+
+.libro__titulo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 1.2rem;
+  padding: 0 0.2em 12px;
+  font-family: var(--f-mano);
+  font-weight: 400;
+  font-size: clamp(2rem, 3.4vw, 2.6rem);
+  color: var(--cacao-800);
+  background: url("../assets/svg/subrayado.svg") center bottom / 78% 12px no-repeat;
+}
+
+.libro__titulo .corazon {
+  font-size: 0.5em;
+  color: var(--cacao-700);
+}
+
+.libro__lista {
+  display: grid;
+  gap: 0.2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.08rem;
+}
+
+.libro__lista a {
+  display: inline-block;
+  padding: 1px 12px;
+  border-radius: 10px;
+  color: var(--cacao-800);
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.libro__lista a:hover,
+.libro__lista a:focus-visible {
+  background: rgba(239, 181, 102, 0.32);
+  color: var(--cacao-950);
+  transform: translateX(3px);
+}
+
+.libro__mas {
+  margin: 0.35rem 0 0;
+  font-family: var(--f-mano);
+  font-size: 1.22rem;
+  color: var(--cacao-600);
+}
+
+/* cinta señaladora */
+.libro__cinta {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  z-index: 1;
+  width: 24px;
+  height: 52px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--miel-500), var(--miel-400) 50%, var(--miel-500));
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 76%, 0 100%);
+}
+
+/* garabatos decorativos */
+.garabato {
+  position: absolute;
+  pointer-events: none;
+}
+
+.garabato--cupcake-arriba {
+  top: 92px;
+  left: 22px;
+  width: 46px;
+  transform: rotate(-10deg);
+}
+
+.garabato--cupcake-abajo {
+  bottom: 20px;
+  left: 50%;
+  width: 40px;
+  transform: translateX(-50%);
+}
+
+.garabato--palote {
+  top: 84px;
+  right: 22px;
+  width: 52px;
+}
+
+.garabato--hoja {
+  bottom: 52px;
+  right: 30px;
+  width: 30px;
+}
+
+.garabato--empanada {
+  bottom: 18px;
+  left: 50%;
+  width: 82px;
+  transform: translateX(-50%);
+}
+
+.libro .garabato.corazon {
+  font-size: 1.05rem;
+  color: var(--cacao-600);
+}
+
+.garabato--corazon-1 {
+  top: 54%;
+  left: 30px;
+}
+
+.garabato--corazon-2 {
+  bottom: 30px;
+  right: 46px;
+}
+
+.garabato--corazon-3 {
+  top: 140px;
+  right: 34px;
+}
+
+.garabato--corazon-4 {
+  bottom: 32px;
+  left: 42px;
+}
+
+/* ---------- Botones de pedido ---------- */
+
+.pedidos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 36px clamp(48px, 9vw, 120px);
+  margin-top: 70px;
+  padding-left: 30px;
+}
+
+.boton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 300px;
+  min-height: 78px;
+  padding: 10px 24px 10px 106px;
+  border-radius: 999px;
+  font-family: var(--f-mano);
+  font-size: 1.38rem;
+  line-height: 1.08;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton--ig {
+  color: var(--crema-50);
+  background: var(--veta), linear-gradient(180deg, #7d4c2a, var(--cacao-700));
+  box-shadow:
+    0 0 0 3px var(--crema-200),
+    0 0 0 6px var(--cacao-700),
+    0 14px 22px -8px rgba(63, 34, 14, 0.55);
+}
+
+.boton--wa {
+  color: var(--cacao-900);
+  background: linear-gradient(180deg, #f6d08f, #e9b86c);
+  box-shadow:
+    0 0 0 3px var(--crema-50),
+    0 0 0 6px var(--miel-600),
+    0 14px 22px -8px rgba(140, 90, 30, 0.5);
+}
+
+.boton:hover {
+  transform: translateY(-3px);
+}
+
+.boton__dibujo {
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  width: 124px;
+  transform: translateY(-54%);
+  filter: drop-shadow(0 6px 6px rgba(63, 34, 14, 0.25));
+  transition: transform 0.25s ease;
+}
+
+.boton:hover .boton__dibujo {
+  transform: translateY(-56%) rotate(-7deg) scale(1.04);
+}
+
+.boton__icono {
+  flex: none;
+  width: 34px;
+  height: 34px;
+}
+
+.boton__flecha {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+
+.boton:hover .boton__flecha {
+  transform: translateX(4px);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1120px) {
+  .mantel__grilla {
+    grid-template-columns: minmax(0, 740px);
+    justify-content: center;
+  }
+
+  .nota {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .libro {
+    grid-template-columns: 1fr;
+    padding: 10px 10px 14px;
+  }
+
+  .libro::after,
+  .libro__cinta {
+    display: none;
+  }
+
+  .libro__pagina {
+    min-height: 0;
+    padding: 28px 20px 84px;
+    box-shadow: none;
+  }
+
+  .libro__pagina--izq {
+    border-radius: 10px 10px 4px 4px;
+    background: linear-gradient(180deg, var(--crema-50), var(--crema-100) 90%, #ead2b0);
+  }
+
+  .libro__pagina--der {
+    margin-top: 6px;
+    border-radius: 4px 4px 12px 12px;
+    background: linear-gradient(180deg, #ead2b0, var(--crema-100) 10%, var(--crema-50));
+  }
+
+  .garabato--cupcake-arriba,
+  .garabato--palote {
+    top: 26px;
+    width: 38px;
+  }
+
+  .garabato--corazon-1,
+  .garabato--corazon-3 {
+    display: none;
+  }
+
+  .pedidos {
+    padding-left: 24px;
+  }
+
+  .boton {
+    min-width: 0;
+    width: min(100%, 320px);
+    padding-left: 100px;
+  }
+
+  .boton__icono {
+    display: none;
+  }
+
+  .boton__dibujo {
+    left: -24px;
+    width: 112px;
+  }
+}
