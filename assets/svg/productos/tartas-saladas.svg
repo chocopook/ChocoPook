@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: porción de tarta salada (verdura y tomate) -->
+  <g stroke="#4f2e18" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M10 64l76-8v14l-76 9z" fill="#c98a4b"/>
+    <path d="M10 64L58 28q22 6 28 28z" fill="#f2c46d"/>
+  </g>
+  <path d="M60 31q19 6 24 23" fill="none" stroke="#c98a4b" stroke-width="7" stroke-linecap="round"/>
+  <path d="M60 31q19 6 24 23" fill="none" stroke="#a8692f" stroke-width="5" stroke-dasharray="1 6" stroke-linecap="round"/>
+  <path d="M14 73l70-8" stroke="#a8692f" stroke-width="2.5" stroke-linecap="round" opacity=".6"/>
+  <g fill="#6f9a52">
+    <ellipse cx="36" cy="55" rx="4" ry="2.4" transform="rotate(-20 36 55)"/>
+    <ellipse cx="54" cy="46" rx="4" ry="2.2" transform="rotate(30 54 46)"/>
+    <ellipse cx="66" cy="55" rx="3.6" ry="2.2" transform="rotate(-10 66 55)"/>
+    <ellipse cx="46" cy="60" rx="3.2" ry="2" transform="rotate(15 46 60)"/>
+  </g>
+  <g stroke="#4f2e18" stroke-width="1.8">
+    <circle cx="62" cy="42" r="5" fill="#d9483e"/>
+    <circle cx="74" cy="51" r="4.2" fill="#d9483e"/>
+  </g>
+  <g fill="#f08a7a">
+    <circle cx="62" cy="42" r="2.2"/>
+    <circle cx="74" cy="51" r="1.8"/>
+  </g>
+</svg>

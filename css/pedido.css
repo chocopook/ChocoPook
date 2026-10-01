@@ -1,0 +1,659 @@
+/* =========================================================
+   Chocopook · Armá tu pedido (pedido.html)
+   Estantería de productos + canasta (zona para soltar) + ticket.
+   Usa el fondo, el toldo y el mostrador de css/local.css.
+   ========================================================= */
+
+/* ---------- Cabecera ---------- */
+
+.pedido__cabecera {
+  position: relative;
+  z-index: 3;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.pedido__cabecera .cartel {
+  margin: 0;
+}
+
+.pedido__intro {
+  max-width: 620px;
+  margin: 18px auto 0;
+  font-size: 1.02rem;
+  color: var(--cacao-900);
+}
+
+/* ---------- Grilla: estantería | canasta ---------- */
+
+.pedido__juego {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
+  align-items: start;
+  gap: clamp(24px, 4vw, 48px);
+  padding: 28px 0 44px;
+}
+
+/* ---------- Estantería ---------- */
+
+.estanteria {
+  --fila: 172px; /* alto de cada estante */
+  --tabla: 112px; /* dónde está la tabla dentro de la fila */
+  padding: 18px 18px 6px;
+  border: 14px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(160deg, #fbf1e1, #f1dabb) padding-box,
+    var(--veta) border-box,
+    linear-gradient(180deg, #a06b42, #7a4a28) border-box;
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.35),
+    0 3px 0 var(--cacao-800),
+    0 22px 26px -14px rgba(40, 19, 9, 0.55);
+}
+
+.estanteria__grupo + .estanteria__grupo {
+  margin-top: 6px;
+}
+
+.estanteria__titulo {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0 0 4px;
+  font-family: var(--f-mano);
+  font-weight: 400;
+  font-size: 1.7rem;
+  color: var(--cacao-800);
+}
+
+.estanteria__titulo .corazon {
+  font-size: 0.55em;
+  color: var(--cacao-600);
+}
+
+.estanteria__lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(124px, 1fr));
+  grid-auto-rows: var(--fila);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  /* una tabla de madera por cada fila de productos */
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0 var(--tabla),
+    #b07a4a var(--tabla) calc(var(--tabla) + 9px),
+    #7a4a28 calc(var(--tabla) + 9px) calc(var(--tabla) + 13px),
+    rgba(63, 34, 14, 0.18) calc(var(--tabla) + 13px) calc(var(--tabla) + 19px),
+    transparent calc(var(--tabla) + 19px) var(--fila)
+  );
+}
+
+.estanteria__sin-js {
+  margin: 12px 0;
+  font-weight: 600;
+}
+
+/* ---------- Producto ---------- */
+
+.producto {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 18px 4px 0;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.producto img {
+  width: 92px;
+  height: 92px;
+  filter: drop-shadow(0 6px 4px rgba(40, 19, 9, 0.22));
+  transition: transform 0.2s ease;
+  pointer-events: none;
+}
+
+.producto:hover img,
+.producto:focus-visible img {
+  transform: translateY(-6px) rotate(-6deg);
+}
+
+.producto:active {
+  cursor: grabbing;
+}
+
+.producto--salta img {
+  animation: saltito 0.4s ease;
+}
+
+.producto__mas {
+  position: absolute;
+  top: 12px;
+  right: calc(50% - 54px);
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--crema-50);
+  border-radius: 50%;
+  font-family: var(--f-texto);
+  font-weight: 800;
+  font-size: 1.05rem;
+  line-height: 1;
+  color: var(--cacao-900);
+  background: var(--miel-500);
+  box-shadow: 0 3px 6px rgba(40, 19, 9, 0.3);
+  transform: scale(0.85);
+  transition: transform 0.2s ease;
+}
+
+.producto:hover .producto__mas,
+.producto:focus-visible .producto__mas {
+  transform: scale(1.05);
+}
+
+.producto__nombre {
+  margin-top: 22px;
+  padding: 1px 10px 2px;
+  white-space: nowrap;
+  font-family: var(--f-mano);
+  font-size: 1.05rem;
+  line-height: 1.2;
+  color: var(--cacao-800);
+  background: var(--crema-50);
+  border-radius: 4px;
+  box-shadow: 0 3px 6px rgba(40, 19, 9, 0.2);
+}
+
+/* ---------- Canasta ---------- */
+
+.canasta {
+  position: sticky;
+  top: calc(var(--alto-barra) + 14px);
+  text-align: center;
+}
+
+.canasta__titulo {
+  margin: 0;
+  font-family: var(--f-mano);
+  font-weight: 400;
+  font-size: 1.8rem;
+  color: var(--cacao-800);
+}
+
+.canasta__dibujo {
+  position: relative;
+  width: min(100%, 460px);
+  aspect-ratio: 400 / 260;
+  margin: 4px auto 0;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.canasta__capa {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* los productos se apilan entre la capa de atrás y la de adelante */
+.canasta__pila {
+  position: absolute;
+  left: 12.5%;
+  width: 75%;
+  bottom: 42%;
+  height: 58%;
+  pointer-events: none;
+}
+
+.pila__item {
+  position: absolute;
+  width: 19.5%;
+  margin-left: -9.75%;
+  transform: rotate(var(--giro, 0deg));
+  transform-origin: 50% 80%;
+  transition: left 0.35s ease, bottom 0.35s ease;
+}
+
+.pila__item--cae {
+  animation: caer 0.55s cubic-bezier(.3, .7, .4, 1.3) both;
+}
+
+.pila__item--sale {
+  animation: salir 0.35s ease forwards;
+}
+
+.canasta__soltar {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  padding: 3px 14px 4px;
+  font-family: var(--f-mano);
+  font-size: 1.2rem;
+  color: var(--cacao-900);
+  background: var(--miel-400);
+  border-radius: 999px;
+  box-shadow: 0 6px 12px rgba(40, 19, 9, 0.25);
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+
+.arrastrando .canasta__soltar {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.arrastrando .canasta__dibujo {
+  filter: drop-shadow(0 0 14px rgba(245, 196, 122, 0.9));
+}
+
+.canasta__dibujo--encima {
+  transform: scale(1.05) rotate(-1.5deg);
+}
+
+.canasta__dibujo--recibe {
+  animation: recibe 0.45s ease;
+}
+
+.mas-uno {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  z-index: 5;
+  font-family: var(--f-logo);
+  font-size: 2rem;
+  color: var(--cacao-700);
+  text-shadow: 0 2px 0 var(--crema-50);
+  pointer-events: none;
+  animation: subir 0.9s ease forwards;
+}
+
+.fantasma {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  pointer-events: none;
+  filter: drop-shadow(0 12px 10px rgba(40, 19, 9, 0.35));
+}
+
+.arrastrando,
+.arrastrando * {
+  cursor: grabbing !important;
+  user-select: none;
+}
+
+/* ---------- Ticket ---------- */
+
+.ticket {
+  position: relative;
+  margin-top: 18px;
+  padding: 18px 20px 22px;
+  text-align: left;
+  background: var(--crema-50);
+  border-radius: 6px 6px 0 0;
+  /* drop-shadow (y no box-shadow) para que la sombra siga también el borde arrancado */
+  filter: drop-shadow(0 10px 10px rgba(40, 19, 9, 0.28));
+}
+
+/* borde de abajo arrancado: el mismo papel termina en picos irregulares hacia abajo */
+.ticket::after {
+  content: "";
+  position: absolute;
+  top: calc(100% - 1px);
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 12'%3E%3Cpath d='M0 0H64V6L61 10L58 4L55 11L51 5L48 9L44 3L41 10L37 6L34 12L30 4L27 9L23 5L20 11L16 4L13 8L9 3L6 10L3 5L0 6Z' fill='%23fdf0dc'/%3E%3C/svg%3E") 0 0 / 64px 12px repeat-x;
+}
+
+.ticket__titulo {
+  margin: 0 0 6px;
+  font-family: var(--f-mano);
+  font-weight: 400;
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--cacao-800);
+}
+
+.ticket__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ticket__item {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1.5px dashed var(--crema-400);
+  animation: aparecer 0.3s ease;
+}
+
+.ticket__nombre {
+  font-weight: 700;
+  color: var(--cacao-900);
+}
+
+.cantidad {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cantidad__boton {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 2px solid var(--cacao-600);
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--cacao-800);
+  background: var(--crema-100);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cantidad__boton:hover {
+  background: var(--miel-300);
+}
+
+.cantidad__numero {
+  min-width: 22px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.ticket__sacar {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--cacao-600);
+  background: none;
+  cursor: pointer;
+}
+
+.ticket__sacar:hover {
+  color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+}
+
+.ticket__vacio {
+  margin: 10px 0 4px;
+  font-family: var(--f-mano);
+  font-size: 1.15rem;
+  text-align: center;
+  color: var(--cacao-600);
+}
+
+.ticket__etiqueta {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 700;
+  color: var(--cacao-800);
+}
+
+.ticket__etiqueta span {
+  font-weight: 400;
+  color: var(--cacao-600);
+}
+
+.ticket__notas {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid var(--crema-400);
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--cacao-900);
+  background: #fffaf2;
+  resize: vertical;
+}
+
+.ticket__notas:focus {
+  border-color: var(--miel-600);
+  outline: none;
+}
+
+.ticket__enviar {
+  width: 100%;
+  min-width: 0;
+  min-height: 64px;
+  margin-top: 16px;
+  padding: 10px 22px;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.ticket__enviar.esta-deshabilitado {
+  filter: grayscale(0.5);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ticket__enviar.esta-deshabilitado:hover {
+  transform: none;
+}
+
+.ticket__ayuda {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  text-align: center;
+  color: var(--cacao-600);
+}
+
+.ticket__vaciar {
+  display: block;
+  margin: 8px auto 0;
+  padding: 4px 8px;
+  border: 0;
+  font-size: 0.85rem;
+  color: var(--cacao-600);
+  text-decoration: underline;
+  background: none;
+  cursor: pointer;
+}
+
+/* ---------- Barra de celular y aviso ---------- */
+
+.barra-pedido {
+  display: none;
+}
+
+.aviso {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  z-index: 60;
+  max-width: calc(100% - 32px);
+  padding: 10px 20px;
+  font-weight: 700;
+  color: var(--crema-50);
+  background: var(--cacao-800);
+  border-radius: 999px;
+  box-shadow: 0 10px 20px rgba(40, 19, 9, 0.35);
+  opacity: 0;
+  transform: translate(-50%, 20px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+}
+
+.aviso.es-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* ---------- Animaciones ---------- */
+
+@keyframes caer {
+  0% {
+    opacity: 0;
+    transform: translateY(-220%) rotate(calc(var(--giro) - 40deg));
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(8%) rotate(var(--giro));
+  }
+  78% {
+    transform: translateY(-10%) rotate(var(--giro));
+  }
+  100% {
+    transform: translateY(0) rotate(var(--giro));
+  }
+}
+
+@keyframes salir {
+  to {
+    opacity: 0;
+    transform: translateY(-90%) scale(0.4) rotate(var(--giro));
+  }
+}
+
+@keyframes recibe {
+  30% { transform: scale(1.06, 0.94); }
+  60% { transform: scale(0.98, 1.03); }
+}
+
+@keyframes subir {
+  from { opacity: 1; transform: translate(-50%, 0) scale(0.8); }
+  to { opacity: 0; transform: translate(-50%, -70px) scale(1.2); }
+}
+
+@keyframes saltito {
+  40% { transform: translateY(-12px) rotate(-8deg) scale(1.06); }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateX(-8px); }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .pedido__juego {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: 96px; /* lugar para la barrita de abajo */
+  }
+
+  .canasta {
+    position: static;
+  }
+
+  .estanteria {
+    --fila: 164px;
+    --tabla: 92px;
+    padding: 12px 10px 4px;
+    border-width: 10px;
+  }
+
+  .estanteria__lista {
+    grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  }
+
+  /* en celular los nombres largos pueden ir en dos renglones */
+  .producto__nombre {
+    white-space: normal;
+  }
+
+  .producto {
+    padding-top: 14px;
+    cursor: pointer;
+  }
+
+  .producto img {
+    width: 76px;
+    height: 76px;
+  }
+
+  .producto__mas {
+    top: 8px;
+    right: calc(50% - 46px);
+  }
+
+  .producto__nombre {
+    margin-top: 18px;
+    font-size: 0.98rem;
+  }
+
+  /* en pantallas táctiles no se arrastra: se toca */
+  .pedido__o b {
+    font-size: 1.1em;
+  }
+
+  .barra-pedido {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    z-index: 45;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 18px 8px 10px;
+    color: var(--crema-50);
+    text-decoration: none;
+    background: var(--veta), linear-gradient(180deg, #7d4c2a, var(--cacao-700));
+    border-radius: 999px;
+    box-shadow: 0 0 0 3px var(--crema-200), 0 12px 24px rgba(40, 19, 9, 0.45);
+    transform: translateY(160%);
+    transition: transform 0.3s ease;
+  }
+
+  .barra-pedido.tiene-algo:not(.canasta-visible) {
+    transform: none;
+  }
+
+  .barra-pedido__canasta {
+    position: relative;
+    flex: none;
+    width: 58px;
+    aspect-ratio: 400 / 260;
+  }
+
+  .barra-pedido__canasta img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+  }
+
+  .barra-pedido strong {
+    font-family: var(--f-logo);
+    font-weight: 400;
+    font-size: 1.4rem;
+    color: var(--miel-300);
+  }
+
+  .barra-pedido__ver {
+    margin-left: auto;
+    font-family: var(--f-mano);
+    font-size: 1.15rem;
+  }
+
+  .aviso {
+    bottom: 90px;
+  }
+}

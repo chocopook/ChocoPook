@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: budín glaseado con una porción cortada -->
+  <g stroke="#4f2e18" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M8 84l4-22q1-6 7-6h44q6 0 7 6l4 22q0 4-4 4H12q-4 0-4-4z" fill="#c98a4b"/>
+    <path d="M12 60c4-13 18-19 31-19s27 6 31 19z" fill="#a8692f"/>
+    <path d="M13 58c5-10 16-15 30-15s25 5 30 15c-1 5-4 6-5 2-2 6-6 6-7 0-2 7-7 7-8 0-2 5-6 5-7-1-2 6-7 6-8 0-2 5-6 4-6-1-3 4-6 3-6-1-3 3-5 1-5-2z" fill="#fffaf0"/>
+    <!-- porción -->
+    <path d="M76 88l4-30q1-5 6-5h2q5 0 6 5l2 30z" fill="#a8692f"/>
+    <path d="M79 86l3-25q1-4 5-4h1q4 0 5 4l2 25z" fill="#f4d58f" stroke-width="2"/>
+  </g>
+  <path d="M20 72h46M18 80h50" stroke="#b5773d" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
+  <g fill="#e2b866">
+    <circle cx="86" cy="68" r="1.5"/>
+    <circle cx="89" cy="77" r="1.3"/>
+    <circle cx="84" cy="81" r="1.2"/>
+  </g>
+  <path d="M26 49q8-4 16-4" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+</svg>

@@ -39,14 +39,6 @@
     });
   }
 
-  // Cada ítem del libro-menú lleva al post de su receta.
-  function iniciarRecetas() {
-    const recetas = config.recetas || {};
-    document.querySelectorAll("[data-receta]").forEach((enlace) => {
-      asignarDestino(enlace, recetas[enlace.dataset.receta]);
-    });
-  }
-
   /* ---------- Galería: visor de fotos ---------- */
 
   function iniciarVisor() {
@@ -145,6 +137,8 @@
 
   // Marca en la barra la sección que se está viendo.
   function iniciarSeccionActiva() {
+    // En páginas aparte (como pedido.html) la barra ya marca la página fija.
+    if (document.querySelector(".nav__enlaces a[aria-current='page']")) return;
     const enlaces = [...document.querySelectorAll(".nav__enlaces a[href^='#']")];
     const destinos = enlaces.map((enlace) => document.querySelector(enlace.hash));
     let programado = false;
@@ -189,7 +183,6 @@
   /* ---------- Arranque ---------- */
 
   iniciarRedes();
-  iniciarRecetas();
   iniciarVisor();
   iniciarRecetaDelDia();
   iniciarMenuMovil();

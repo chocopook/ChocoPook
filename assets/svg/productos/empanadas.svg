@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: empanada al horno con repulgue -->
+  <defs>
+    <radialGradient id="dorado" cx="45%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#f3c77c"/>
+      <stop offset=".7" stop-color="#e3a656"/>
+      <stop offset="1" stop-color="#c98538"/>
+    </radialGradient>
+  </defs>
+  <path d="M10 72C12 42 32 28 50 28s38 14 40 44q-40 9-80 0z" fill="url(#dorado)" stroke="#4f2e18" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M14 68C17 44 34 33 50 33s33 11 36 35" fill="none" stroke="#d6974b" stroke-width="8" stroke-linecap="round"/>
+  <path d="M14 68C17 44 34 33 50 33s33 11 36 35" fill="none" stroke="#b07434" stroke-width="7" stroke-dasharray=".5 7.5" stroke-linecap="round"/>
+  <path d="M30 52q9-8 22-9" fill="none" stroke="#f9dca0" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+  <g fill="#b07434" opacity=".55">
+    <circle cx="58" cy="56" r="1.8"/>
+    <circle cx="44" cy="62" r="1.5"/>
+    <circle cx="66" cy="64" r="1.5"/>
+  </g>
+</svg>

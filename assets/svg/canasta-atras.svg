@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" width="400" height="260">
+  <!-- Canasta del pedido, capa de atrás: borde trasero, interior con servilleta y asa.
+       Los productos se apilan entre esta capa y canasta-frente.svg (mismo viewBox).
+       Generada con un script. -->
+  <defs>
+    <pattern id="cuadrille-atras" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(16)">
+      <rect width="18" height="18" fill="#fdf3e1"/>
+      <rect width="9" height="18" fill="#efb566" opacity=".6"/>
+      <rect width="18" height="9" fill="#efb566" opacity=".6"/>
+    </pattern>
+    <clipPath id="boca"><ellipse cx="200" cy="134" rx="170" ry="38"/></clipPath>
+    <linearGradient id="sombra-atras" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f220e" stop-opacity=".42"/>
+      <stop offset=".38" stop-color="#3f220e" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="sombra-lados" cx="50%" cy="50%" r="50%">
+      <stop offset=".72" stop-color="#3f220e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3f220e" stop-opacity=".3"/>
+    </radialGradient>
+  </defs>
+
+  <!-- boca: la servilleta forra todo el interior -->
+  <g clip-path="url(#boca)">
+    <rect x="30" y="96" width="340" height="76" fill="url(#cuadrille-atras)"/>
+    <path d="M70 120q40 16 76 6M224 112q44 18 96 10M140 148q50 8 110 0" fill="none" stroke="#c98a4b" stroke-width="2.5" stroke-linecap="round" opacity=".35"/>
+    <ellipse cx="200" cy="134" rx="170" ry="38" fill="url(#sombra-atras)"/>
+    <ellipse cx="200" cy="134" rx="170" ry="38" fill="url(#sombra-lados)"/>
+  </g>
+
+  <!-- borde trasero trenzado -->
+  <path d="M30 134L30.5 131L32.1 128.1L34.7 125.1L38.3 122.3L42.9 119.5L48.5 116.7L55.1 114.1L62.5 111.7L70.7 109.3L79.8 107.1L89.6 105.1L100.1 103.3L111.2 101.6L122.8 100.1L134.9 98.9L147.5 97.9L160.3 97L173.4 96.5L186.7 96.1L200 96L213.3 96.1L226.6 96.5L239.7 97L252.5 97.9L265.1 98.9L277.2 100.1L288.8 101.6L299.9 103.3L310.4 105.1L320.2 107.1L329.3 109.3L337.5 111.7L344.9 114.1L351.5 116.7L357.1 119.5L361.7 122.3L365.3 125.1L367.9 128.1L369.5 131L370 134" fill="none" stroke="#4f2e18" stroke-width="22" stroke-linecap="round"/>
+  <path d="M30 134L30.5 131L32.1 128.1L34.7 125.1L38.3 122.3L42.9 119.5L48.5 116.7L55.1 114.1L62.5 111.7L70.7 109.3L79.8 107.1L89.6 105.1L100.1 103.3L111.2 101.6L122.8 100.1L134.9 98.9L147.5 97.9L160.3 97L173.4 96.5L186.7 96.1L200 96L213.3 96.1L226.6 96.5L239.7 97L252.5 97.9L265.1 98.9L277.2 100.1L288.8 101.6L299.9 103.3L310.4 105.1L320.2 107.1L329.3 109.3L337.5 111.7L344.9 114.1L351.5 116.7L357.1 119.5L361.7 122.3L365.3 125.1L367.9 128.1L369.5 131L370 134" fill="none" stroke="#d9a565" stroke-width="15" stroke-linecap="round"/>
+  <path d="M25 128L35 140M25.7 124.5L35.7 136.5M27.9 121L37.9 133M31.5 117.6L41.5 129.6M36.5 114.3L46.5 126.3M42.8 111.1L52.8 123.1M50.5 108L60.5 120M59.3 105.1L69.3 117.1M69.4 102.4L79.4 114.4M80.5 99.9L90.5 111.9M92.6 97.7L102.6 109.7M105.5 95.7L115.5 107.7M119.2 94L129.2 106M133.6 92.6L143.6 104.6M148.5 91.5L158.5 103.5M163.8 90.6L173.8 102.6M179.3 90.2L189.3 102.2M195 90L205 102M210.7 90.2L220.7 102.2M226.2 90.6L236.2 102.6M241.5 91.5L251.5 103.5M256.4 92.6L266.4 104.6M270.8 94L280.8 106M284.5 95.7L294.5 107.7M297.4 97.7L307.4 109.7M309.5 99.9L319.5 111.9M320.6 102.4L330.6 114.4M330.7 105.1L340.7 117.1M339.5 108L349.5 120M347.2 111.1L357.2 123.1M353.5 114.3L363.5 126.3M358.5 117.6L368.5 129.6M362.1 121L372.1 133M364.3 124.5L374.3 136.5M365 128L375 140" fill="none" stroke="#8a5530" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+
+  <!-- asa envuelta, de lado a lado -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M44 136C44 40 120 12 200 12S356 40 356 136" stroke="#4f2e18" stroke-width="22"/>
+    <path d="M44 136C44 40 120 12 200 12S356 40 356 136" stroke="#d9a565" stroke-width="14"/>
+    <path d="M44 136C44 40 120 12 200 12S356 40 356 136" stroke="#8a5530" stroke-width="14" stroke-dasharray="3 11" opacity=".7"/>
+    <path d="M58 114C64 56 124 26 196 25" stroke="#f0c88c" stroke-width="3" opacity=".9"/>
+  </g>
+
+  <!-- moño en el asa -->
+  <g transform="translate(78 62) rotate(-38)" stroke="#4f2e18" stroke-width="3.5" stroke-linejoin="round">
+    <path d="M0 0c-14-12-30-10-30 0s16 12 30 0z" fill="#efb566"/>
+    <path d="M0 0c14-12 30-10 30 0s-16 12-30 0z" fill="#efb566"/>
+    <path d="M-3 3l-10 24 7-3 4 7 4-27zM3 3l10 24-7-3-4 7-4-27z" fill="#e09c48"/>
+    <circle r="6" fill="#f5c47a"/>
+  </g>
+</svg>

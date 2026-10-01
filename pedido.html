@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Armá tu pedido · Chocopook</title>
+  <meta name="description" content="Armá tu pedido de Chocopook: elegí budines, cookies, alfajores, tartas, empanadas y más, y envialo por WhatsApp.">
+  <meta name="theme-color" content="#724423">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Armá tu pedido · Chocopook">
+  <meta property="og:description" content="Elegí tus delicias y mandanos el pedido por WhatsApp.">
+  <link rel="icon" href="assets/svg/oso-cabeza.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&family=Nunito:wght@400;600;700;800&family=Schoolbell&display=swap">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/local.css">
+  <link rel="stylesheet" href="css/pie.css">
+  <link rel="stylesheet" href="css/pedido.css">
+
+  <script src="js/config.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/pedido.js" defer></script>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- La barra y el pie son los mismos que en index.html: si se cambian, cambiar los dos. -->
+  <header class="barra">
+    <nav class="nav nav--con-marca contenedor" aria-label="Principal">
+      <a class="nav__marca" href="index.html">
+        <img src="assets/svg/oso-cabeza.svg" alt="" width="258" height="205">
+        <span>Chocopook</span>
+      </a>
+
+      <ul class="nav__enlaces" id="nav-menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#nosotros">Nuestra pastelería</a></li>
+        <li><a href="index.html#menu">Menú</a></li>
+        <li><a href="pedido.html" aria-current="page">Pedidos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+
+      <div class="nav__redes">
+        <a href="#contacto" data-link="instagram" aria-label="Instagram de Chocopook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#contacto" data-link="whatsapp" aria-label="Escribinos por WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 20.3l1.3-4A8.6 8.6 0 1 1 8.5 19.3z"/><path d="M9.3 8.1c.3-.6.9-.6 1.2-.2l.8 1.3c.2.4.1.8-.2 1.1l-.5.4c.5 1.1 1.4 2 2.6 2.6l.4-.5c.3-.3.7-.4 1.1-.2l1.3.8c.4.3.4.9-.2 1.2-.9.5-1.9.6-2.8.2-2-.8-3.5-2.4-4.3-4.3-.4-.9-.3-1.9.2-2.8z" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="index.html#nosotros" aria-label="Nuestra historia">
+          <svg viewBox="0 0 24 22" fill="currentColor" aria-hidden="true"><path d="M12 20.5C4 14.5 1.5 10.5 1.5 6.8 1.5 3.6 4 1.5 6.8 1.5c2.2 0 4.1 1.3 5.2 3.1 1.1-1.8 3-3.1 5.2-3.1 2.8 0 5.3 2.1 5.3 5.3 0 3.7-2.5 7.7-10.5 13.7z"/></svg>
+        </a>
+      </div>
+
+      <button class="nav__boton" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="contenido" class="local pedido">
+    <div class="toldo" aria-hidden="true"></div>
+    <img class="local__colgante" src="assets/svg/planta-colgante.svg" alt="" width="130" height="400" aria-hidden="true">
+
+    <div class="pedido__cabecera contenedor">
+      <h1 class="cartel">Armá tu pedido<span class="corazon" aria-hidden="true"></span></h1>
+      <p class="pedido__intro">
+        Arrastrá tus delicias favoritas hasta la canasta <span class="pedido__o">(o tocá el <b>+</b>)</span>.
+        Cuando esté todo, mandanos el pedido por WhatsApp y coordinamos sabores, cantidades y entrega.
+      </p>
+    </div>
+
+    <div class="pedido__juego contenedor">
+      <!-- Estantería: los productos salen de js/config.js (productos) -->
+      <section class="estanteria" aria-label="Productos">
+        <div class="estanteria__grupo">
+          <h2 class="estanteria__titulo">Dulce<span class="corazon" aria-hidden="true"></span></h2>
+          <ul class="estanteria__lista" data-tipo="dulce"></ul>
+        </div>
+        <div class="estanteria__grupo">
+          <h2 class="estanteria__titulo">Salado<span class="corazon" aria-hidden="true"></span></h2>
+          <ul class="estanteria__lista" data-tipo="salado"></ul>
+        </div>
+        <noscript>
+          <p class="estanteria__sin-js">Para armar tu pedido acá necesitás tener JavaScript activado. También podés escribirnos directo por WhatsApp.</p>
+        </noscript>
+      </section>
+
+      <!-- Canasta (zona donde se sueltan los productos) y ticket del pedido -->
+      <section class="canasta" id="canasta" aria-labelledby="titulo-canasta">
+        <h2 class="canasta__titulo" id="titulo-canasta">Tu canasta</h2>
+
+        <div class="canasta__dibujo" data-zona>
+          <img class="canasta__capa" src="assets/svg/canasta-atras.svg" alt="" width="400" height="260">
+          <div class="canasta__pila" aria-hidden="true"></div>
+          <img class="canasta__capa" src="assets/svg/canasta-frente.svg" alt="" width="400" height="260">
+          <span class="canasta__soltar" aria-hidden="true">¡Soltalo acá!</span>
+        </div>
+
+        <div class="ticket">
+          <h3 class="ticket__titulo">Tu pedido</h3>
+          <ul class="ticket__lista" aria-label="Productos en tu pedido"></ul>
+          <p class="ticket__vacio">Todavía no elegiste nada. ¡Arrastrá algo rico a la canasta!</p>
+
+          <label class="ticket__etiqueta" for="notas">Aclaraciones <span>(opcional)</span></label>
+          <textarea class="ticket__notas" id="notas" rows="3" placeholder="Sabores, para qué día lo necesitás, retiro o envío…"></textarea>
+
+          <a class="boton boton--wa ticket__enviar" href="#" data-enviar>
+            <svg class="boton__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 20.3l1.3-4A8.6 8.6 0 1 1 8.5 19.3z"/><path d="M9.3 8.1c.3-.6.9-.6 1.2-.2l.8 1.3c.2.4.1.8-.2 1.1l-.5.4c.5 1.1 1.4 2 2.6 2.6l.4-.5c.3-.3.7-.4 1.1-.2l1.3.8c.4.3.4.9-.2 1.2-.9.5-1.9.6-2.8.2-2-.8-3.5-2.4-4.3-4.3-.4-.9-.3-1.9.2-2.8z" fill="currentColor" stroke="none"/></svg>
+            <span>Hacer pedido por WhatsApp</span>
+          </a>
+          <p class="ticket__ayuda">Se abre WhatsApp con tu pedido listo para enviar. Los precios los coordinamos por ahí.</p>
+          <button class="ticket__vaciar" type="button">Vaciar canasta</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="mostrador" aria-hidden="true">
+      <div class="mostrador__tapa"></div>
+      <div class="mostrador__frente">
+        <img class="mostrador__oso" src="assets/svg/oso-cabeza.svg" alt="" width="258" height="205">
+      </div>
+    </div>
+  </main>
+
+  <!-- En celular: acceso rápido a la canasta mientras se recorre la estantería -->
+  <a class="barra-pedido" href="#canasta" data-barra-pedido>
+    <span class="barra-pedido__canasta" aria-hidden="true">
+      <img src="assets/svg/canasta-atras.svg" alt="" width="400" height="260">
+      <img src="assets/svg/canasta-frente.svg" alt="" width="400" height="260">
+    </span>
+    <span><strong data-total>0</strong> en tu canasta</span>
+    <span class="barra-pedido__ver">Ver pedido ›</span>
+  </a>
+
+  <p class="visualmente-oculto" aria-live="polite" data-anuncio></p>
+  <div class="aviso" role="status" data-aviso></div>
+
+  <footer class="pie" id="contacto">
+    <div class="pie__interior contenedor">
+      <a class="pie__marca" href="index.html">
+        <img src="assets/svg/oso-cabeza.svg" alt="" width="258" height="205">
+        <span>
+          <span class="pie__nombre">Chocopook</span>
+          <span class="pie__lema">Pastelería artesanal</span>
+        </span>
+      </a>
+
+      <ul class="pie__contacto">
+        <li>
+          <a href="#contacto" data-link="instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.2"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a href="#contacto" data-link="whatsapp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" aria-hidden="true"><path d="M3.8 20.3l1.3-4A8.6 8.6 0 1 1 8.5 19.3z"/><path d="M9.3 8.1c.3-.6.9-.6 1.2-.2l.8 1.3c.2.4.1.8-.2 1.1l-.5.4c.5 1.1 1.4 2 2.6 2.6l.4-.5c.3-.3.7-.4 1.1-.2l1.3.8c.4.3.4.9-.2 1.2-.9.5-1.9.6-2.8.2-2-.8-3.5-2.4-4.3-4.3-.4-.9-.3-1.9.2-2.8z" fill="currentColor" stroke="none"/></svg>
+            WhatsApp
+          </a>
+        </li>
+        <li>
+          <span>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5a7 7 0 0 0-7 7c0 5.2 7 12 7 12s7-6.8 7-12a7 7 0 0 0-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"/></svg>
+            Buenos Aires, Argentina
+          </span>
+        </li>
+      </ul>
+
+      <p class="pie__firma">
+        Hecho con amor <span class="corazon" aria-hidden="true"></span> · © <span data-anio>2026</span> Chocopook
+      </p>
+    </div>
+  </footer>
+</body>
+</html>

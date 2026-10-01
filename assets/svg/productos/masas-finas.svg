@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: masas finas sobre una blonda (profiterol, bombón en pirotín y tartita de frutilla) -->
+  <defs>
+    <radialGradient id="masa-choux" cx="40%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#f6cf86"/><stop offset=".7" stop-color="#dfa255"/><stop offset="1" stop-color="#bf7f36"/>
+    </radialGradient>
+    <linearGradient id="chocolate" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7a4a2a"/><stop offset="1" stop-color="#3f220e"/>
+    </linearGradient>
+    <linearGradient id="pirotin" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5e3520"/><stop offset=".5" stop-color="#8a5530"/><stop offset="1" stop-color="#5e3520"/>
+    </linearGradient>
+    <linearGradient id="tartita" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c98a4b"/><stop offset=".45" stop-color="#e8b874"/><stop offset="1" stop-color="#b9783a"/>
+    </linearGradient>
+    <radialGradient id="frutilla" cx="38%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ef6a5c"/><stop offset="1" stop-color="#c2352b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- blonda de papel calado -->
+  <ellipse cx="50" cy="80" rx="46" ry="13" fill="#fffaf2" stroke="#4f2e18" stroke-width="3"/>
+  <ellipse cx="50" cy="80" rx="40" ry="9.5" fill="none" stroke="#eadcc6" stroke-width="2.5" stroke-dasharray="1.5 3.5" stroke-linecap="round"/>
+
+  <!-- profiterol (atrás, al centro) -->
+  <g stroke="#4f2e18" stroke-width="3" stroke-linejoin="round">
+    <path d="M30 52c-3-13 6-24 20-24s23 11 20 24c-5 5-35 5-40 0z" fill="url(#masa-choux)"/>
+  </g>
+  <path d="M32 50c8 4 28 4 36 0" fill="none" stroke="#fff6e0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M38 38q4-6 10-6M56 34q4 2 6 7" fill="none" stroke="#b5773d" stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
+  <!-- azúcar impalpable -->
+  <path d="M38 32c5-6 19-6 24 0-2 4-21 4-24 0z" fill="#fffdf8" opacity=".9"/>
+  <g fill="#fffdf8">
+    <circle cx="35" cy="38" r="1.1"/><circle cx="44" cy="41" r="1"/><circle cx="62" cy="39" r="1.1"/><circle cx="66" cy="44" r=".9"/>
+  </g>
+
+  <!-- bombón de chocolate en pirotín (adelante, izquierda) -->
+  <g stroke="#4f2e18" stroke-width="3" stroke-linejoin="round">
+    <path d="M12 66h32l-4 15q-.6 3-3.6 3H19.6q-3 0-3.6-3z" fill="url(#pirotin)"/>
+    <path d="M13 66c0-11 7-17 15-17s15 6 15 17c-4 3-26 3-30 0z" fill="url(#chocolate)"/>
+  </g>
+  <path d="M18 69l2 13M23 69l1 14M28 69v14M33 69l-1 14M38 69l-2 13" stroke="#3f220e" stroke-width="1.6" opacity=".55"/>
+  <path d="M17 58l4 3 4-4 4 4 4-4 4 3 3-2" fill="none" stroke="#fff6e0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20 54q4-4 9-4" fill="none" stroke="#a0704a" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- tartita de frutilla (adelante, derecha) -->
+  <g stroke="#4f2e18" stroke-width="3" stroke-linejoin="round">
+    <path d="M55 66h34l-4 14q-1 4-5 4H64q-4 0-5-4z" fill="url(#tartita)"/>
+    <path d="M58 66c0-6 6-9 14-9s14 3 14 9c-4 2-24 2-28 0z" fill="#fff6e0"/>
+  </g>
+  <path d="M60 70l2 12M65 70l1 13M70 70v13M75 70l-1 13M80 70l-2 12" stroke="#a96c3a" stroke-width="1.8" opacity=".6"/>
+  <g stroke="#4f2e18" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M65 58c-1-8 3-13 7-13s8 5 7 13c-3 3-11 3-14 0z" fill="url(#frutilla)"/>
+    <path d="M67 46c2-4 8-4 10 0-3 2-7 2-10 0z" fill="#6f9a52"/>
+  </g>
+  <g fill="#fbe3a0">
+    <circle cx="69" cy="52" r=".9"/><circle cx="74" cy="51" r=".9"/><circle cx="71" cy="56" r=".9"/><circle cx="76" cy="55" r=".8"/>
+  </g>
+  <ellipse cx="68.5" cy="50" rx="1.8" ry="3" fill="#fff" opacity=".55"/>
+</svg>

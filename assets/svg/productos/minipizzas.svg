@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: minipizza -->
+  <circle cx="50" cy="52" r="36" fill="#d9a35e" stroke="#4f2e18" stroke-width="3.5"/>
+  <circle cx="50" cy="52" r="29" fill="#d9483e"/>
+  <path d="M30 44c4-8 14-12 22-9 6-6 16-2 18 6 7 3 8 12 3 17 2 8-6 14-13 11-5 6-15 6-19 0-8 1-14-6-12-12-5-4-4-11 1-13z" fill="#f6d58a"/>
+  <g fill="#c73a32" stroke="#4f2e18" stroke-width="1.6">
+    <circle cx="40" cy="46" r="6"/>
+    <circle cx="62" cy="58" r="6"/>
+  </g>
+  <g fill="#e05a4c">
+    <circle cx="40" cy="46" r="3.2"/>
+    <circle cx="62" cy="58" r="3.2"/>
+  </g>
+  <g fill="#3a2a22">
+    <circle cx="58" cy="40" r="3.4"/>
+    <circle cx="42" cy="64" r="3.4"/>
+    <circle cx="66" cy="46" r="2.8"/>
+  </g>
+  <g fill="#d9a35e">
+    <circle cx="58" cy="40" r="1.2"/>
+    <circle cx="42" cy="64" r="1.2"/>
+    <circle cx="66" cy="46" r="1"/>
+  </g>
+  <g fill="#6f9a52">
+    <ellipse cx="50" cy="54" rx="4.5" ry="2.4" transform="rotate(-30 50 54)"/>
+    <ellipse cx="54" cy="52" rx="4" ry="2.2" transform="rotate(40 54 52)"/>
+  </g>
+</svg>

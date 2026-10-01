@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: torta matera (rosca con azúcar impalpable) -->
+  <g stroke="#4f2e18" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- costado con canaletas -->
+    <path d="M12 52c0 4 1 26 4 30q2 4 8 4h52q6 0 8-4c3-4 4-26 4-30z" fill="#c98a4b"/>
+    <!-- cara de arriba ondulada -->
+    <path d="M12 52c0-8 4-14 10-14 2-5 8-8 14-6 4-4 10-4 14-2 4-2 10-2 14 2 6-2 12 1 14 6 6 0 10 6 10 14-4 6-12 10-38 10S16 58 12 52z" fill="#e2b06e"/>
+  </g>
+  <g fill="none" stroke="#a8692f" stroke-width="3" stroke-linecap="round">
+    <path d="M22 62v20M36 64v22M50 64v22M64 64v22M78 62v20"/>
+  </g>
+  <ellipse cx="50" cy="48" rx="10" ry="4.5" fill="#6b3f22" stroke="#4f2e18" stroke-width="2.5"/>
+  <g fill="#fffaf0">
+    <circle cx="22" cy="48" r="1.6"/><circle cx="28" cy="42" r="1.4"/><circle cx="36" cy="52" r="1.6"/>
+    <circle cx="40" cy="40" r="1.3"/><circle cx="62" cy="40" r="1.4"/><circle cx="66" cy="52" r="1.6"/>
+    <circle cx="74" cy="44" r="1.5"/><circle cx="80" cy="50" r="1.3"/><circle cx="30" cy="56" r="1.2"/>
+    <circle cx="56" cy="56" r="1.3"/><circle cx="46" cy="58" r="1.1"/><circle cx="72" cy="56" r="1.2"/>
+  </g>
+</svg>

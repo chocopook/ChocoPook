@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: plato de tallarines con salsa de tomate, albahaca y tenedor -->
+  <defs>
+    <linearGradient id="loza" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e6dccd"/>
+    </linearGradient>
+    <radialGradient id="fideos" cx="45%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#f6d58a"/><stop offset="1" stop-color="#d9a24a"/>
+    </radialGradient>
+    <radialGradient id="salsa" cx="38%" cy="32%" r="70%">
+      <stop offset="0" stop-color="#ef6a52"/><stop offset="1" stop-color="#b92f26"/>
+    </radialGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a7abb2"/><stop offset=".5" stop-color="#f1f2f4"/><stop offset="1" stop-color="#9aa0a8"/>
+    </linearGradient>
+    <clipPath id="monton"><path d="M18 66c0-16 14-30 32-30s32 14 32 30c-9 7-55 7-64 0z"/></clipPath>
+  </defs>
+
+  <!-- plato -->
+  <ellipse cx="50" cy="71" rx="46" ry="17" fill="url(#loza)" stroke="#4f2e18" stroke-width="3"/>
+  <ellipse cx="50" cy="69" rx="34" ry="11" fill="#f2ebe1"/>
+
+  <!-- tenedor clavado (el mango asoma arriba a la derecha) -->
+  <path d="M60 48L84 12" stroke="#4f2e18" stroke-width="9" stroke-linecap="round"/>
+  <path d="M60 48L84 12" stroke="url(#metal)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M68 37L81 17" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
+
+  <!-- montón de fideos enroscados -->
+  <path d="M18 66c0-16 14-30 32-30s32 14 32 30c-9 7-55 7-64 0z" fill="url(#fideos)" stroke="#4f2e18" stroke-width="3" stroke-linejoin="round"/>
+  <g clip-path="url(#monton)" fill="none" stroke-linecap="round">
+    <g stroke="#c98f34" stroke-width="5" opacity=".55">
+      <ellipse cx="50" cy="58" rx="30" ry="10"/>
+      <ellipse cx="49" cy="55" rx="22" ry="8"/>
+      <ellipse cx="51" cy="51" rx="15" ry="6"/>
+      <path d="M20 66c10 6 50 6 60 0"/>
+    </g>
+    <g stroke="#fbe6ae" stroke-width="2.2">
+      <ellipse cx="50" cy="57" rx="30" ry="10"/>
+      <ellipse cx="49" cy="54" rx="22" ry="8"/>
+      <ellipse cx="51" cy="50" rx="15" ry="6"/>
+      <path d="M20 65c10 6 50 6 60 0"/>
+    </g>
+  </g>
+  <!-- algunos fideos sueltos sobre el plato -->
+  <path d="M16 70c6 4 12 4 16 1M70 74c5 2 12 1 16-3" fill="none" stroke="#4f2e18" stroke-width="5" stroke-linecap="round"/>
+  <path d="M16 70c6 4 12 4 16 1M70 74c5 2 12 1 16-3" fill="none" stroke="#f3cf7a" stroke-width="2.6" stroke-linecap="round"/>
+
+  <!-- salsa de tomate -->
+  <path d="M33 47c-3-7 4-13 11-12 5-5 15-4 17 2 6 1 9 7 5 11-1 6-9 8-14 5-5 4-14 3-16-2-4 0-5-3-3-4z" fill="url(#salsa)" stroke="#4f2e18" stroke-width="2.6" stroke-linejoin="round"/>
+  <path d="M40 40q4-3 9-2" fill="none" stroke="#ffb3a3" stroke-width="2.4" stroke-linecap="round" opacity=".9"/>
+  <!-- queso rallado -->
+  <g fill="#fff6d6">
+    <rect x="44" y="45" width="3" height="1.6" rx=".8" transform="rotate(20 45 46)"/>
+    <rect x="53" y="43" width="3" height="1.6" rx=".8" transform="rotate(-30 54 44)"/>
+    <rect x="38" y="47" width="2.6" height="1.5" rx=".7" transform="rotate(50 39 48)"/>
+    <rect x="58" y="48" width="2.6" height="1.5" rx=".7"/>
+  </g>
+  <!-- albahaca -->
+  <g stroke="#4f2e18" stroke-width="2" stroke-linejoin="round">
+    <path d="M50 38c-2-8 3-13 11-13-1 8-5 12-11 13z" fill="#6f9a52"/>
+    <path d="M50 38c-7-4-13-2-15 4 7 2 12 0 15-4z" fill="#88b866"/>
+  </g>
+  <path d="M51 36l7-8M49 38l-9 2" stroke="#c7dca8" stroke-width="1.2" stroke-linecap="round"/>
+</svg>

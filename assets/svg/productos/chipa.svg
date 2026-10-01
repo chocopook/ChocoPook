@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: chipá (tres bolitas de queso) -->
+  <defs>
+    <radialGradient id="queso" cx="38%" cy="32%" r="70%">
+      <stop offset="0" stop-color="#f8dc94"/>
+      <stop offset="1" stop-color="#d79d4c"/>
+    </radialGradient>
+    <g id="bolita">
+      <path d="M0-19c11 0 19 8 19 18 0 11-8 20-19 20S-19 10-19-1c0-10 8-18 19-18z" fill="url(#queso)" stroke="#4f2e18" stroke-width="3.5"/>
+      <g fill="#b5773d">
+        <circle cx="-7" cy="4" r="2"/>
+        <circle cx="5" cy="-3" r="1.6"/>
+        <circle cx="7" cy="9" r="1.8"/>
+        <circle cx="-2" cy="12" r="1.4"/>
+      </g>
+      <path d="M-9-9q4-5 10-5" fill="none" stroke="#fff6d6" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <use href="#bolita" transform="translate(31 66)"/>
+  <use href="#bolita" transform="translate(69 66)"/>
+  <use href="#bolita" transform="translate(50 40)"/>
+</svg>
