@@ -1,19 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 10 112 96" width="112" height="96">
-  <!-- Cabeza del oso de Chocopook (favicon, barra en celular, pie y mostrador) -->
-  <g stroke="#573319" stroke-width="5">
-    <circle cx="25" cy="32" r="17" fill="#cd9d70"/>
-    <circle cx="95" cy="32" r="17" fill="#cd9d70"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="132 132 216 172" width="216" height="172">
+  <!-- Cabeza del oso de Chocopook (favicon, barra en celular, pie y mostrador). Misma forma que logo-oso.svg -->
+  <defs>
+    <radialGradient id="pelo" cx="45%" cy="38%" r="65%">
+      <stop offset="0" stop-color="#d4af8a"/>
+      <stop offset="1" stop-color="#c49a72"/>
+    </radialGradient>
+  </defs>
+  <g fill="#c49a72" stroke="#4f2e18" stroke-width="5">
+    <circle cx="164" cy="165" r="27"/>
+    <circle cx="316" cy="165" r="27"/>
   </g>
-  <circle cx="25" cy="32" r="8.5" fill="#e8c19a"/>
-  <circle cx="95" cy="32" r="8.5" fill="#e8c19a"/>
-  <ellipse cx="60" cy="62" rx="47" ry="40" fill="#cd9d70" stroke="#573319" stroke-width="5"/>
-  <ellipse cx="60" cy="76" rx="19" ry="13.5" fill="#f6dfc0"/>
-  <ellipse cx="31" cy="73" rx="7" ry="4.4" fill="#eea58f" opacity=".75"/>
-  <ellipse cx="89" cy="73" rx="7" ry="4.4" fill="#eea58f" opacity=".75"/>
-  <ellipse cx="42" cy="60" rx="5" ry="5.6" fill="#3f220e"/>
-  <ellipse cx="78" cy="60" rx="5" ry="5.6" fill="#3f220e"/>
-  <circle cx="43.6" cy="57.8" r="1.7" fill="#fff"/>
-  <circle cx="79.6" cy="57.8" r="1.7" fill="#fff"/>
-  <path d="M54.5 70.5q5.5-3.2 11 0-1.3 5-5.5 5.6-4.2-.6-5.5-5.6z" fill="#3f220e"/>
-  <path d="M60 76v3.6m0 0q-3.8 4.2-7.4.6m7.4-.6q3.8 4.2 7.4.6" fill="none" stroke="#3f220e" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="161" cy="162" r="14.5" fill="#a87a50"/>
+  <circle cx="319" cy="162" r="14.5" fill="#a87a50"/>
+  <path d="M240 155C285 155 316 160 328 186C337 205 342 230 341 252C340 285 300 300 240 300S140 285 139 252C138 230 143 205 152 186C164 160 195 155 240 155Z"
+        fill="url(#pelo)" stroke="#4f2e18" stroke-width="5" stroke-linejoin="round"/>
+  <ellipse cx="185" cy="262" rx="12.5" ry="7.5" fill="#ec9e8a" opacity=".5"/>
+  <ellipse cx="295" cy="262" rx="12.5" ry="7.5" fill="#ec9e8a" opacity=".5"/>
+  <ellipse cx="240" cy="259" rx="27" ry="19" fill="#f4dfc5"/>
+  <ellipse cx="198" cy="239" rx="6.2" ry="8.4" fill="#3a2212"/>
+  <ellipse cx="282" cy="239" rx="6.2" ry="8.4" fill="#3a2212"/>
+  <circle cx="199.8" cy="235.8" r="2.1" fill="#fff"/>
+  <circle cx="283.8" cy="235.8" r="2.1" fill="#fff"/>
+  <path d="M232.5 247.5c4.8-2.8 10.2-2.8 15 0 1.2.8 1.3 2.3.3 3.3l-4.5 4.7c-1.7 1.8-4.6 1.8-6.3 0l-4.5-4.7c-1-1-.9-2.5.3-3.3z" fill="#3a2212"/>
+  <path d="M240 255.8v3m0 0c-1.4 4.4-7.4 5.4-9.8 1.2m9.8-1.2c1.4 4.4 7.4 5.4 9.8 1.2"
+        fill="none" stroke="#3a2212" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
