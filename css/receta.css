@@ -191,6 +191,14 @@
 
 /* ---------- Responsive ---------- */
 
+/* sin margen a la derecha del contenedor: el post-it no puede asomar */
+@media (max-width: 1280px) {
+  .postit {
+    right: -6px;
+    bottom: -84px;
+  }
+}
+
 @media (max-width: 960px) {
   .receta-dia {
     width: min(100%, 560px);
