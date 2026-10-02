@@ -258,7 +258,7 @@
   }
 
   function mensaje() {
-    const saludo = (config.whatsappMensaje || "¡Hola Chocopook! Quiero hacer un pedido").trim().replace(/[.:!¡\s]+$/, "");
+    const saludo = ((config.whatsappMensajes || {}).pedido || "¡Hola Chocopook! Quiero hacer un pedido").trim().replace(/[.:!¡\s]+$/, "");
     const lineas = [...pedido].map(([id, n]) => `• ${n} × ${porId.get(id).nombre}`);
     let texto = `${saludo}:\n\n${lineas.join("\n")}`;
     const extra = notas.value.trim();

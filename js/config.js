@@ -7,20 +7,28 @@
  * en lugar de un link roto.
  */
 window.CHOCOPOOK_CONFIG = {
-  // Usuario de Instagram, sin @. Ej: "chocopook"  (PENDIENTE)
-  instagramUsuario: "",
+  // Usuario de Instagram, sin @.
+  instagramUsuario: "_chocopook",
 
-  // Número de WhatsApp con código de país y área, sin + ni espacios.
-  // Ej: "5491112345678"  (PENDIENTE)
-  whatsappNumero: "",
+  // Número de WhatsApp con código de país y área, sin + ni espacios (+54 9 11 3884-7362).
+  whatsappNumero: "5491138847362",
 
-  // Mensaje con el que se abre el chat de WhatsApp (también encabeza el pedido).
-  whatsappMensaje: "¡Hola Chocopook! Quiero hacer un pedido",
+  // Mensajes con los que se abre el chat de WhatsApp, según desde dónde se toque.
+  // Los links usan "consulta"; uno puede pedir otro con data-mensaje="<clave>".
+  whatsappMensajes: {
+    // íconos de WhatsApp de la barra y del pie
+    consulta: "¡Hola Chocopook! 😊 Quería hacerles una consulta",
+    // encabeza el pedido armado en pedido.html (abajo va la lista de productos)
+    pedido: "¡Hola Chocopook! Quiero hacer un pedido",
+  },
+
+  // Canal de YouTube (íconos de la barra y del pie).
+  youtubeCanal: "https://www.youtube.com/channel/UC5Ds7IoiO4v8Iz-b3Fk7sYQ",
 
   // Receta del día: link de YouTube (watch, youtu.be o shorts) o solo el ID.
   recetaDelDia: {
-    titulo: "Cookies de chocolate",
-    youtube: "", // PENDIENTE
+    titulo: "Torta de crema estilo Cry Baby",
+    youtube: "https://www.youtube.com/shorts/4wmpPvNakN0",
   },
 
   // Productos de la página "Armá tu pedido" (pedido.html).

@@ -1,6 +1,6 @@
 # Chocopook · Pastelería
 
-Sitio web de **Chocopook**, pastelería artesanal hecha con amor en Buenos Aires, Argentina.
+Sitio web de **Chocopook**, pastelería artesanal hecha con amor en Los Toldos, Argentina.
 
 Es una web estática (HTML + CSS + JavaScript, sin paso de compilación) pensada para publicarse en **GitHub Pages**.
 
@@ -31,11 +31,13 @@ Todo lo que cambia con frecuencia está en [`js/config.js`](js/config.js), así 
 
 | Dato | Clave | Ejemplo |
 | --- | --- | --- |
-| Usuario de Instagram | `instagramUsuario` | `"chocopook"` |
-| Número de WhatsApp | `whatsappNumero` | `"5491112345678"` (código de país + área, sin `+` ni espacios) |
-| Mensaje inicial de WhatsApp | `whatsappMensaje` | `"¡Hola Chocopook! Quiero hacer un pedido"` |
-| Video de la receta del día | `recetaDelDia.youtube` | link completo de YouTube o solo el ID |
-| Nombre de la receta del día | `recetaDelDia.titulo` | `"Cookies de chocolate"` |
+| Usuario de Instagram | `instagramUsuario` | `"_chocopook"` |
+| Número de WhatsApp | `whatsappNumero` | `"5491138847362"` (código de país + área, sin `+` ni espacios) |
+| Mensaje de los íconos de WhatsApp | `whatsappMensajes.consulta` | `"¡Hola Chocopook! 😊 Quería hacerles una consulta"` |
+| Encabezado del pedido por WhatsApp | `whatsappMensajes.pedido` | `"¡Hola Chocopook! Quiero hacer un pedido"` |
+| Canal de YouTube | `youtubeCanal` | link del canal |
+| Video de la receta del día | `recetaDelDia.youtube` | link completo de YouTube (watch, youtu.be o shorts) o solo el ID |
+| Nombre de la receta del día | `recetaDelDia.titulo` | `"Torta de crema estilo Cry Baby"` |
 | Productos del pedido | `productos` | `{ id: "cookies", nombre: "Cookies", tipo: "dulce" }` |
 
 Mientras un dato esté vacío, el sitio muestra un aviso de "¡Muy pronto!" en lugar de un link roto. El botón "Hacer pedido por WhatsApp" funciona apenas se cargue `whatsappNumero`.
@@ -76,6 +78,4 @@ Todas las rutas del sitio son relativas, así que funciona igual en una subcarpe
 
 ## Pendientes de contenido
 
-- [ ] Usuario de Instagram.
-- [ ] Número de WhatsApp para pedidos.
-- [ ] Video de la receta del día.
+Ninguno: Instagram, WhatsApp, YouTube y el video de la receta del día ya están cargados en `js/config.js`.

@@ -27,15 +27,21 @@
   function iniciarRedes() {
     const usuario = (config.instagramUsuario || "").trim().replace(/^@/, "");
     const numero = (config.whatsappNumero || "").replace(/\D/g, "");
-    const mensaje = config.whatsappMensaje ? `?text=${encodeURIComponent(config.whatsappMensaje)}` : "";
+    const mensajes = config.whatsappMensajes || {};
 
-    const destinos = {
-      instagram: usuario ? `https://www.instagram.com/${usuario}/` : "",
-      whatsapp: numero ? `https://wa.me/${numero}${mensaje}` : "",
+    // cada link de WhatsApp abre el chat con su mensaje (data-mensaje; por defecto, "consulta")
+    const whatsapp = (clave) => {
+      if (!numero) return "";
+      const texto = mensajes[clave] || mensajes.consulta || "";
+      return `https://wa.me/${numero}${texto ? `?text=${encodeURIComponent(texto)}` : ""}`;
     };
+    const instagram = usuario ? `https://www.instagram.com/${usuario}/` : "";
+    const youtube = (config.youtubeCanal || "").trim();
 
     document.querySelectorAll("[data-link]").forEach((enlace) => {
-      asignarDestino(enlace, destinos[enlace.dataset.link]);
+      const red = enlace.dataset.link;
+      const destinos = { instagram, youtube };
+      asignarDestino(enlace, red === "whatsapp" ? whatsapp(enlace.dataset.mensaje) : destinos[red] || "");
     });
   }
 
