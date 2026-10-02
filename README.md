@@ -42,7 +42,7 @@ Mientras un dato esté vacío, el sitio muestra un aviso de "¡Muy pronto!" en l
 
 Para sumar un producto: agregalo a `productos`, poné su dibujo en `assets/svg/productos/<id>.svg` (100 × 100) y su ítem en el libro del menú de `index.html` (`pedido.html?agregar=<id>`).
 
-Las fotos de la galería están en `assets/img/galeria/`. Hoy son ilustraciones provisorias en SVG: para cambiarlas por fotos reales, subí la foto (`.jpg` o `.webp`, idealmente 1200×900) y actualizá el `src` en `index.html`.
+Las fotos de la galería están en `assets/img/galeria/` (WebP de hasta 1400 px de lado). Para sumar una: guardá la foto ahí y, en `index.html`, copiá un `<li>` de la galería cambiando la imagen, el `alt` y el nombre. Sirve cualquier tamaño: el marco la encuadra solo. Las fotos se leen de a columnas (1.ª arriba, 2.ª abajo…) y las flechas aparecen solas cuando hay más de las que entran.
 
 ## Estructura
 
@@ -79,4 +79,3 @@ Todas las rutas del sitio son relativas, así que funciona igual en una subcarpe
 - [ ] Usuario de Instagram.
 - [ ] Número de WhatsApp para pedidos.
 - [ ] Video de la receta del día.
-- [ ] Fotos reales para la galería.

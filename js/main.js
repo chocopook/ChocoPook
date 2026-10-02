@@ -64,6 +64,82 @@
     });
   }
 
+  /* ---------- Galería: flechas que avanzan de a una columna ---------- */
+
+  function iniciarGaleria() {
+    const grilla = document.querySelector(".vitrina__grilla");
+    const anterior = document.querySelector(".vitrina__flecha--anterior");
+    const siguiente = document.querySelector(".vitrina__flecha--siguiente");
+    if (!grilla || !anterior || !siguiente) return;
+    const sinMovimiento = matchMedia("(prefers-reduced-motion: reduce)");
+
+    // distancia de una columna a la siguiente (las fotos se llenan de a columnas: 1.ª y 3.ª arriba)
+    const paso = () => {
+      const [primera, , tercera] = grilla.children;
+      return tercera ? tercera.offsetLeft - primera.offsetLeft : grilla.clientWidth;
+    };
+
+    function actualizar() {
+      const max = grilla.scrollWidth - grilla.clientWidth;
+      const hayMas = max > 2; // las flechas solo aparecen si hay fotos que no entran
+      anterior.hidden = siguiente.hidden = !hayMas;
+      anterior.setAttribute("aria-disabled", String(grilla.scrollLeft <= 2));
+      siguiente.setAttribute("aria-disabled", String(grilla.scrollLeft >= max - 2));
+    }
+
+    // Animación propia (en vez de scroll "smooth"): el encastre de columnas se apaga mientras
+    // dura, así no pelea con el desplazamiento y no frena a los tirones al final.
+    let destino = null;
+    let animacion = 0;
+    const suave = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+    function mover(direccion) {
+      const p = paso();
+      const max = grilla.scrollWidth - grilla.clientWidth;
+      // clics seguidos: se suma a donde iba, no a donde está
+      const desde = destino ?? grilla.scrollLeft;
+      destino = Math.max(0, Math.min(max, (Math.round(desde / p) + direccion) * p));
+      if (sinMovimiento.matches) {
+        grilla.scrollLeft = destino;
+        destino = null;
+        return;
+      }
+      cancelAnimationFrame(animacion);
+      const inicio = grilla.scrollLeft, recorrido = destino - inicio, t0 = performance.now(), duracion = 420;
+      grilla.style.scrollSnapType = "none";
+      const paso_ = (ahora) => {
+        const t = Math.min((ahora - t0) / duracion, 1);
+        grilla.scrollLeft = inicio + recorrido * suave(t);
+        if (t < 1) animacion = requestAnimationFrame(paso_);
+        else {
+          grilla.style.scrollSnapType = "";
+          destino = null;
+        }
+      };
+      animacion = requestAnimationFrame(paso_);
+    }
+
+    anterior.addEventListener("click", () => mover(-1));
+    siguiente.addEventListener("click", () => mover(1));
+
+    let programado = false;
+    grilla.addEventListener(
+      "scroll",
+      () => {
+        if (programado) return;
+        programado = true;
+        requestAnimationFrame(() => {
+          programado = false;
+          actualizar();
+        });
+      },
+      { passive: true }
+    );
+    if ("ResizeObserver" in window) new ResizeObserver(actualizar).observe(grilla);
+    else addEventListener("resize", actualizar);
+    actualizar();
+  }
+
   /* ---------- Receta del día (YouTube) ---------- */
 
   // Acepta un link de YouTube (watch, youtu.be, shorts, embed, live) o el ID solo.
@@ -184,6 +260,7 @@
 
   iniciarRedes();
   iniciarVisor();
+  iniciarGaleria();
   iniciarRecetaDelDia();
   iniciarMenuMovil();
   iniciarSeccionActiva();

@@ -204,44 +204,76 @@
           <h2 class="cartel" id="titulo-recetas">Nuestras recetas<span class="corazon" aria-hidden="true"></span></h2>
           <div class="vitrina">
             <img class="vitrina__planta" src="assets/svg/planta-difenbaquia.svg" alt="" width="160" height="166" aria-hidden="true">
-            <ul class="vitrina__grilla">
+            <!--
+              Galería: cada <li> es una foto. Se leen de a columnas: la 1.ª va arriba, la 2.ª abajo,
+              la 3.ª arriba de la columna siguiente, y así. Las flechas aparecen solas si hay más
+              fotos de las que entran, y cada clic avanza una columna.
+              Para sumar una foto: copiar un <li> y cambiar la imagen (en assets/img/galeria/),
+              el alt (se muestra como pie en el visor) y el nombre de la etiqueta. Sirve cualquier
+              tamaño de foto: el marco la recorta para que llene parejo.
+            -->
+            <ul class="vitrina__grilla" id="galeria-fotos">
               <li>
                 <figure>
-                  <button class="foto" type="button"><img src="assets/img/galeria/budines.svg" alt="Budín de limón glaseado" width="400" height="300" loading="lazy"></button>
-                  <figcaption class="etiqueta">Budines<span class="corazon" aria-hidden="true"></span></figcaption>
+                  <button class="foto" type="button"><img src="assets/img/galeria/tarta.webp" alt="Tarta con crema y frutillas frescas" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Tarta<span class="corazon" aria-hidden="true"></span></figcaption>
                 </figure>
               </li>
               <li>
                 <figure>
-                  <button class="foto" type="button"><img src="assets/img/galeria/cookies.svg" alt="Cookies con chips de chocolate" width="400" height="300" loading="lazy"></button>
-                  <figcaption class="etiqueta">Cookies<span class="corazon" aria-hidden="true"></span></figcaption>
-                </figure>
-              </li>
-              <li>
-                <figure>
-                  <button class="foto" type="button"><img src="assets/img/galeria/cupcakes.svg" alt="Cupcakes de chocolate, vainilla y dulce de leche" width="400" height="300" loading="lazy"></button>
-                  <figcaption class="etiqueta">Cupcakes<span class="corazon" aria-hidden="true"></span></figcaption>
-                </figure>
-              </li>
-              <li>
-                <figure>
-                  <button class="foto" type="button"><img src="assets/img/galeria/tartas.svg" alt="Tarta de frutillas con crema pastelera" width="400" height="300" loading="lazy"></button>
-                  <figcaption class="etiqueta">Tartas<span class="corazon" aria-hidden="true"></span></figcaption>
-                </figure>
-              </li>
-              <li>
-                <figure>
-                  <button class="foto" type="button"><img src="assets/img/galeria/alfajores.svg" alt="Alfajores de chocolate y de maicena" width="400" height="300" loading="lazy"></button>
+                  <button class="foto" type="button"><img src="assets/img/galeria/alfajores.webp" alt="Alfajores rellenos apilados en una fuente" loading="lazy" decoding="async"></button>
                   <figcaption class="etiqueta">Alfajores<span class="corazon" aria-hidden="true"></span></figcaption>
                 </figure>
               </li>
               <li>
                 <figure>
-                  <button class="foto" type="button"><img src="assets/img/galeria/empanadas.svg" alt="Empanadas al horno" width="400" height="300" loading="lazy"></button>
-                  <figcaption class="etiqueta">Empanadas<span class="corazon" aria-hidden="true"></span></figcaption>
+                  <button class="foto" type="button"><img src="assets/img/galeria/chaja.webp" alt="Torta chajá con crema y duraznos, con el cartelito de Chocopook" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Chajá<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/cupcake.webp" alt="Cupcakes en pirotines sobre un mantel cuadrillé" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Cupcake<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/pastafrola.webp" alt="Pastafrola con enrejado y coco rallado" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Pastafrola<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/budin.webp" alt="Budín con glaseado y confites de colores" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Budín<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/flan.webp" alt="Flan casero con caramelo" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Flan<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/matera.webp" alt="Torta matera dorada con azúcar" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Matera<span class="corazon" aria-hidden="true"></span></figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <button class="foto" type="button"><img src="assets/img/galeria/box-matero.webp" alt="Box matero con porciones surtidas: pastafrola, bizcochuelos con coco y barritas con confites" loading="lazy" decoding="async"></button>
+                  <figcaption class="etiqueta">Box matero<span class="corazon" aria-hidden="true"></span></figcaption>
                 </figure>
               </li>
             </ul>
+            <button class="vitrina__flecha vitrina__flecha--anterior" type="button" aria-controls="galeria-fotos" aria-label="Ver fotos anteriores" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+            </button>
+            <button class="vitrina__flecha vitrina__flecha--siguiente" type="button" aria-controls="galeria-fotos" aria-label="Ver más fotos" hidden>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
         </div>
 

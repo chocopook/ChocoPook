@@ -173,13 +173,79 @@
   pointer-events: none;
 }
 
+/* Galería deslizable: dos filas y columnas que se llenan de arriba hacia abajo.
+   Se ven --visibles columnas; las flechas (js/main.js) avanzan de a una. */
 .vitrina__grilla {
+  --visibles: 3;
+  --hueco: 14px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px 14px;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-columns: calc((100% - (var(--visibles) - 1) * var(--hueco)) / var(--visibles));
+  gap: 20px var(--hueco);
   margin: 0;
-  padding: 0;
+  /* aire para las sombras y las etiquetas: el deslizable recorta lo que se sale */
+  padding: 4px 6px 14px;
+  scroll-padding-inline: 6px;
   list-style: none;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.vitrina__grilla::-webkit-scrollbar {
+  display: none;
+}
+
+.vitrina__grilla > li {
+  scroll-snap-align: start;
+}
+
+/* flechas de madera, sobre el marco de la vitrina */
+.vitrina__flecha {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 3px solid var(--crema-100);
+  border-radius: 50%;
+  color: var(--crema-50);
+  background: var(--veta), linear-gradient(180deg, #8a5330, var(--cacao-700));
+  box-shadow: 0 6px 12px rgba(40, 19, 9, 0.4);
+  transform: translateY(-50%);
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.vitrina__flecha svg {
+  width: 22px;
+  height: 22px;
+}
+
+.vitrina__flecha[hidden] {
+  display: none;
+}
+
+/* centradas sobre el borde de madera */
+.vitrina__flecha--anterior {
+  left: calc(var(--marco) / -2 - 22px);
+}
+
+.vitrina__flecha--siguiente {
+  right: calc(var(--marco) / -2 - 22px);
+}
+
+.vitrina__flecha:hover {
+  transform: translateY(-50%) scale(1.08);
+}
+
+.vitrina__flecha[aria-disabled="true"] {
+  opacity: 0.35;
+  transform: translateY(-50%);
 }
 
 .vitrina figure {
@@ -425,8 +491,22 @@
   }
 
   .vitrina__grilla {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px 10px;
+    --visibles: 2;
+    --hueco: 10px;
+    row-gap: 16px;
+  }
+
+  .vitrina__flecha {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vitrina__flecha--anterior {
+    left: calc(var(--marco) / -2 - 20px);
+  }
+
+  .vitrina__flecha--siguiente {
+    right: calc(var(--marco) / -2 - 20px);
   }
 
   .etiqueta {
