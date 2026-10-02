@@ -98,11 +98,11 @@ html.cursor-propio .cursor-estrella--oculta {
 }
 
 /* hover: gira y palpita. Las animaciones arrancan de cero, igual que la estrella quieta */
-html.cursor-hover .cursor-estrella__giro {
+.cursor-estrella--hover .cursor-estrella__giro {
   animation: estrella-gira 4.5s linear infinite;
 }
 
-html.cursor-hover .cursor-estrella__latido {
+.cursor-estrella--hover .cursor-estrella__latido {
   animation: estrella-late 1.1s ease-in-out infinite alternate;
 }
 

@@ -64,7 +64,8 @@
   function ponerHover(valor) {
     if (valor === enHover) return;
     enHover = valor;
-    raiz.classList.toggle("cursor-hover", valor);
+    // la clase va en la estrella (no en <html>): así el navegador no recorre toda la página en cada hover
+    estrella.classList.toggle("cursor-estrella--hover", valor);
   }
 
   /* ---------- Estela ---------- */
