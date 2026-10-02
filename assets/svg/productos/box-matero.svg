@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: box matero, caja de cartón abierta con porciones dulces surtidas -->
+  <defs>
+    <linearGradient id="carton" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d8a868"/><stop offset="1" stop-color="#b98048"/>
+    </linearGradient>
+  </defs>
+  <g stroke="#4f2e18" stroke-width="3" stroke-linejoin="round">
+    <!-- tapa abierta, hacia atrás -->
+    <path d="M22 42L28 14H78L82 42Z" fill="#e3bd82"/>
+    <!-- interior de la caja -->
+    <path d="M10 56L22 40H82L92 56Z" fill="#8a5a33"/>
+    <!-- porciones: pastafrola, bizcochuelo con coco y barrita con confites -->
+    <path d="M18 54L24 44H42L38 54Z" fill="#c43c2c"/>
+    <path d="M40 54L44 44H62L62 54Z" fill="#f6e2b0"/>
+    <path d="M64 54L64 44H80L86 54Z" fill="#fff3d6"/>
+    <!-- frente de la caja -->
+    <path d="M10 56H92V82Q92 88 86 88H16Q10 88 10 82Z" fill="url(#carton)"/>
+  </g>
+  <!-- enrejado de la pastafrola -->
+  <path d="M24 52L30 45M31 52L36 45M22 48H40M20 51H38" stroke="#e0a25a" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- coco rallado -->
+  <g fill="#fff">
+    <circle cx="47" cy="48" r="1.1"/><circle cx="52" cy="46" r="1"/><circle cx="56" cy="50" r="1.1"/><circle cx="50" cy="51" r="1"/><circle cx="59" cy="47" r="1"/>
+  </g>
+  <!-- confites -->
+  <g stroke-width="2" stroke-linecap="round">
+    <path d="M68 47l2 1" stroke="#e05a5a"/><path d="M74 46l1 2" stroke="#4aa3df"/><path d="M71 51l2-1" stroke="#7cbf4a"/>
+    <path d="M78 50l2 1" stroke="#f2b632"/><path d="M80 47l1 1" stroke="#c46bd6"/>
+  </g>
+  <!-- etiqueta con corazón -->
+  <circle cx="51" cy="72" r="9" fill="#fdf0dc" stroke="#4f2e18" stroke-width="2.4"/>
+  <path d="M51 76c-3.5-2.6-5-4.4-5-6.2a2.6 2.6 0 0 1 5-1 2.6 2.6 0 0 1 5 1c0 1.8-1.5 3.6-5 6.2z" fill="#c0612b"/>
+  <path d="M16 62H86" stroke="#a96c3a" stroke-width="2" stroke-dasharray="4 4" opacity=".6"/>
+</svg>

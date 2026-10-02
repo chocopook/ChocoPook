@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: pastafrola de membrillo con enrejado, en perspectiva -->
+  <defs>
+    <clipPath id="relleno"><ellipse cx="50" cy="50" rx="34" ry="13"/></clipPath>
+  </defs>
+  <g stroke="#4f2e18" stroke-width="3" stroke-linejoin="round">
+    <!-- costado de la masa -->
+    <path d="M8 50V60A42 16 0 0 0 92 60V50Z" fill="#b9783a"/>
+    <!-- borde de arriba -->
+    <ellipse cx="50" cy="50" rx="42" ry="16" fill="#e2ad66"/>
+    <!-- dulce de membrillo -->
+    <ellipse cx="50" cy="50" rx="34" ry="13" fill="#b8402e"/>
+  </g>
+  <!-- ondas del borde -->
+  <ellipse cx="50" cy="50" rx="38" ry="14.5" fill="none" stroke="#c98a4b" stroke-width="2.2" stroke-dasharray="2 4" stroke-linecap="round"/>
+  <path d="M14 61q4 4 8 1M30 66q4 4 8 1M46 68q4 4 8 1M62 66q4 4 8 1M78 61q4 4 8 1" fill="none" stroke="#8f5a2a" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- enrejado, recortado al relleno -->
+  <g clip-path="url(#relleno)">
+    <g stroke="#4f2e18" stroke-width="7" stroke-linecap="round">
+      <path d="M20 36L44 66M36 34L60 66M52 34L76 66M68 34L90 62"/>
+      <path d="M80 36L56 66M64 34L40 66M48 34L24 66M32 34L10 62"/>
+    </g>
+    <g stroke="#e8b874" stroke-width="4" stroke-linecap="round">
+      <path d="M20 36L44 66M36 34L60 66M52 34L76 66M68 34L90 62"/>
+      <path d="M80 36L56 66M64 34L40 66M48 34L24 66M32 34L10 62"/>
+    </g>
+  </g>
+  <path d="M30 41q8-5 18-6" fill="none" stroke="#f6d49a" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+</svg>
