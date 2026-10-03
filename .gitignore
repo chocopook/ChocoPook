@@ -1,0 +1,14 @@
+# Archivos de desarrollo: quedan en la PC, no se suben ni se publican.
+CLAUDE.md
+.claude/
+herramientas/
+docs/
+
+# Editor y sistema
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+node_modules/

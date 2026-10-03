@@ -4,8 +4,6 @@ Sitio web de **Chocopook**, pastelería artesanal hecha con amor en Los Toldos, 
 
 Es una web estática (HTML + CSS + JavaScript, sin paso de compilación) pensada para publicarse en **GitHub Pages**.
 
-![Diseño de referencia](docs/diseno-referencia.jpg)
-
 ## Secciones
 
 1. **Portada**: logo del oso pastelero y mensaje de bienvenida.
@@ -60,8 +58,6 @@ assets/svg/           Ilustraciones propias (oso, libro, canasta, toldo, plantas
 assets/svg/productos/ Un dibujo por producto del pedido
 assets/cursor/        Estrella pixel art del cursor
 assets/img/galeria/   Fotos de la vitrina
-herramientas/         Script de capturas para desarrollo (no forma parte del sitio)
-docs/                 Diseño de referencia
 ```
 
 ## Publicación en GitHub Pages (pendiente)
