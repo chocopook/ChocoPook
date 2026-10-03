@@ -60,15 +60,13 @@ assets/cursor/        Estrella pixel art del cursor
 assets/img/galeria/   Fotos de la vitrina
 ```
 
-## Publicación en GitHub Pages (pendiente)
+## Publicación en GitHub Pages
 
-El sitio va a vivir en una cuenta de GitHub propia de la pastelería, que **todavía no está definida** (probablemente "ChocoPook").
+El sitio está publicado en **https://chocopook.github.io/ChocoPook/**, desde la rama `main` (carpeta raíz) del repo [chocopook/ChocoPook](https://github.com/chocopook/ChocoPook).
 
-- [ ] Crear o definir la cuenta y el usuario de GitHub de Chocopook.
-- [ ] Subir o transferir este repositorio a esa cuenta.
-- [ ] En el repo: **Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)`**.
-- [ ] Verificar la URL publicada: `https://<usuario>.github.io/<repositorio>/` (o `https://<usuario>.github.io/` si el repo se llama `<usuario>.github.io`).
-- [ ] (Opcional) Dominio propio: agregar un archivo `CNAME` y configurar el DNS.
+Cada push a `main` lo vuelve a publicar solo, en uno o dos minutos (el avance se ve en la pestaña **Actions** del repo). Si un cambio no aparece, recargar sin caché (`Ctrl + F5`).
+
+Para usar un dominio propio más adelante: agregar un archivo `CNAME` y configurar el DNS (Settings → Pages → Custom domain).
 
 Todas las rutas del sitio son relativas, así que funciona igual en una subcarpeta de GitHub Pages, en un dominio propio o en XAMPP. El archivo `.nojekyll` evita que GitHub Pages procese el sitio con Jekyll.
 
