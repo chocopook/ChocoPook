@@ -17,27 +17,34 @@
   margin: 0;
 }
 
+/* va arriba de la estantería (ver la grilla) */
 .pedido__intro {
-  max-width: 620px;
-  margin: 18px auto 0;
+  grid-area: intro;
+  justify-self: center;
+  max-width: 520px;
+  margin: 0;
+  padding: 0 12px;
+  text-align: center;
+  text-wrap: balance;
   font-size: 1.02rem;
   color: var(--cacao-900);
 }
 
-/* ---------- Grilla: estantería + nota | canasta ---------- */
+/* ---------- Grilla: intro + estantería + nota | canasta ---------- */
 
 .pedido__juego {
   position: relative;
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
-  /* la canasta ocupa las dos filas; lo que sobre de alto queda debajo de la nota */
-  grid-template-rows: auto 1fr;
+  /* la canasta ocupa las tres filas; lo que sobre de alto queda debajo de la nota */
+  grid-template-rows: auto auto 1fr;
   grid-template-areas:
+    "intro canasta"
     "estanteria canasta"
     "nota canasta";
   align-items: start;
-  gap: clamp(24px, 4vw, 48px);
+  gap: 16px clamp(24px, 4vw, 48px);
   padding: 28px 0 44px;
 }
 
@@ -50,7 +57,7 @@
   grid-area: nota;
   justify-self: center;
   max-width: 560px;
-  padding: 0 12px;
+  padding: 18px 12px 0;
   text-align: center;
   font-size: 1.02rem;
   color: var(--cacao-900);
@@ -689,9 +696,11 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-rows: none;
     grid-template-areas:
+      "intro"
       "estanteria"
       "canasta"
       "nota";
+    row-gap: 24px;
     padding-bottom: 96px; /* lugar para la barrita de abajo */
   }
 
@@ -754,11 +763,6 @@
   .producto__nombre {
     margin-top: 18px;
     font-size: 0.98rem;
-  }
-
-  /* en pantallas táctiles no se arrastra: se toca */
-  .pedido__o b {
-    font-size: 1.1em;
   }
 
   .barra-pedido {
