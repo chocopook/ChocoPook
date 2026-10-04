@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <!-- Producto: pizza grande de muzzarella con aceitunas, cortada en 8 porciones -->
+  <defs>
+    <radialGradient id="pizza-masa" cx="45%" cy="40%" r="65%">
+      <stop offset="0" stop-color="#f1c47c"/><stop offset="1" stop-color="#d99a50"/>
+    </radialGradient>
+    <g id="aceituna">
+      <ellipse rx="3.8" ry="2.2" fill="#2f2622"/>
+      <ellipse rx="1.5" ry=".8" fill="#c98a4b"/>
+    </g>
+  </defs>
+  <!-- costado y borde de la masa -->
+  <ellipse cx="50" cy="61" rx="45" ry="24" fill="#c08040" stroke="#4f2e18" stroke-width="3.5"/>
+  <ellipse cx="50" cy="55" rx="45" ry="24" fill="url(#pizza-masa)" stroke="#4f2e18" stroke-width="3.5"/>
+  <!-- salsa y queso derretido -->
+  <ellipse cx="50" cy="55" rx="37.5" ry="18.5" fill="#cf3b30"/>
+  <g fill="#f8dc94">
+    <ellipse cx="50" cy="55" rx="33" ry="15.5"/>
+    <circle cx="83" cy="55" r="3.4"/><circle cx="79" cy="63" r="3.2"/><circle cx="68" cy="68.5" r="3.4"/><circle cx="54" cy="70.5" r="3"/>
+    <circle cx="40" cy="70" r="3.4"/><circle cx="27" cy="66" r="3.2"/><circle cx="18" cy="59" r="3.4"/><circle cx="19" cy="49" r="3"/>
+    <circle cx="28" cy="42.5" r="3.4"/><circle cx="42" cy="39.5" r="3.2"/><circle cx="57" cy="39.5" r="3.4"/><circle cx="71" cy="42" r="3"/><circle cx="80" cy="47.5" r="3.2"/>
+  </g>
+  <!-- cortes de las porciones -->
+  <path d="M14 55H86M50 37V73M24.5 42L75.5 68M24.5 68L75.5 42" stroke="#e2ac58" stroke-width="1.8" stroke-linecap="round" opacity=".85"/>
+  <!-- aceitunas y orégano -->
+  <use href="#aceituna" transform="translate(36 47)"/>
+  <use href="#aceituna" transform="translate(62 46)"/>
+  <use href="#aceituna" transform="translate(70 59)"/>
+  <use href="#aceituna" transform="translate(42 64)"/>
+  <use href="#aceituna" transform="translate(28 57)"/>
+  <use href="#aceituna" transform="translate(56 63)"/>
+  <use href="#aceituna" transform="translate(50 44)"/>
+  <g fill="#5f7d3a">
+    <circle cx="44" cy="52" r="1"/><circle cx="58" cy="54" r="1"/><circle cx="33" cy="61" r="1"/><circle cx="66" cy="50" r="1"/>
+    <circle cx="48" cy="60" r="1"/><circle cx="74" cy="56" r="1"/><circle cx="24" cy="50" r="1"/><circle cx="62" cy="67" r="1"/>
+  </g>
+</svg>
