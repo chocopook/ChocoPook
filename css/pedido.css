@@ -24,16 +24,56 @@
   color: var(--cacao-900);
 }
 
-/* ---------- Grilla: estantería | canasta ---------- */
+/* ---------- Grilla: estantería + nota | canasta ---------- */
 
 .pedido__juego {
   position: relative;
   z-index: 3;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(300px, 1fr);
+  /* la canasta ocupa las dos filas; lo que sobre de alto queda debajo de la nota */
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "estanteria canasta"
+    "nota canasta";
   align-items: start;
   gap: clamp(24px, 4vw, 48px);
   padding: 28px 0 44px;
+}
+
+.pedido__juego .estanteria { grid-area: estanteria; }
+.pedido__juego .canasta { grid-area: canasta; }
+
+/* ---------- Nota (debajo de la estantería) ---------- */
+
+.pedido__nota {
+  grid-area: nota;
+  justify-self: center;
+  max-width: 560px;
+  padding: 0 12px;
+  text-align: center;
+  font-size: 1.02rem;
+  color: var(--cacao-900);
+}
+
+.pedido__nota p {
+  margin: 0 0 0.9rem;
+}
+
+.pedido__nota-final {
+  font-family: var(--f-mano);
+  font-size: 1.32rem;
+  line-height: 1.35;
+  color: var(--cacao-800);
+  text-wrap: balance;
+}
+
+.pedido__nota-cierre {
+  white-space: nowrap;
+}
+
+.pedido__nota-final .corazon {
+  font-size: 0.8em;
 }
 
 /* ---------- Estantería ---------- */
@@ -647,11 +687,21 @@
 @media (max-width: 860px) {
   .pedido__juego {
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "estanteria"
+      "canasta"
+      "nota";
     padding-bottom: 96px; /* lugar para la barrita de abajo */
   }
 
   .canasta {
     position: static;
+  }
+
+  /* aire después del borde dentado del ticket */
+  .pedido__nota {
+    padding-top: 14px;
   }
 
   .estanteria {
