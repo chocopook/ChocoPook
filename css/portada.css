@@ -13,7 +13,7 @@
 /* marca | texto | escena (la escena se estira hasta el borde derecho de la pantalla) */
 .portada__interior {
   display: grid;
-  grid-template-columns: 30fr 42fr 28fr;
+  grid-template-columns: 34fr 36fr 30fr;
   column-gap: clamp(28px, 4vw, 52px);
   min-height: 440px;
 }
@@ -99,8 +99,8 @@
   z-index: 2;
   align-self: center;
   justify-self: center;
-  max-width: 480px;
-  padding: 36px 0;
+  max-width: 410px;
+  padding: 40px 0;
   font-size: 0.98rem;
   line-height: 1.62;
   color: #4a2c18;
@@ -115,6 +115,12 @@
   color: var(--cacao-800);
   transform: rotate(-3deg);
   transform-origin: left center;
+  text-wrap: balance;
+}
+
+/* la última palabra y el corazón no se separan si el título se parte en dos renglones */
+.titulo-mano__final {
+  white-space: nowrap;
 }
 
 .corazon-cola {
@@ -127,21 +133,17 @@
 }
 
 .portada__texto p {
-  margin: 0 0 0.8rem;
-}
-
-.portada__carita {
-  margin-top: -0.2rem;
-  font-size: 1.45rem;
-  line-height: 1.2;
-  color: var(--cacao-700);
-  text-align: center;
-  white-space: nowrap;
+  margin: 0 0 1rem;
 }
 
 .portada__gracias {
   font-family: var(--f-mano);
   font-size: 1.22rem;
+  text-wrap: balance;
+}
+
+.portada__gracias-final {
+  white-space: nowrap;
 }
 
 .portada__gracias .corazon {
