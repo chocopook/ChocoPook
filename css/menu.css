@@ -152,10 +152,10 @@
 }
 
 .garabato--cupcake-abajo {
-  bottom: 0;
-  left: 50%;
+  bottom: 3%;
+  left: 7%;
   width: 5.2cqi;
-  transform: translateX(-50%);
+  transform: rotate(8deg);
 }
 
 .garabato--palote {
@@ -365,7 +365,9 @@
 
   .garabato--cupcake-abajo {
     bottom: 20px;
+    left: 50%;
     width: 40px;
+    transform: translateX(-50%);
   }
 
   .garabato--empanada {
