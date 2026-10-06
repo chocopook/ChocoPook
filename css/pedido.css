@@ -593,6 +593,7 @@
   margin: 12px 0 0;
   font-size: 0.85rem;
   text-align: center;
+  text-wrap: balance;
   color: var(--cacao-600);
 }
 
